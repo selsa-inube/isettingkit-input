@@ -1,3 +1,17 @@
+# v0.1.1 (Sat Oct 19 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjusment in order to include file of components in the dist ([@cmarin001](https://github.com/cmarin001))
+- feat: added isetting-input components ([@cmarin001](https://github.com/cmarin001))
+- Initial commit ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.0 (Wed May 01 2024)
 
 #### 🚀 Enhancement
