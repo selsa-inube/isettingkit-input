@@ -1,3 +1,15 @@
+# v0.1.3 (Mon Oct 21 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update utils in order to adjust percentage fractions.ts ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.2 (Mon Oct 21 2024)
 
 #### ⚠️ Pushed to `main`
