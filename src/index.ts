@@ -5,12 +5,14 @@ export { MultipleChoices } from "./Input/MultipleChoices";
 export { SelectCheck } from "./Input/SelectCheck";
 export { OptionList } from "./Input/SelectCheck/OptionList";
 export { OptionItemChecked } from "./Input/SelectCheck/OptionItem";
-export {currencyFormat,
+export {  
+  currencyFormat,
+  formatValue,
   parseCurrencyString,
   parsePercentageString,
   percentageFormat,
   typeData,
-  ValueValidationSchema,  } from "./Input/utils";
+  ValueValidationSchema } from "./Input/utils";
 export { ValueDataType, ValueHowToSetUp } from "./Input/types";
 export type {
   ICondition,
