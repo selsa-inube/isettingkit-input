@@ -1,3 +1,16 @@
+# v0.1.9 (Tue Oct 22 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added key for multiple decisions ([@cmarin001](https://github.com/cmarin001))
+- fix: adjust types in order to include more definitions for rule-decision ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.8 (Tue Oct 22 2024)
 
 #### ⚠️ Pushed to `main`
