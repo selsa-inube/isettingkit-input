@@ -32,7 +32,7 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   const [form, setForm] = useState({ [name]: valueData });
   const handleSelectChange = (name: string, valueSelect: string) => {
     setForm({ ...form, [name]: valueSelect });
-    onDecision({ listSelected: [valueSelect], list: value.list }, name);
+    onDecision({ listSelected: [valueSelect], list: value!.list }, name);
   };
 
   const handleMultipleChoicesChange = (newOptions: IOptionItemChecked[]) => {
@@ -54,8 +54,8 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           name={name}
           value={form[name] as string}
           options={
-            Array.isArray(value.list)
-              ? value.list.map((item) => ({
+            Array.isArray(value!.list)
+              ? value!.list.map((item) => ({
                   id: item,
                   label: item,
                   value: item,
@@ -75,11 +75,11 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           labelSelected={textValues.selectOption}
           onHandleSelectCheckChange={handleMultipleChoicesChange}
           options={
-            Array.isArray(value.list)
-              ? value.list.map((item) => ({
+            Array.isArray(value!.list)
+              ? value!.list.map((item) => ({
                   id: item,
                   label: item,
-                  checked: value.listSelected?.includes(item),
+                  checked: value!.listSelected?.includes(item),
                 }))
               : []
           }
