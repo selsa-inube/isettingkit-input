@@ -6,10 +6,7 @@ interface ICondition {
   label: string;
   name: string;
   possibleValue?: IValue;
-  value?:
-    | string
-    | number
-    | { rangeFrom?: number | undefined; rangeTo?: number | undefined | IValue };
+  value?: string | number | IValue;
   typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
 }
 
@@ -20,10 +17,7 @@ interface IDecision {
   label: string;
   name: string;
   possibleValue?: IValue;
-  value?:
-    | string
-    | number
-    | { rangeFrom?: number | undefined; rangeTo?: number | undefined | IValue };
+  value?: string | number | IValue;
   startDate?: Date;
   typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
 }
