@@ -5,7 +5,7 @@ interface ICondition {
   howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   label: string;
   name: string;
-  possibleValue: IValue;
+  possibleValue?: IValue;
   value?:
     | string
     | number
