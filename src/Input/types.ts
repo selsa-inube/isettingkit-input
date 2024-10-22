@@ -24,7 +24,7 @@ interface IDecision {
     | string
     | number
     | { rangeFrom?: number | undefined; rangeTo?: number | undefined | IValue };
-  startDate: Date;
+  startDate?: Date;
   typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
 }
 
