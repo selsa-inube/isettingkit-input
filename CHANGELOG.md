@@ -1,3 +1,15 @@
+# v0.1.13 (Tue Oct 22 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust IValue in order to make wide the range of values that can handle ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.12 (Tue Oct 22 2024)
 
 #### ⚠️ Pushed to `main`
