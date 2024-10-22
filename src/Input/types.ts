@@ -3,6 +3,7 @@ import { StringSchema, NumberSchema } from "yup";
 interface ICondition {
   description: string;
   howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  label: string;
   name: string;
   possibleValue: IValue;
   typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
@@ -12,6 +13,7 @@ interface IDecision {
   description: string;
   endDate?: Date;
   howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  label: string;
   name: string;
   possibleValue: IValue;
   startDate: Date;
