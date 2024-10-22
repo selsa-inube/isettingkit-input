@@ -33,8 +33,8 @@ interface IRuleDecision {
 interface IValue {
   list?: string[];
   listSelected?: string[];
-  rangeFrom?: number;
-  rangeTo?: number;
+  rangeFrom?: number | string;
+  rangeTo?: number | string;
   value?: string | number;
 }
 
