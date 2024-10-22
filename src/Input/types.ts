@@ -30,7 +30,8 @@ interface IDecision {
 
 interface IRuleDecision {
   conditions?: ICondition[];
-  decisions: IDecision | IDecision[];
+  decision?: IDecision;
+  decisions?: IDecision[];
   startDate?: Date;
   endDate?: Date;
 }
