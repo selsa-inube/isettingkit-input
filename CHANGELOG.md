@@ -1,3 +1,15 @@
+# v0.1.5 (Tue Oct 22 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update utils in order to include formats.ts ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.4 (Tue Oct 22 2024)
 
 #### ⚠️ Pushed to `main`
