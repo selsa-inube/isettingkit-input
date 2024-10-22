@@ -1,3 +1,15 @@
+# v0.1.14 (Tue Oct 22 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added couple of keys to IValue ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.13 (Tue Oct 22 2024)
 
 #### ⚠️ Pushed to `main`
