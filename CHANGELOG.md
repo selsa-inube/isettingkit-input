@@ -1,3 +1,15 @@
+# v0.1.4 (Tue Oct 22 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update index.ts ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.3 (Mon Oct 21 2024)
 
 #### ⚠️ Pushed to `main`
