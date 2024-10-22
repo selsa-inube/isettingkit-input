@@ -1,5 +1,7 @@
 import { string, number, StringSchema, NumberSchema, object } from "yup";
 import { ICondition, IDecision, IRuleDecision, TypeDataOutput, ValueHowToSetUp } from "./types";
+import { ITextfieldInputType } from "./DynamicField";
+
 
 const currencyFormat = (price: number): string => {
   if (price === 0 || !price) {
@@ -90,8 +92,22 @@ const ValueValidationSchema = (decision: IRuleDecision) => {
   return { validationSchema: object().shape(respValue), initialValues };
 };
 
+const formatters: Record<ITextfieldInputType, (value: number | string) => string | number> = {
+  currency: (value) => typeof value === "number" ? currencyFormat(value) : value,
+  percentage: (value) =>  typeof value === "number" ? percentageFormat(value) : value,
+  number: (value) => value,
+  alphabetical: (value) => value,
+  date: (value) => value
+};
+
+const formatValue = (value: number | string, type: ITextfieldInputType) => {
+  const formatter = formatters[type] || ((v: number) => v);
+  return formatter(value);
+};
+
 export {
   currencyFormat,
+  formatValue,
   parseCurrencyString,
   parsePercentageString,
   percentageFormat,
