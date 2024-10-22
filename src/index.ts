@@ -5,12 +5,18 @@ export { MultipleChoices } from "./Input/MultipleChoices";
 export { SelectCheck } from "./Input/SelectCheck";
 export { OptionList } from "./Input/SelectCheck/OptionList";
 export { OptionItemChecked } from "./Input/SelectCheck/OptionItem";
-export { ValueValidationSchema, parseCurrencyString } from "./Input/utils";
+export {currencyFormat,
+  parseCurrencyString,
+  parsePercentageString,
+  percentageFormat,
+  typeData,
+  ValueValidationSchema,  } from "./Input/utils";
 export { ValueDataType, ValueHowToSetUp } from "./Input/types";
 export type {
-  TypeDataOutput,
-  IRuleDecision,
-  IValue,
   ICondition,
   IDecision,
+  IRuleDecision,
+  IValue,
+  TypeDataOutput,
+  IInputStatus,
 } from "./Input/types";
