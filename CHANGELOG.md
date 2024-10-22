@@ -1,3 +1,15 @@
+# v0.1.8 (Tue Oct 22 2024)
+
+#### ⚠️ Pushed to `main`
+
+- Update types in order to include more variables for values.ts ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.7 (Tue Oct 22 2024)
 
 #### ⚠️ Pushed to `main`
