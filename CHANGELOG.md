@@ -1,3 +1,15 @@
+# v0.1.15 (Wed Oct 23 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added exportation of render interface ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.14 (Tue Oct 22 2024)
 
 #### ⚠️ Pushed to `main`
