@@ -1,3 +1,15 @@
+# v0.1.16 (Thu Oct 24 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust types in order to include missing properties ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.15 (Wed Oct 23 2024)
 
 #### ⚠️ Pushed to `main`
