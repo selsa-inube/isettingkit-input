@@ -6,7 +6,7 @@ interface ICondition {
   label: string;
   name: string;
   possibleValue?: IValue;
-  value?: string | number | IValue;
+  value?: string | string[] | number | IValue | undefined;
   typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
 }
 
@@ -17,12 +17,13 @@ interface IDecision {
   label: string;
   name: string;
   possibleValue?: IValue;
-  value?: string | number | IValue;
+  value?: string | string[] | number | IValue | undefined;
   startDate?: Date;
   typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
 }
 
 interface IRuleDecision {
+  id?: string;
   conditions?: ICondition[];
   decision?: IDecision;
   decisions?: IDecision[];
