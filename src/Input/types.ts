@@ -3,7 +3,6 @@ import { StringSchema, NumberSchema } from "yup";
 interface ICondition {
   description: string;
   howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
-  label: string;
   name: string;
   possibleValue?: IValue;
   value?: string | string[] | number | IValue | undefined;
@@ -14,7 +13,6 @@ interface IDecision {
   description: string;
   endDate?: Date;
   howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
-  label: string;
   name: string;
   possibleValue?: IValue;
   value?: string | string[] | number | IValue | undefined;
