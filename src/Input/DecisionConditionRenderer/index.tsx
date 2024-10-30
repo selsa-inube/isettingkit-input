@@ -1,7 +1,15 @@
 import { DynamicField } from "../DynamicField";
 import { InputRange } from "../InputRange";
 import { Select } from "@inubekit/select";
-import { ICondition, IDecision, IValue, ValueHowToSetUp } from "../types";
+import {
+  ICondition,
+  IDecision,
+  IFormType,
+  IInputStatus,
+  IRangeValue,
+  IValue,
+  ValueHowToSetUp,
+} from "../types";
 import { useState } from "react";
 import { MultipleChoices } from "../MultipleChoices";
 import { IOptionItemChecked } from "../SelectCheck/OptionItem";
@@ -14,7 +22,7 @@ interface IDecisionConditionRenderer {
     | number
     | { rangeFrom?: number | undefined; rangeTo?: number | undefined };
   message: string;
-  status: string;
+  status: IInputStatus;
   textValues: {
     selectOptions: string;
     selectOption: string;
@@ -29,7 +37,8 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   const value = element.possibleValue;
   const nameLabel = element.name.split(/(?=[A-Z])/).join(" ");
   let valueRangeInput;
-  const [form, setForm] = useState({ [name]: valueData });
+  const [form, setForm] = useState<IFormType>({ [name]: valueData });
+
   const handleSelectChange = (name: string, valueSelect: string) => {
     setForm({ ...form, [name]: valueSelect });
     onDecision({ listSelected: [valueSelect], list: value!.list }, name);
@@ -43,6 +52,28 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
 
     setForm({ ...form, [name]: selectedValues });
     onDecision({ listSelected: selectedValues.split(", ") }, name);
+  };
+
+  const handleRangeChangeFrom = (valueFrom: number | Date) => {
+    setForm((prev) => ({
+      ...prev,
+      [name]: {
+        ...((prev[name] as IRangeValue) || {}),
+        rangeFrom: valueFrom,
+      } as IRangeValue,
+    }));
+    onDecision({ ...value, rangeFrom: valueFrom }, name);
+  };
+
+  const handleRangeChangeTo = (valueTo: number | Date) => {
+    setForm((prev) => ({
+      ...prev,
+      [name]: {
+        ...((prev[name] as IRangeValue) || {}),
+        rangeTo: valueTo,
+      } as IRangeValue,
+    }));
+    onDecision({ ...value, rangeTo: valueTo }, name);
   };
 
   switch (element.howToSetUp) {
@@ -95,20 +126,18 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
       };
       return (
         <InputRange
-          handleInputChangeFrom={(valueRange) => {
-            onDecision({ ...value, rangeFrom: valueRange }, name);
-          }}
-          handleInputChangeTo={(valueRange) => {
-            onDecision({ ...value, rangeTo: valueRange }, name);
-          }}
+          handleInputChangeFrom={handleRangeChangeFrom}
+          handleInputChangeTo={handleRangeChangeTo}
           id={name}
           labelFrom={textValues.rangeMin(nameLabel)}
           labelTo={textValues.rangeMax(nameLabel)}
           typeInput={element.typeData}
           valueFrom={valueRangeInput.rangeFrom}
           valueTo={valueRangeInput.rangeTo}
-          message={message}
-          status={status}
+          messageFrom={message}
+          statusFrom={status}
+          messageTo={message}
+          statusTo={status}
         />
       );
 

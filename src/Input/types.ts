@@ -34,9 +34,13 @@ interface IValue {
   listSelected?: string[];
   labelFrom?: string;
   labelTo?: string;
-  rangeFrom?: number | string;
-  rangeTo?: number | string;
+  rangeFrom?: number | string | Date;
+  rangeTo?: number | string | Date;
   value?: string | number;
+  messageFrom?: string;
+  messageTo?: string;
+  statusFrom?: IInputStatus;
+  statusTo?: IInputStatus;
 }
 
 const ValueDataType = {
@@ -64,11 +68,20 @@ interface TypeDataOutput {
 const status = ["invalid", "pending"] as const;
 type IInputStatus = (typeof status)[number];
 
+interface IRangeValue {
+  rangeFrom?: number | Date;
+  rangeTo?: number | Date;
+}
+type IFormType = {
+  [key: string]: string | number | IRangeValue;
+};
 export { ValueDataType, ValueHowToSetUp };
 export type {
   ICondition,
   IDecision,
+  IFormType,
   IRuleDecision,
+  IRangeValue,
   IValue,
   TypeDataOutput,
   IInputStatus,

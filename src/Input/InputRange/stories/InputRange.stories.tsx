@@ -2,10 +2,11 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { parameters, props } from "./props";
 import { InputRange, IInputRange } from "..";
+import { InputRangeController } from "./InputRange.controller";
 
 const meta: Meta<typeof InputRange> = {
   title: "components/inputs/InputRange",
-  component: InputRange,
+  component: InputRangeController,
   parameters,
   argTypes: props,
 };
@@ -18,7 +19,7 @@ const style = {
 
 export const Currency: Story = (args: IInputRange) => (
   <div style={style}>
-    <InputRange {...args} />
+    <InputRangeController {...args} />
   </div>
 );
 Currency.args = {
@@ -35,7 +36,7 @@ Currency.args = {
 
 export const Number: Story = (args: IInputRange) => (
   <div style={style}>
-    <InputRange {...args} />
+    <InputRangeController {...args} />
   </div>
 );
 Number.args = {
