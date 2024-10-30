@@ -1,3 +1,16 @@
+# v0.1.19 (Wed Oct 30 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: remove unnecessary code ([@cmarin001](https://github.com/cmarin001))
+- fix: adjustment in order to allow validations for range-field ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.18 (Thu Oct 24 2024)
 
 #### ⚠️ Pushed to `main`
