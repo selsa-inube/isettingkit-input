@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { InputRange, IInputRange } from "..";
 import { IInputStatus } from "../../types";
 
