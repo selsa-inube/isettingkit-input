@@ -1,3 +1,15 @@
+# v0.1.20 (Thu Oct 31 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment to manage fields separately along with their respective status and message ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.19 (Wed Oct 30 2024)
 
 #### ⚠️ Pushed to `main`
