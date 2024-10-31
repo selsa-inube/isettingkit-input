@@ -76,12 +76,19 @@ type IFormType = {
   [key: string]: string | number | IRangeValue;
 };
 export { ValueDataType, ValueHowToSetUp };
+
+interface IRangeMessages {
+  rangeFrom?: string;
+  rangeTo?: string;
+}
+
 export type {
   ICondition,
   IDecision,
   IFormType,
   IRuleDecision,
   IRangeValue,
+  IRangeMessages,
   IValue,
   TypeDataOutput,
   IInputStatus,

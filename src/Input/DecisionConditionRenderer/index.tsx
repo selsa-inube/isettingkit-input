@@ -6,6 +6,7 @@ import {
   IDecision,
   IFormType,
   IInputStatus,
+  IRangeMessages,
   IRangeValue,
   IValue,
   ValueHowToSetUp,
@@ -21,8 +22,8 @@ interface IDecisionConditionRenderer {
     | string
     | number
     | { rangeFrom?: number | undefined; rangeTo?: number | undefined };
-  message: string;
-  status: IInputStatus;
+  message: string | IRangeMessages;
+  status: IInputStatus | IRangeMessages;
   textValues: {
     selectOptions: string;
     selectOption: string;
@@ -38,6 +39,17 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   const nameLabel = element.name.split(/(?=[A-Z])/).join(" ");
   let valueRangeInput;
   const [form, setForm] = useState<IFormType>({ [name]: valueData });
+
+  const messageFrom =
+    typeof message === "object" && "rangeFrom" in message
+      ? message.rangeFrom
+      : "";
+  const messageTo =
+    typeof message === "object" && "rangeTo" in message ? message.rangeTo : "";
+  const statusFrom =
+    typeof status === "object" && "rangeFrom" in status ? "invalid" : "pending";
+  const statusTo =
+    typeof status === "object" && "rangeTo" in status ? "invalid" : "pending";
 
   const handleSelectChange = (name: string, valueSelect: string) => {
     setForm({ ...form, [name]: valueSelect });
@@ -93,7 +105,7 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
                 }))
               : []
           }
-          message={message}
+          message={String(message)}
           fullwidth
         />
       );
@@ -115,7 +127,7 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
               : []
           }
           placeholderSelect={textValues.selectOptions}
-          message={message}
+          message={String(message)}
         />
       );
 
@@ -134,10 +146,10 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           typeInput={element.typeData}
           valueFrom={valueRangeInput.rangeFrom}
           valueTo={valueRangeInput.rangeTo}
-          messageFrom={message}
-          statusFrom={status}
-          messageTo={message}
-          statusTo={status}
+          messageFrom={messageFrom}
+          statusFrom={statusFrom}
+          messageTo={messageTo}
+          statusTo={statusTo}
         />
       );
 
@@ -153,8 +165,8 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           }}
           type={element.typeData}
           valueInput={valueData as string}
-          messageValidate={message}
-          statusValidate={status}
+          messageValidate={String(message)}
+          statusValidate={status as IInputStatus}
         />
       );
 
