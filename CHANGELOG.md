@@ -1,3 +1,15 @@
+# v0.1.21 (Thu Oct 31 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added validations fields ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.20 (Thu Oct 31 2024)
 
 #### ⚠️ Pushed to `main`
