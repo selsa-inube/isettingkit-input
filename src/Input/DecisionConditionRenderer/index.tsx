@@ -47,9 +47,15 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   const messageTo =
     typeof message === "object" && "rangeTo" in message ? message.rangeTo : "";
   const statusFrom =
-    typeof status === "object" && "rangeFrom" in status ? "invalid" : "pending";
+    typeof status === "object" &&
+    "rangeFrom" in status &&
+    status.rangeFrom !== ""
+      ? "invalid"
+      : "pending";
   const statusTo =
-    typeof status === "object" && "rangeTo" in status ? "invalid" : "pending";
+    typeof status === "object" && "rangeTo" in status && status.rangeTo !== ""
+      ? "invalid"
+      : "pending";
 
   const handleSelectChange = (name: string, valueSelect: string) => {
     setForm({ ...form, [name]: valueSelect });
