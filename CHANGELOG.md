@@ -1,3 +1,15 @@
+# v0.1.23 (Sat Nov 02 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment in order to include the structure for messages and state ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.22 (Sat Nov 02 2024)
 
 #### ⚠️ Pushed to `main`
