@@ -45,15 +45,15 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   const [form, setForm] = useState<IFormType>({ [name]: valueData });
 
   const messageFrom =
-    typeof message === "object" && "rangeFrom" in message ? message.from : "";
+    typeof message === "object" && "from" in message ? message.from : "";
   const messageTo =
-    typeof message === "object" && "rangeTo" in message ? message.to : "";
+    typeof message === "object" && "to" in message ? message.to : "";
   const statusFrom =
-    typeof status === "object" && "rangeFrom" in status && status.from !== ""
+    typeof status === "object" && "from" in status && status.from !== ""
       ? "invalid"
       : "pending";
   const statusTo =
-    typeof status === "object" && "rangeTo" in status && status.to !== ""
+    typeof status === "object" && "to" in status && status.to !== ""
       ? "invalid"
       : "pending";
 
