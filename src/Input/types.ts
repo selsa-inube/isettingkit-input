@@ -1,32 +1,35 @@
 import { StringSchema, NumberSchema } from "yup";
 
 interface ICondition {
-  description: string;
-  howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   name: string;
-  possibleValue?: IValue;
   value?: string | string[] | number | IValue | undefined;
-  typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
+  dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
+  possibleValue?: IValue;
 }
 
 interface IDecision {
-  description: string;
   endDate?: Date;
-  howToSetUp: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   name: string;
-  possibleValue?: IValue;
   value?: string | string[] | number | IValue | undefined;
+  possibleValue?: IValue;
   startDate?: Date;
-  typeData: (typeof ValueDataType)[keyof typeof ValueDataType];
+  dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
 }
 
 interface IRuleDecision {
   id?: string;
+  endDate?: Date;
+  valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  name: string;
+  value?: string | string[] | number | IValue | undefined;
+  possibleValue?: IValue;
+  startDate?: Date;
+  dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
   conditions?: ICondition[];
   decision?: IDecision;
   decisions?: IDecision[];
-  startDate?: Date;
-  endDate?: Date;
 }
 
 interface IValue {
@@ -34,9 +37,9 @@ interface IValue {
   listSelected?: string[];
   labelFrom?: string;
   labelTo?: string;
-  rangeFrom?: number | string | Date;
-  rangeTo?: number | string | Date;
-  value?: string | number;
+  from?: number | string | Date;
+  to?: number | string | Date;
+  value?: string | number | string[];
   messageFrom?: string;
   messageTo?: string;
   statusFrom?: IInputStatus;
@@ -62,33 +65,37 @@ const ValueHowToSetUp = {
 
 interface TypeDataOutput {
   schema: StringSchema | NumberSchema;
-  value: string | number | { rangeFrom: number; rangeTo: number } | undefined;
+  value: string | number | { from: number; to: number } | undefined;
 }
 
 const status = ["invalid", "pending"] as const;
 type IInputStatus = (typeof status)[number];
 
 interface IRangeValue {
-  rangeFrom?: number | Date;
-  rangeTo?: number | Date;
+  from?: string | number | Date;
+  to?: string | number | Date;
 }
 type IFormType = {
   [key: string]: string | number | IRangeValue;
 };
+declare const inputTypes: readonly [
+  "alphabetical",
+  "date",
+  "currency",
+  "number",
+  "percentage",
+];
+
+type ITextfieldInputType = (typeof inputTypes)[number];
+
 export { ValueDataType, ValueHowToSetUp };
-
-interface IRangeMessages {
-  rangeFrom?: string;
-  rangeTo?: string;
-}
-
 export type {
+  ITextfieldInputType,
   ICondition,
   IDecision,
   IFormType,
   IRuleDecision,
   IRangeValue,
-  IRangeMessages,
   IValue,
   TypeDataOutput,
   IInputStatus,

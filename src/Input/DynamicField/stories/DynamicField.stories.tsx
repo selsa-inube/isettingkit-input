@@ -1,32 +1,30 @@
-import { Meta, StoryObj } from "@storybook/react";
-
 import { parameters, props } from "./props";
-import { DynamicField, IDynamicField } from "..";
+import { IDynamicField } from "..";
+import { DynamicFieldController } from "./DynamicField.controller";
 
-const meta: Meta<typeof DynamicField> = {
+const story = {
   title: "components/inputs/DynamicField",
-  component: DynamicField,
+  component: DynamicFieldController,
   parameters,
   argTypes: props,
 };
-
-type Story = StoryObj<typeof DynamicField>;
 
 const style = {
   width: "400px",
 };
 
-export const Default: Story = (args: IDynamicField) => (
+const Default = (args: IDynamicField) => (
   <div style={style}>
-    <DynamicField {...args} />
+    <DynamicFieldController {...args} />
   </div>
 );
 Default.args = {
-  type: "number",
+  type: "percentage",
   name: "name",
   label: "label",
   valueInput: 0,
   handleChange: () => {},
 };
 
-export default meta;
+export { Default };
+export default story;

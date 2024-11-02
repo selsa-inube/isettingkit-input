@@ -1,27 +1,30 @@
-import { DynamicField } from "../DynamicField";
-import { InputRange } from "../InputRange";
 import { Select } from "@inubekit/select";
+import { useState } from "react";
+
 import {
   ICondition,
   IDecision,
   IFormType,
   IInputStatus,
-  IRangeMessages,
-  IRangeValue,
   IValue,
   ValueHowToSetUp,
 } from "../types";
-import { useState } from "react";
+import { IRangeMessages } from "../utils";
 import { MultipleChoices } from "../MultipleChoices";
+import { InputRange } from "../InputRange";
+import { DynamicField } from "../DynamicField";
 import { IOptionItemChecked } from "../SelectCheck/OptionItem";
 
 interface IDecisionConditionRenderer {
   element: IDecision | ICondition;
-  onDecision: (value: IValue, nameCondition: string) => void;
+  onDecision: (
+    value: IValue | string[] | string | number | Date,
+    nameCondition: string,
+  ) => void;
   valueData:
     | string
     | number
-    | { rangeFrom?: number | undefined; rangeTo?: number | undefined };
+    | { from?: number | undefined; to?: number | undefined };
   message: string | IRangeMessages;
   status: IInputStatus | IRangeMessages;
   textValues: {
@@ -35,31 +38,28 @@ interface IDecisionConditionRenderer {
 const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   const { element, onDecision, valueData, message, status, textValues } = props;
   const name = element.name.replace(" ", "");
-  const value = element.possibleValue;
+  const value = element.value;
+  const possibleValues = element.possibleValue;
   const nameLabel = element.name.split(/(?=[A-Z])/).join(" ");
   let valueRangeInput;
   const [form, setForm] = useState<IFormType>({ [name]: valueData });
 
   const messageFrom =
-    typeof message === "object" && "rangeFrom" in message
-      ? message.rangeFrom
-      : "";
+    typeof message === "object" && "rangeFrom" in message ? message.from : "";
   const messageTo =
-    typeof message === "object" && "rangeTo" in message ? message.rangeTo : "";
+    typeof message === "object" && "rangeTo" in message ? message.to : "";
   const statusFrom =
-    typeof status === "object" &&
-    "rangeFrom" in status &&
-    status.rangeFrom !== ""
+    typeof status === "object" && "rangeFrom" in status && status.from !== ""
       ? "invalid"
       : "pending";
   const statusTo =
-    typeof status === "object" && "rangeTo" in status && status.rangeTo !== ""
+    typeof status === "object" && "rangeTo" in status && status.to !== ""
       ? "invalid"
       : "pending";
 
   const handleSelectChange = (name: string, valueSelect: string) => {
     setForm({ ...form, [name]: valueSelect });
-    onDecision({ listSelected: [valueSelect], list: value!.list }, name);
+    onDecision([valueSelect], name);
   };
 
   const handleMultipleChoicesChange = (newOptions: IOptionItemChecked[]) => {
@@ -69,32 +69,44 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
       .join(", ");
 
     setForm({ ...form, [name]: selectedValues });
-    onDecision({ listSelected: selectedValues.split(", ") }, name);
+    onDecision(selectedValues.split(", "), name);
   };
 
   const handleRangeChangeFrom = (valueFrom: number | Date) => {
     setForm((prev) => ({
       ...prev,
       [name]: {
-        ...((prev[name] as IRangeValue) || {}),
+        ...(typeof prev[name] === "object" && prev[name] ? prev[name] : {}),
         rangeFrom: valueFrom,
-      } as IRangeValue,
+      },
     }));
-    onDecision({ ...value, rangeFrom: valueFrom }, name);
+    onDecision(
+      {
+        ...(typeof value === "object" && value !== null ? value : {}),
+        from: valueFrom,
+      },
+      name,
+    );
   };
 
   const handleRangeChangeTo = (valueTo: number | Date) => {
     setForm((prev) => ({
       ...prev,
       [name]: {
-        ...((prev[name] as IRangeValue) || {}),
-        rangeTo: valueTo,
-      } as IRangeValue,
+        ...(typeof prev[name] === "object" && prev[name] ? prev[name] : {}),
+        to: valueTo,
+      },
     }));
-    onDecision({ ...value, rangeTo: valueTo }, name);
+    onDecision(
+      {
+        ...(typeof value === "object" && value !== null ? value : {}),
+        to: valueTo,
+      },
+      name,
+    );
   };
 
-  switch (element.howToSetUp) {
+  switch (element.valueUse) {
     case ValueHowToSetUp.LIST_OF_VALUES:
       return (
         <Select
@@ -103,8 +115,8 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           name={name}
           value={form[name] as string}
           options={
-            Array.isArray(value!.list)
-              ? value!.list.map((item) => ({
+            Array.isArray(possibleValues?.list)
+              ? possibleValues?.list.map((item) => ({
                   id: item,
                   label: item,
                   value: item,
@@ -124,11 +136,11 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           labelSelected={textValues.selectOption}
           onHandleSelectCheckChange={handleMultipleChoicesChange}
           options={
-            Array.isArray(value!.list)
-              ? value!.list.map((item) => ({
+            Array.isArray(possibleValues?.list)
+              ? possibleValues?.list.map((item) => ({
                   id: item,
                   label: item,
-                  checked: value!.listSelected?.includes(item),
+                  checked: Array.isArray(value) && value.includes(item),
                 }))
               : []
           }
@@ -139,8 +151,8 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
 
     case ValueHowToSetUp.RANGE:
       valueRangeInput = valueData as {
-        rangeFrom?: number | undefined;
-        rangeTo?: number | undefined;
+        from?: number | undefined;
+        to?: number | undefined;
       };
       return (
         <InputRange
@@ -149,12 +161,12 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           id={name}
           labelFrom={textValues.rangeMin(nameLabel)}
           labelTo={textValues.rangeMax(nameLabel)}
-          typeInput={element.typeData}
-          valueFrom={valueRangeInput.rangeFrom}
-          valueTo={valueRangeInput.rangeTo}
-          messageFrom={messageFrom}
+          typeInput={element.dataType}
+          valueFrom={valueRangeInput.from}
+          valueTo={valueRangeInput.to}
+          messageFrom={messageFrom as string}
           statusFrom={statusFrom}
-          messageTo={messageTo}
+          messageTo={messageTo as string}
           statusTo={statusTo}
         />
       );
@@ -167,10 +179,10 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           label={nameLabel}
           name={name}
           handleChange={(value) => {
-            onDecision({ value: value }, name);
+            onDecision(value, name);
           }}
-          type={element.typeData}
-          valueInput={valueData as string}
+          type={element.dataType}
+          valueInput={valueData as string | number}
           messageValidate={String(message)}
           statusValidate={status as IInputStatus}
         />

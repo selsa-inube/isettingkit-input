@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlinePercent } from "react-icons/md";
 import { Icon } from "@inubekit/icon";
-import { Date } from "@inubekit/date";
+import { Date as Datefield } from "@inubekit/date";
 import { Textfield } from "@inubekit/input";
 
-import { IInputStatus } from "../types";
+import { IInputStatus, ITextfieldInputType } from "../types";
 import { currencyFormat, parseCurrencyString } from "../utils";
 
 interface IDynamicField {
@@ -18,16 +18,6 @@ interface IDynamicField {
   onBlur?: () => void;
 }
 
-export declare type ITextfieldInputType = (typeof inputTypes)[number];
-
-declare const inputTypes: readonly [
-  "alphabetical",
-  "date",
-  "currency",
-  "number",
-  "percentage",
-];
-
 const DynamicField = (props: IDynamicField) => {
   const {
     type,
@@ -40,30 +30,34 @@ const DynamicField = (props: IDynamicField) => {
     onBlur,
   } = props;
 
-  const [value, setValue] = useState(valueInput),
-    [status, setStatus] = useState<IInputStatus>(
-      statusValidate as IInputStatus,
-    ),
-    [message, setMessage] = useState<string>(messageValidate as string);
+  const [value, setValue] = useState(() => {
+    if (type === "date" && typeof valueInput === "string") {
+      return valueInput;
+    }
+    return valueInput;
+  });
+
+  useEffect(() => {
+    if (type === "date" && typeof valueInput === "string") {
+      setValue(valueInput);
+    } else {
+      setValue(valueInput);
+    }
+  }, [valueInput, type]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const valueInput = e.target.value;
-    if (type === "percentage") {
-      if (Number(valueInput) < 0 || Number(valueInput) > 100) {
-        setStatus("invalid");
-        setMessage("El porcentaje debe estar entre 0 y 100");
-        return;
-      }
-      setStatus("pending");
-      setMessage("");
-    }
+    let newValue: string | number | Date = e.target.value;
+
     if (type === "currency") {
-      setValue(parseCurrencyString(valueInput as string));
-      handleChange(value);
-      return;
+      newValue = parseCurrencyString(newValue as string);
+    } else if (type === "number") {
+      newValue = parseFloat(newValue);
+    } else if (type === "date") {
+      newValue = newValue || "";
     }
-    setValue(valueInput);
-    handleChange(value);
+
+    setValue(newValue);
+    handleChange(newValue);
   };
   return (
     <>
@@ -75,20 +69,20 @@ const DynamicField = (props: IDynamicField) => {
           type="number"
           value={value}
           fullwidth
-          message={message}
-          status={status}
+          message={messageValidate}
+          status={statusValidate as IInputStatus}
           onBlur={onBlur}
         />
       )}
       {type === "date" && (
-        <Date
+        <Datefield
           id={name}
           label={label}
           onChange={onChange}
-          value={value}
+          value={value as string}
           fullwidth
-          message={message}
-          status={status}
+          message={messageValidate}
+          status={statusValidate as IInputStatus}
           onBlur={onBlur}
         />
       )}
@@ -100,8 +94,8 @@ const DynamicField = (props: IDynamicField) => {
           type="text"
           value={value}
           fullwidth
-          message={message}
-          status={status}
+          message={messageValidate}
+          status={statusValidate as IInputStatus}
           onBlur={onBlur}
         />
       )}
@@ -113,8 +107,8 @@ const DynamicField = (props: IDynamicField) => {
           type="text"
           value={currencyFormat(value as number)}
           fullwidth
-          message={message}
-          status={status}
+          message={messageValidate}
+          status={statusValidate as IInputStatus}
           onBlur={onBlur}
         />
       )}
@@ -129,8 +123,8 @@ const DynamicField = (props: IDynamicField) => {
           iconAfter={
             <Icon appearance="dark" icon={<MdOutlinePercent />} size="18px" />
           }
-          status={status}
-          message={message}
+          status={statusValidate as IInputStatus}
+          message={messageValidate}
           onBlur={onBlur}
         />
       )}

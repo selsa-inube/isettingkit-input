@@ -1,11 +1,8 @@
-import { ArgTypes } from "@storybook/react";
-import { IDynamicField } from "..";
-
-export const parameters = {
+const parameters = {
   docs: {
     description: {
       component:
-        "This component is used to render a **Textfield Component** or a **Datefield Component** based on the type of the input. It is used to handle the state of the **Textfield Component** or the **Datefield Component**.",
+        "This component renders a **Textfield Component** or a **Datefield Component** based on the input type. It manages the state of the selected input component.",
     },
   },
   controls: {
@@ -13,9 +10,13 @@ export const parameters = {
   },
 };
 
-export const props: Partial<ArgTypes<IDynamicField>> = {
+const props = {
   type: {
+    control: {
+      type: "select",
+    },
     description: "The type of the input.",
+    options: ["number", "date", "alphabetical", "currency", "percentage"],
     table: {
       type: {
         summary: "string",
@@ -23,10 +24,6 @@ export const props: Partial<ArgTypes<IDynamicField>> = {
       defaultValue: {
         summary: "number",
       },
-    },
-    control: {
-      type: "select",
-      options: ["number", "date", "alphabetical", "currency", "percentage"],
     },
   },
   name: {
@@ -54,11 +51,37 @@ export const props: Partial<ArgTypes<IDynamicField>> = {
     },
   },
   handleChange: {
-    description: "The function to handle the change of the input.",
+    description: "The function to handle changes in the input value.",
     table: {
       type: {
-        summary: "Function",
+        summary: "(value: string | number) => void",
+      },
+    },
+  },
+  messageValidate: {
+    description: "The validation message for the input.",
+    table: {
+      type: {
+        summary: "string",
+      },
+    },
+  },
+  statusValidate: {
+    description: "The validation status for the input.",
+    table: {
+      type: {
+        summary: "string",
+      },
+    },
+  },
+  onBlur: {
+    description: "The function to handle the blur event of the input.",
+    table: {
+      type: {
+        summary: "() => void",
       },
     },
   },
 };
+
+export { props, parameters };
