@@ -108,11 +108,13 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
 
   switch (element.valueUse) {
     case ValueHowToSetUp.LIST_OF_VALUES:
+      console.log("name: ", name);
       return (
         <Select
           onChange={handleSelectChange}
           id={name}
           name={name}
+          label={nameLabel}
           value={form[name] as string}
           options={
             Array.isArray(possibleValues?.list)
