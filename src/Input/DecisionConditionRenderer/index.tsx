@@ -108,7 +108,6 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
 
   switch (element.valueUse) {
     case ValueHowToSetUp.LIST_OF_VALUES:
-      console.log("name: ", name);
       return (
         <Select
           onChange={handleSelectChange}
