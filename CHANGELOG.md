@@ -1,3 +1,15 @@
+# v0.1.27 (Thu Nov 14 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: update condition's types ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.26 (Tue Nov 05 2024)
 
 #### ⚠️ Pushed to `main`
