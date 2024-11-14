@@ -6,6 +6,8 @@ interface ICondition {
   value?: string | string[] | number | IValue | undefined;
   dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
   possibleValue?: IValue;
+  hidden?: boolean;
+  switchPlaces?: boolean;
 }
 
 interface IDecision {
