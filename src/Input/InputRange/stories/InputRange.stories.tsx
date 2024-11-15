@@ -30,8 +30,6 @@ Currency.args = {
   valueTo: 0,
   typeInput: "currency",
   required: false,
-  labelFrom: "Desde",
-  labelTo: "Hasta",
 };
 
 export const Number: Story = (args: IInputRange) => (
@@ -47,8 +45,6 @@ Number.args = {
   valueTo: 0,
   typeInput: "number",
   required: false,
-  labelFrom: "Desde",
-  labelTo: "Hasta",
 };
 
 export default meta;

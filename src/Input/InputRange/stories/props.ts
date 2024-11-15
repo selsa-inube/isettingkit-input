@@ -1,7 +1,7 @@
 import { ArgTypes } from "@storybook/react";
 import { IInputRange } from "..";
 
-export const parameters = {
+const parameters = {
   docs: {
     description: {
       component:
@@ -13,7 +13,7 @@ export const parameters = {
   },
 };
 
-export const props: Partial<ArgTypes<IInputRange>> = {
+const props: Partial<ArgTypes<IInputRange>> = {
   handleInputChangeFrom: {
     description:
       "is a function that is called when the **Textfield Component** is clicked.",
@@ -25,14 +25,6 @@ export const props: Partial<ArgTypes<IInputRange>> = {
   id: {
     description:
       "is a string that is used to identify the **Toggle Component**.",
-  },
-  labelFrom: {
-    description:
-      "is a string that is used to display the label of the **Textfield Component**.",
-  },
-  labelTo: {
-    description:
-      "is a string that is used to display the label of the **Textfield Component**.",
   },
   valueFrom: {
     description:
@@ -47,3 +39,5 @@ export const props: Partial<ArgTypes<IInputRange>> = {
       "is a string that is used to determine the type of the **Textfield Component**. (Value: 'money' or 'number')",
   },
 };
+
+export { parameters, props };
