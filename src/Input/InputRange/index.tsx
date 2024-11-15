@@ -3,14 +3,14 @@ import { Textfield } from "@inubekit/input";
 import { Grid } from "@inubekit/grid";
 import { currencyFormat, parseCurrencyString } from "../utils";
 import { Date as DateInput } from "@inubekit/date";
+import { Text } from "@inubekit/text";
 import { IInputStatus } from "../types";
+import { Stack } from "@inubekit/stack";
 
 interface IInputRange {
   handleInputChangeFrom: (valueFrom: number | Date) => void;
   handleInputChangeTo: (valueTo: number | Date) => void;
   id: string;
-  labelFrom: string;
-  labelTo: string;
   typeInput: ITextfieldInputType;
   required?: boolean;
   valueFrom?: number | Date;
@@ -37,8 +37,6 @@ const InputRange = (props: IInputRange) => {
     handleInputChangeFrom,
     handleInputChangeTo,
     id,
-    labelFrom,
-    labelTo,
     typeInput,
     required = false,
     valueFrom = 0,
@@ -92,58 +90,65 @@ const InputRange = (props: IInputRange) => {
 
   return (
     <Grid templateColumns="repeat(2, 1fr)" margin="10px 0" gap="12px">
-      {typeInput === "date" ? (
-        <DateInput
-          id={`${id}DateFrom`}
-          label={labelFrom}
-          value={formatValue(inputValueFrom, typeInput)}
-          onChange={handleChangeFrom}
-          required={required}
-          status={statusFrom}
-          message={messageFrom}
-          onBlur={onBlur}
-        />
-      ) : (
-        <Textfield
-          id={`${id}TextFieldFrom`}
-          label={labelFrom}
-          onChange={handleChangeFrom}
-          required={required}
-          size="compact"
-          fullwidth
-          type={typeInput === "number" ? "number" : "text"}
-          value={formatValue(inputValueFrom, typeInput)}
-          message={messageFrom}
-          status={statusFrom}
-          onBlur={onBlur}
-        />
-      )}
-      {typeInput === "date" ? (
-        <DateInput
-          id={`${id}DateTo`}
-          label={labelTo}
-          value={formatValue(inputValueTo, typeInput)}
-          onChange={handleChangeTo}
-          required={required}
-          status={statusTo}
-          message={messageTo}
-          onBlur={onBlur}
-        />
-      ) : (
-        <Textfield
-          id={`${id}TextFieldTo`}
-          label={labelTo}
-          onChange={handleChangeTo}
-          required={required}
-          size="compact"
-          fullwidth
-          type={typeInput === "number" ? "number" : "text"}
-          value={formatValue(inputValueTo, typeInput)}
-          message={messageTo}
-          status={statusTo}
-          onBlur={onBlur}
-        />
-      )}
+      <Stack alignItems="center" gap="8px">
+        <Text type="body" size="large" appearance="dark">
+          De
+        </Text>
+        {typeInput === "date" ? (
+          <DateInput
+            id={`${id}DateFrom`}
+            value={formatValue(inputValueFrom, typeInput)}
+            onChange={handleChangeFrom}
+            required={required}
+            status={statusFrom}
+            message={messageFrom}
+            onBlur={onBlur}
+          />
+        ) : (
+          <Textfield
+            id={`${id}TextFieldFrom`}
+            onChange={handleChangeFrom}
+            required={required}
+            size="compact"
+            fullwidth
+            type={typeInput === "number" ? "number" : "text"}
+            value={formatValue(inputValueFrom, typeInput)}
+            message={messageFrom}
+            status={statusFrom}
+            onBlur={onBlur}
+          />
+        )}
+      </Stack>
+
+      <Stack alignItems="center" gap="8px">
+        <Text type="body" size="large" appearance="dark">
+          a
+        </Text>
+        {typeInput === "date" ? (
+          <DateInput
+            id={`${id}DateTo`}
+            value={formatValue(inputValueTo, typeInput)}
+            onChange={handleChangeTo}
+            required={required}
+            status={statusTo}
+            message={messageTo}
+            onBlur={onBlur}
+          />
+        ) : (
+          <Textfield
+            id={`${id}TextFieldTo`}
+            onChange={handleChangeTo}
+            required={required}
+            size="compact"
+            fullwidth
+            type={typeInput === "number" ? "number" : "text"}
+            value={formatValue(inputValueTo, typeInput)}
+            message={messageTo}
+            status={statusTo}
+            onBlur={onBlur}
+          />
+        )}
+      </Stack>
     </Grid>
   );
 };

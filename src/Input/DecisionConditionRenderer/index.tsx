@@ -160,8 +160,6 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
           handleInputChangeFrom={handleRangeChangeFrom}
           handleInputChangeTo={handleRangeChangeTo}
           id={name}
-          labelFrom={textValues.rangeMin(nameLabel)}
-          labelTo={textValues.rangeMax(nameLabel)}
           typeInput={element.dataType}
           valueFrom={valueRangeInput.from}
           valueTo={valueRangeInput.to}
