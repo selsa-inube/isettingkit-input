@@ -1,3 +1,16 @@
+# v0.1.28 (Fri Nov 15 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment for range fields according to design ([@cmarin001](https://github.com/cmarin001))
+- fix: adjustment for range values according to design ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.27 (Thu Nov 14 2024)
 
 #### ⚠️ Pushed to `main`
