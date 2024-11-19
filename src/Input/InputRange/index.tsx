@@ -12,6 +12,7 @@ interface IInputRange {
   handleInputChangeTo: (valueTo: number | Date) => void;
   id: string;
   typeInput: ITextfieldInputType;
+  label: string;
   required?: boolean;
   valueFrom?: number | Date;
   valueTo?: number | Date;
@@ -38,6 +39,7 @@ const InputRange = (props: IInputRange) => {
     handleInputChangeTo,
     id,
     typeInput,
+    label,
     required = false,
     valueFrom = 0,
     valueTo = 0,
@@ -89,67 +91,82 @@ const InputRange = (props: IInputRange) => {
   };
 
   return (
-    <Grid templateColumns="repeat(2, 1fr)" margin="10px 0" gap="12px">
-      <Stack alignItems="center" gap="8px">
-        <Text type="body" size="large" appearance="dark">
-          De
-        </Text>
-        {typeInput === "date" ? (
-          <DateInput
-            id={`${id}DateFrom`}
-            value={formatValue(inputValueFrom, typeInput)}
-            onChange={handleChangeFrom}
-            required={required}
-            status={statusFrom}
-            message={messageFrom}
-            onBlur={onBlur}
-          />
-        ) : (
-          <Textfield
-            id={`${id}TextFieldFrom`}
-            onChange={handleChangeFrom}
-            required={required}
-            size="compact"
-            fullwidth
-            type={typeInput === "number" ? "number" : "text"}
-            value={formatValue(inputValueFrom, typeInput)}
-            message={messageFrom}
-            status={statusFrom}
-            onBlur={onBlur}
-          />
-        )}
-      </Stack>
+    <Stack direction="column">
+      <Text type="label" weight="bold" size="large" appearance="dark">
+        {label}
+      </Text>
+      <Grid templateColumns="repeat(2, 1fr)" margin="10px 0" gap="12px">
+        <Stack alignItems="baseline" gap="8px">
+          <Text type="body" size="large" appearance="dark">
+            De
+          </Text>
+          {typeInput === "date" ? (
+            <DateInput
+              id={`${id}DateFrom`}
+              value={formatValue(inputValueFrom, typeInput)}
+              onChange={handleChangeFrom}
+              required={required}
+              status={statusFrom}
+              message={messageFrom}
+              onBlur={onBlur}
+            />
+          ) : (
+            <Textfield
+              id={`${id}TextFieldFrom`}
+              onChange={handleChangeFrom}
+              required={required}
+              size="compact"
+              fullwidth
+              type={typeInput === "number" ? "number" : "text"}
+              value={formatValue(inputValueFrom, typeInput)}
+              message={messageFrom}
+              status={statusFrom}
+              onBlur={onBlur}
+              placeholder={
+                typeInput === "number"
+                  ? "please type a number"
+                  : "please type a text"
+              }
+            />
+          )}
+        </Stack>
 
-      <Stack alignItems="center" gap="8px">
-        <Text type="body" size="large" appearance="dark">
-          a
-        </Text>
-        {typeInput === "date" ? (
-          <DateInput
-            id={`${id}DateTo`}
-            value={formatValue(inputValueTo, typeInput)}
-            onChange={handleChangeTo}
-            required={required}
-            status={statusTo}
-            message={messageTo}
-            onBlur={onBlur}
-          />
-        ) : (
-          <Textfield
-            id={`${id}TextFieldTo`}
-            onChange={handleChangeTo}
-            required={required}
-            size="compact"
-            fullwidth
-            type={typeInput === "number" ? "number" : "text"}
-            value={formatValue(inputValueTo, typeInput)}
-            message={messageTo}
-            status={statusTo}
-            onBlur={onBlur}
-          />
-        )}
-      </Stack>
-    </Grid>
+        <Stack alignItems="baseline" gap="8px">
+          <Text type="body" size="large" appearance="dark">
+            a
+          </Text>
+          {typeInput === "date" ? (
+            <DateInput
+              id={`${id}DateTo`}
+              value={formatValue(inputValueTo, typeInput)}
+              onChange={handleChangeTo}
+              required={required}
+              status={statusTo}
+              message={messageTo}
+              onBlur={onBlur}
+            />
+          ) : (
+            <Textfield
+              id={`${id}TextFieldTo`}
+              onChange={handleChangeTo}
+              required={required}
+              size="compact"
+              fullwidth
+              type={typeInput === "number" ? "number" : "text"}
+              value={formatValue(inputValueTo, typeInput)}
+              message={messageTo}
+              status={statusTo}
+              onBlur={onBlur}
+              placeholder={
+                typeInput === "number"
+                  ? "please type a number"
+                  : "please type a text"
+              }
+            />
+          )}
+        </Stack>
+      </Grid>
+    </Stack>
   );
 };
 

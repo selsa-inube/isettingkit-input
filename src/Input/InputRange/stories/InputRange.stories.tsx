@@ -26,6 +26,7 @@ Currency.args = {
   handleInputChangeFrom: () => {},
   handleInputChangeTo: () => {},
   id: "inputRango",
+  label: "Tasa efectiva anual",
   valueFrom: 0,
   valueTo: 0,
   typeInput: "currency",
@@ -40,6 +41,7 @@ export const Number: Story = (args: IInputRange) => (
 Number.args = {
   handleInputChangeFrom: () => {},
   handleInputChangeTo: () => {},
+  label: "Tasa efectiva anual",
   id: "inputRango",
   valueFrom: 0,
   valueTo: 0,

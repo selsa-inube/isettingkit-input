@@ -14,6 +14,7 @@ import { MultipleChoices } from "../MultipleChoices";
 import { InputRange } from "../InputRange";
 import { DynamicField } from "../DynamicField";
 import { IOptionItemChecked } from "../SelectCheck/OptionItem";
+import { StyledLabelAlignment, StyledLabelRangeAlignment } from "./styles";
 
 interface IDecisionConditionRenderer {
   element: IDecision | ICondition;
@@ -26,6 +27,7 @@ interface IDecisionConditionRenderer {
     | number
     | { from?: number | undefined; to?: number | undefined };
   message: string | IRangeMessages;
+  type?: "decision" | "condition";
   status: IInputStatus | IRangeMessages;
   textValues: {
     selectOptions: string;
@@ -36,7 +38,8 @@ interface IDecisionConditionRenderer {
 }
 
 const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
-  const { element, onDecision, valueData, message, status, textValues } = props;
+  const { element, onDecision, valueData, message, status, textValues, type } =
+    props;
   const name = element.name.replace(" ", "");
   const value = element.value;
   const possibleValues = element.possibleValue;
@@ -109,45 +112,53 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
   switch (element.valueUse) {
     case ValueHowToSetUp.LIST_OF_VALUES:
       return (
-        <Select
-          onChange={handleSelectChange}
-          id={name}
-          name={name}
-          label={nameLabel}
-          value={form[name] as string}
-          options={
-            Array.isArray(possibleValues?.list)
-              ? possibleValues?.list.map((item) => ({
-                  id: item,
-                  label: item,
-                  value: item,
-                }))
-              : []
-          }
-          message={String(message)}
-          fullwidth
-        />
+        <StyledLabelAlignment
+          $type={type === "condition" ? "flex-start" : "center"}
+        >
+          <Select
+            onChange={handleSelectChange}
+            id={name}
+            name={name}
+            label={nameLabel}
+            value={form[name] as string}
+            options={
+              Array.isArray(possibleValues?.list)
+                ? possibleValues?.list.map((item) => ({
+                    id: item,
+                    label: item,
+                    value: item,
+                  }))
+                : []
+            }
+            message={String(message)}
+            fullwidth
+          />
+        </StyledLabelAlignment>
       );
 
     case ValueHowToSetUp.LIST_OF_VALUES_MULTI:
       return (
-        <MultipleChoices
-          id={name}
-          labelSelect={nameLabel}
-          labelSelected={textValues.selectOption}
-          onHandleSelectCheckChange={handleMultipleChoicesChange}
-          options={
-            Array.isArray(possibleValues?.list)
-              ? possibleValues?.list.map((item) => ({
-                  id: item,
-                  label: item,
-                  checked: Array.isArray(value) && value.includes(item),
-                }))
-              : []
-          }
-          placeholderSelect={textValues.selectOptions}
-          message={String(message)}
-        />
+        <StyledLabelRangeAlignment
+          $type={type === "condition" ? "flex-start" : "center"}
+        >
+          <MultipleChoices
+            id={name}
+            labelSelect={nameLabel}
+            labelSelected={textValues.selectOption}
+            onHandleSelectCheckChange={handleMultipleChoicesChange}
+            options={
+              Array.isArray(possibleValues?.list)
+                ? possibleValues?.list.map((item) => ({
+                    id: item,
+                    label: item,
+                    checked: Array.isArray(value) && value.includes(item),
+                  }))
+                : []
+            }
+            placeholderSelect={textValues.selectOptions}
+            message={String(message)}
+          />
+        </StyledLabelRangeAlignment>
       );
 
     case ValueHowToSetUp.RANGE:
@@ -156,35 +167,44 @@ const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
         to?: number | undefined;
       };
       return (
-        <InputRange
-          handleInputChangeFrom={handleRangeChangeFrom}
-          handleInputChangeTo={handleRangeChangeTo}
-          id={name}
-          typeInput={element.dataType}
-          valueFrom={valueRangeInput.from}
-          valueTo={valueRangeInput.to}
-          messageFrom={messageFrom as string}
-          statusFrom={statusFrom}
-          messageTo={messageTo as string}
-          statusTo={statusTo}
-        />
+        <StyledLabelRangeAlignment
+          $type={type === "condition" ? "flex-start" : "center"}
+        >
+          <InputRange
+            handleInputChangeFrom={handleRangeChangeFrom}
+            handleInputChangeTo={handleRangeChangeTo}
+            id={name}
+            label={nameLabel}
+            typeInput={element.dataType}
+            valueFrom={valueRangeInput.from}
+            valueTo={valueRangeInput.to}
+            messageFrom={messageFrom as string}
+            statusFrom={statusFrom}
+            messageTo={messageTo as string}
+            statusTo={statusTo}
+          />
+        </StyledLabelRangeAlignment>
       );
 
     case ValueHowToSetUp.GREATER_THAN:
     case ValueHowToSetUp.LESS_THAN:
     case ValueHowToSetUp.EQUAL:
       return (
-        <DynamicField
-          label={nameLabel}
-          name={name}
-          handleChange={(value) => {
-            onDecision(value, name);
-          }}
-          type={element.dataType}
-          valueInput={valueData as string | number}
-          messageValidate={String(message)}
-          statusValidate={status as IInputStatus}
-        />
+        <StyledLabelAlignment
+          $type={type === "condition" ? "flex-start" : "center"}
+        >
+          <DynamicField
+            label={nameLabel}
+            name={name}
+            handleChange={(value) => {
+              onDecision(value, name);
+            }}
+            type={element.dataType}
+            valueInput={valueData as string | number}
+            messageValidate={String(message)}
+            statusValidate={status as IInputStatus}
+          />
+        </StyledLabelAlignment>
       );
 
     default:

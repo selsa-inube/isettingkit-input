@@ -36,6 +36,7 @@ export const Default: Story = {
     element,
     onDecision: (value, nameCondition) =>
       console.log("Decision:", value, nameCondition),
+    type: "decision",
     valueData: "Option1",
     message: "This is a message",
     status: "pending" as IInputStatus,
@@ -70,6 +71,7 @@ export const MultipleChoices: Story = {
     message: "Select multiple options",
     status: "pending" as IInputStatus,
     textValues,
+    type: "condition",
   },
 };
 
@@ -82,6 +84,7 @@ export const Range: Story = {
     },
     onDecision: (value, nameCondition) =>
       console.log("Range Decision:", value, nameCondition),
+    type: "decision",
     valueData: { from: 1, to: 10 },
     message: { from: "Min value required", to: "Max value required" },
     status: { from: "pending", to: "invalid" },
