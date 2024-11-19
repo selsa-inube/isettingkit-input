@@ -1,3 +1,15 @@
+# v0.1.29 (Tue Nov 19 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added alignment according to type ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.28 (Fri Nov 15 2024)
 
 #### ⚠️ Pushed to `main`
