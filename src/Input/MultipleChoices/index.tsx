@@ -75,9 +75,9 @@ const MultipleChoices = (props: MultipleChoicesProps) => {
                 .map((option) => (
                   <Tag
                     key={option.id}
-                    appearance="primary"
+                    appearance="gray"
                     label={option.label}
-                    weight="normal"
+                    weight="strong"
                     removable
                     onClose={() => {
                       onRemoveTag(option.id);
