@@ -22,7 +22,7 @@ const CurrencyStrategy: FieldStrategy = {
       type="text"
       fullwidth
       message={messageValidate}
-      status={statusValidate as string}
+      status={statusValidate as "invalid" | "pending" | undefined}
       onBlur={onBlur}
     />
   ),

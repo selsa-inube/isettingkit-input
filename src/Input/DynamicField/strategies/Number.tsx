@@ -19,7 +19,7 @@ const NumberStrategy: FieldStrategy = {
       type="number"
       fullwidth
       message={messageValidate}
-      status={statusValidate as string}
+      status={statusValidate as "invalid" | "pending" | undefined}
       onBlur={onBlur}
     />
   ),

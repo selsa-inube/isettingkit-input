@@ -24,7 +24,7 @@ const PercentageStrategy: FieldStrategy = {
         <Icon appearance="dark" icon={<MdOutlinePercent />} size="18px" />
       }
       message={messageValidate}
-      status={statusValidate as string}
+      status={statusValidate as "invalid" | "pending" | undefined}
       onBlur={onBlur}
     />
   ),

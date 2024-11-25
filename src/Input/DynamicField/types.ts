@@ -7,7 +7,7 @@ interface IFieldStrategy {
   name: string;
   onBlur?: () => void;
   onChange: (value: string | number) => void;
-  statusValidate: IInputStatus | string;
+  statusValidate?: string | IInputStatus;
   value: string | number;
 }
 
