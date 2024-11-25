@@ -5,14 +5,12 @@ import {
   IInputStatus,
   ValueDataType,
   ValueHowToSetUp,
-} from "../../../Input/types";
+} from "../../types";
 
 const meta: Meta<typeof DecisionConditionRenderer> = {
   title: "components/inputs/DecisionConditionRenderer",
   component: DecisionConditionRenderer,
 };
-
-export default meta;
 
 type Story = StoryObj<typeof DecisionConditionRenderer>;
 
@@ -31,20 +29,7 @@ const textValues = {
   rangeMax: (label: string) => `Maximum ${label}`,
 };
 
-export const Default: Story = {
-  args: {
-    element,
-    onDecision: (value, nameCondition) =>
-      console.log("Decision:", value, nameCondition),
-    type: "decision",
-    valueData: "Option1",
-    message: "This is a message",
-    status: "pending" as IInputStatus,
-    textValues,
-  },
-};
-
-export const ListOfValues: Story = {
+const ListOfValues: Story = {
   args: {
     element: {
       ...element,
@@ -59,7 +44,7 @@ export const ListOfValues: Story = {
   },
 };
 
-export const MultipleChoices: Story = {
+const MultipleChoices: Story = {
   args: {
     element: {
       ...element,
@@ -75,7 +60,7 @@ export const MultipleChoices: Story = {
   },
 };
 
-export const Range: Story = {
+const Range: Story = {
   args: {
     element: {
       ...element,
@@ -91,3 +76,57 @@ export const Range: Story = {
     textValues,
   },
 };
+
+const GreaterThan: Story = {
+  args: {
+    element: {
+      ...element,
+      valueUse: ValueHowToSetUp.GREATER_THAN,
+      dataType: "number",
+    },
+    onDecision: (value, nameCondition) =>
+      console.log("Range Decision:", value, nameCondition),
+    type: "decision",
+    valueData: "0",
+    message: "asd",
+    status: "pending",
+    textValues,
+  },
+};
+
+const Equal: Story = {
+  args: {
+    element: {
+      ...element,
+      valueUse: ValueHowToSetUp.EQUAL,
+      dataType: "alphabetical",
+    },
+    onDecision: (value, nameCondition) =>
+      console.log("Range Decision:", value, nameCondition),
+    type: "decision",
+    valueData: "asd",
+    message: "asd",
+    status: "pending",
+    textValues,
+  },
+};
+
+const LessThan: Story = {
+  args: {
+    element: {
+      ...element,
+      valueUse: ValueHowToSetUp.LESS_THAN,
+      dataType: "number",
+    },
+    onDecision: (value, nameCondition) =>
+      console.log("Range Decision:", value, nameCondition),
+    type: "decision",
+    valueData: "0",
+    message: "asd",
+    status: "pending",
+    textValues,
+  },
+};
+
+export { ListOfValues, MultipleChoices, Range, GreaterThan, Equal, LessThan };
+export default meta;

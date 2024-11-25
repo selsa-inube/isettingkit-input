@@ -23,4 +23,5 @@ export type {
   TypeDataOutput,
   IInputStatus,
 } from "./Input/types";
-export type { IDecisionConditionRenderer } from "./Input/DecisionConditionRenderer";
+export type { IStrategy } from "./Input/DecisionConditionRenderer/types";
+export type { IFieldStrategy } from "./Input/DynamicField/types";

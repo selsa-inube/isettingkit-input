@@ -1,16 +1,30 @@
 import { useState } from "react";
 import { DynamicField, IDynamicField } from "..";
+import { FieldType } from "../types";
+
+const validationStrategies: Record<FieldType, (value: string) => boolean> = {
+  alphabetical: (value) => /^[a-zA-Z]+$/.test(value),
+  number: (value) => /^[0-9]*$/.test(value),
+  currency: (value) => /^[0-9]*$/.test(value),
+  percentage: (value) => /^\d{1,2}(\.\d+)?%?$/.test(value),
+};
+
+const messages: Record<FieldType, string> = {
+  alphabetical: "Please enter only letters.",
+  number: "Please enter a valid number.",
+  currency: "Please enter a valid number.",
+  percentage: "Please enter a valid percentage.",
+};
 
 const DynamicFieldController = (props: IDynamicField) => {
-  const { valueInput = "", statusValidate = "pending", type } = props;
+  const { value = "", statusValidate = "pending", type } = props;
+
+  const typedType = type as FieldType;
+
   const [form, setForm] = useState({
-    value: valueInput,
+    value: value,
     status: statusValidate,
   });
-
-  const isAlphabetical = (value: string) => /^[a-zA-Z]+$/.test(value);
-  const isNumeric = (value: string) => /^[0-9]*$/.test(value);
-  const isPercentage = (value: string) => /^\d{1,2}(\.\d+)?%?$/.test(value);
 
   const onChange = (value: string | number) => {
     console.log("onChange", value);
@@ -18,15 +32,8 @@ const DynamicFieldController = (props: IDynamicField) => {
   };
 
   const onBlur = () => {
-    let isValid = true;
-
-    if (type === "alphabetical") {
-      isValid = isAlphabetical(form.value as string);
-    } else if (type === "number" || type === "currency") {
-      isValid = isNumeric(form.value as string);
-    } else if (type === "percentage") {
-      isValid = isPercentage(form.value as string);
-    }
+    const validate = validationStrategies[typedType];
+    const isValid = validate ? validate(form.value as string) : true;
 
     setForm({
       ...form,
@@ -34,28 +41,16 @@ const DynamicFieldController = (props: IDynamicField) => {
     });
   };
 
-  const message = () => {
-    switch (type) {
-      case "alphabetical":
-        return "Please enter only letters.";
-      case "number":
-      case "currency":
-        return "Please enter a valid number.";
-      case "percentage":
-        return "Please enter a valid percentage.";
-      default:
-        return "";
-    }
-  };
+  const getMessage = () => messages[typedType] || "";
 
   return (
     <DynamicField
       {...props}
-      valueInput={form.value}
-      handleChange={onChange}
+      value={form.value}
+      onChange={onChange}
       statusValidate={form.status}
       onBlur={onBlur}
-      messageValidate={message()}
+      messageValidate={getMessage()}
     />
   );
 };

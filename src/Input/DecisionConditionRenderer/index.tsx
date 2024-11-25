@@ -1,216 +1,44 @@
-import { Select } from "@inubekit/select";
-import { useState } from "react";
-
+import React from "react";
+import { IStrategy } from "./types";
+import { normalizeValueUse } from "./utils/normalizeValueUse";
+import { getStrategy, StrategyType } from "./utils";
 import {
-  ICondition,
-  IDecision,
-  IFormType,
-  IInputStatus,
-  IValue,
-  ValueHowToSetUp,
-} from "../types";
-import { IRangeMessages } from "../utils";
-import { MultipleChoices } from "../MultipleChoices";
-import { InputRange } from "../InputRange";
-import { DynamicField } from "../DynamicField";
-import { IOptionItemChecked } from "../SelectCheck/OptionItem";
-import { StyledLabelAlignment, StyledLabelRangeAlignment } from "./styles";
+  IUseDecisionHandlers,
+  useDecisionHandlers,
+} from "./utils/useDecisionHandlers";
 
-interface IDecisionConditionRenderer {
-  element: IDecision | ICondition;
-  onDecision: (
-    value: IValue | string[] | string | number | Date,
-    nameCondition: string,
-  ) => void;
-  valueData:
-    | string
-    | number
-    | { from?: number | undefined; to?: number | undefined };
-  message: string | IRangeMessages;
-  type?: "decision" | "condition";
-  status: IInputStatus | IRangeMessages;
-  textValues: {
-    selectOptions: string;
-    selectOption: string;
-    rangeMin: (label: string) => string;
-    rangeMax: (label: string) => string;
-  };
+function DecisionConditionRenderer(props: IStrategy) {
+  const handlers = useDecisionHandlers(props as IUseDecisionHandlers);
+
+  const { element } = props;
+
+  const normalizedValueUse = normalizeValueUse(element.valueUse);
+
+  if (!normalizedValueUse) {
+    console.error(
+      `Invalid valueUse: ${element.valueUse}. Please ensure it matches the supported types.`,
+    );
+    return null;
+  }
+
+  const strategy = getStrategy(normalizedValueUse as StrategyType);
+
+  if (!strategy) {
+    console.error(
+      `No strategy found for normalized valueUse: ${normalizedValueUse}. Please verify the strategy registry.`,
+    );
+    return null;
+  }
+
+  try {
+    return React.createElement(strategy, { ...props, ...handlers });
+  } catch (error) {
+    console.error(
+      `Error rendering strategy for valueUse: ${normalizedValueUse}`,
+      error,
+    );
+    return null;
+  }
 }
 
-const DecisionConditionRenderer = (props: IDecisionConditionRenderer) => {
-  const { element, onDecision, valueData, message, status, textValues, type } =
-    props;
-  const name = element.name.replace(" ", "");
-  const value = element.value;
-  const possibleValues = element.possibleValue;
-  const nameLabel = element.name.split(/(?=[A-Z])/).join(" ");
-  let valueRangeInput;
-  const [form, setForm] = useState<IFormType>({ [name]: valueData });
-
-  const messageFrom =
-    typeof message === "object" && "from" in message ? message.from : "";
-  const messageTo =
-    typeof message === "object" && "to" in message ? message.to : "";
-  const statusFrom =
-    typeof status === "object" && "from" in status && status.from !== ""
-      ? "invalid"
-      : "pending";
-  const statusTo =
-    typeof status === "object" && "to" in status && status.to !== ""
-      ? "invalid"
-      : "pending";
-
-  const handleSelectChange = (name: string, valueSelect: string) => {
-    setForm({ ...form, [name]: valueSelect });
-    onDecision([valueSelect], name);
-  };
-
-  const handleMultipleChoicesChange = (newOptions: IOptionItemChecked[]) => {
-    const selectedValues = newOptions
-      .filter((option) => option.checked)
-      .map((option) => option.id)
-      .join(", ");
-
-    setForm({ ...form, [name]: selectedValues });
-    onDecision(selectedValues.split(", "), name);
-  };
-
-  const handleRangeChangeFrom = (valueFrom: number | Date) => {
-    setForm((prev) => ({
-      ...prev,
-      [name]: {
-        ...(typeof prev[name] === "object" && prev[name] ? prev[name] : {}),
-        rangeFrom: valueFrom,
-      },
-    }));
-    onDecision(
-      {
-        ...(typeof value === "object" && value !== null ? value : {}),
-        from: valueFrom,
-      },
-      name,
-    );
-  };
-
-  const handleRangeChangeTo = (valueTo: number | Date) => {
-    setForm((prev) => ({
-      ...prev,
-      [name]: {
-        ...(typeof prev[name] === "object" && prev[name] ? prev[name] : {}),
-        to: valueTo,
-      },
-    }));
-    onDecision(
-      {
-        ...(typeof value === "object" && value !== null ? value : {}),
-        to: valueTo,
-      },
-      name,
-    );
-  };
-
-  switch (element.valueUse) {
-    case ValueHowToSetUp.LIST_OF_VALUES:
-      return (
-        <StyledLabelAlignment
-          $type={type === "condition" ? "flex-start" : "center"}
-        >
-          <Select
-            onChange={handleSelectChange}
-            id={name}
-            name={name}
-            label={nameLabel}
-            value={form[name] as string}
-            options={
-              Array.isArray(possibleValues?.list)
-                ? possibleValues?.list.map((item) => ({
-                    id: item,
-                    label: item,
-                    value: item,
-                  }))
-                : []
-            }
-            message={String(message)}
-            fullwidth
-          />
-        </StyledLabelAlignment>
-      );
-
-    case ValueHowToSetUp.LIST_OF_VALUES_MULTI:
-      return (
-        <StyledLabelRangeAlignment
-          $type={type === "condition" ? "flex-start" : "center"}
-        >
-          <MultipleChoices
-            id={name}
-            labelSelect={nameLabel}
-            labelSelected={textValues.selectOption}
-            onHandleSelectCheckChange={handleMultipleChoicesChange}
-            options={
-              Array.isArray(possibleValues?.list)
-                ? possibleValues?.list.map((item) => ({
-                    id: item,
-                    label: item,
-                    checked: Array.isArray(value) && value.includes(item),
-                  }))
-                : []
-            }
-            placeholderSelect={textValues.selectOptions}
-            message={String(message)}
-          />
-        </StyledLabelRangeAlignment>
-      );
-
-    case ValueHowToSetUp.RANGE:
-      valueRangeInput = valueData as {
-        from?: number | undefined;
-        to?: number | undefined;
-      };
-      return (
-        <StyledLabelRangeAlignment
-          $type={type === "condition" ? "flex-start" : "center"}
-        >
-          <InputRange
-            handleInputChangeFrom={handleRangeChangeFrom}
-            handleInputChangeTo={handleRangeChangeTo}
-            id={name}
-            label={nameLabel}
-            typeInput={element.dataType}
-            valueFrom={valueRangeInput.from}
-            valueTo={valueRangeInput.to}
-            messageFrom={messageFrom as string}
-            statusFrom={statusFrom}
-            messageTo={messageTo as string}
-            statusTo={statusTo}
-          />
-        </StyledLabelRangeAlignment>
-      );
-
-    case ValueHowToSetUp.GREATER_THAN:
-    case ValueHowToSetUp.LESS_THAN:
-    case ValueHowToSetUp.EQUAL:
-      return (
-        <StyledLabelAlignment
-          $type={type === "condition" ? "flex-start" : "center"}
-        >
-          <DynamicField
-            label={nameLabel}
-            name={name}
-            handleChange={(value) => {
-              onDecision(value, name);
-            }}
-            type={element.dataType}
-            valueInput={valueData as string | number}
-            messageValidate={String(message)}
-            statusValidate={status as IInputStatus}
-          />
-        </StyledLabelAlignment>
-      );
-
-    default:
-      return null;
-  }
-};
-
 export { DecisionConditionRenderer };
-export type { IDecisionConditionRenderer };
