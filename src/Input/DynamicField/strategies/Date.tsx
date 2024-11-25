@@ -1,5 +1,5 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Date as Datefield } from "@inubekit/date";
+import { Date as Datefield, IDateStatus } from "@inubekit/date";
 
 const DateStrategy: FieldStrategy = {
   render: ({
@@ -18,7 +18,7 @@ const DateStrategy: FieldStrategy = {
       onChange={(e) => onChange(e.target.value)}
       fullwidth
       message={messageValidate}
-      status={statusValidate}
+      status={statusValidate as IDateStatus}
       onBlur={onBlur}
     />
   ),

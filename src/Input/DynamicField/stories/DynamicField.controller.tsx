@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DynamicField, IDynamicField } from "..";
 import { FieldType } from "../types";
+import { IInputStatus } from "../../types";
 
 const validationStrategies: Record<FieldType, (value: string) => boolean> = {
   alphabetical: (value) => /^[a-zA-Z]+$/.test(value),
@@ -48,7 +49,7 @@ const DynamicFieldController = (props: IDynamicField) => {
       {...props}
       value={form.value}
       onChange={onChange}
-      statusValidate={form.status}
+      statusValidate={form.status as IInputStatus}
       onBlur={onBlur}
       messageValidate={getMessage()}
     />

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Textfield } from "@inubekit/input";
 import { Grid } from "@inubekit/grid";
 import { currencyFormat, parseCurrencyString } from "../utils";
-import { Date as DateInput } from "@inubekit/date";
+import { Date as DateInput, IDateStatus } from "@inubekit/date";
 import { Text } from "@inubekit/text";
 import { IInputStatus } from "../types";
 import { Stack } from "@inubekit/stack";
@@ -106,7 +106,7 @@ const InputRange = (props: IInputRange) => {
               value={formatValue(inputValueFrom, typeInput)}
               onChange={handleChangeFrom}
               required={required}
-              status={statusFrom}
+              status={statusFrom as unknown as IDateStatus}
               message={messageFrom}
               onBlur={onBlur}
             />
@@ -120,7 +120,7 @@ const InputRange = (props: IInputRange) => {
               type={typeInput === "number" ? "number" : "text"}
               value={formatValue(inputValueFrom, typeInput)}
               message={messageFrom}
-              status={statusFrom}
+              status={statusFrom as unknown as IDateStatus}
               onBlur={onBlur}
               placeholder={
                 typeInput === "number"
@@ -141,7 +141,7 @@ const InputRange = (props: IInputRange) => {
               value={formatValue(inputValueTo, typeInput)}
               onChange={handleChangeTo}
               required={required}
-              status={statusTo}
+              status={statusTo as unknown as IDateStatus}
               message={messageTo}
               onBlur={onBlur}
             />
@@ -155,7 +155,7 @@ const InputRange = (props: IInputRange) => {
               type={typeInput === "number" ? "number" : "text"}
               value={formatValue(inputValueTo, typeInput)}
               message={messageTo}
-              status={statusTo}
+              status={statusTo as unknown as IDateStatus}
               onBlur={onBlur}
               placeholder={
                 typeInput === "number"

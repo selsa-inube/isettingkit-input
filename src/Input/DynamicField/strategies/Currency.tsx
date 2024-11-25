@@ -22,7 +22,7 @@ const CurrencyStrategy: FieldStrategy = {
       type="text"
       fullwidth
       message={messageValidate}
-      status={statusValidate}
+      status={statusValidate as string}
       onBlur={onBlur}
     />
   ),

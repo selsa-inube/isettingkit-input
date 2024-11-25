@@ -22,11 +22,11 @@ const InputRangeController = (props: IInputRangeController) => {
     if (props.typeInput === "number" || props.typeInput === "currency") {
       if (typeof newValueFrom === "number") {
         if (newValueFrom < 0) {
-          setStatusFrom("invalid");
+          setStatusFrom("invalid" as IInputStatus);
           setMessageFrom("'From' value cannot be less than 0.");
           return;
         } else if (typeof valueTo === "number" && newValueFrom > valueTo) {
-          setStatusFrom("invalid");
+          setStatusFrom("invalid" as IInputStatus);
           setMessageFrom("'From' value cannot be greater than 'To' value.");
           return;
         } else {
@@ -36,7 +36,7 @@ const InputRangeController = (props: IInputRangeController) => {
       }
     } else if (props.typeInput === "date" && newValueFrom instanceof Date) {
       if (valueTo instanceof Date && newValueFrom > valueTo) {
-        setStatusFrom("invalid");
+        setStatusFrom("invalid" as IInputStatus);
         setMessageFrom("'From' date cannot be later than 'To' date.");
         return;
       } else {
@@ -53,11 +53,11 @@ const InputRangeController = (props: IInputRangeController) => {
     if (props.typeInput === "number" || props.typeInput === "currency") {
       if (typeof newValueTo === "number") {
         if (newValueTo < 0) {
-          setStatusTo("invalid");
+          setStatusTo("invalid" as IInputStatus);
           setMessageTo("'To' value cannot be less than 0.");
           return;
         } else if (typeof valueFrom === "number" && newValueTo < valueFrom) {
-          setStatusTo("invalid");
+          setStatusTo("invalid" as IInputStatus);
           setMessageTo("'To' value cannot be less than 'From' value.");
           return;
         } else {
@@ -67,7 +67,7 @@ const InputRangeController = (props: IInputRangeController) => {
       }
     } else if (props.typeInput === "date" && newValueTo instanceof Date) {
       if (valueFrom instanceof Date && newValueTo < valueFrom) {
-        setStatusTo("invalid");
+        setStatusTo("invalid" as IInputStatus);
         setMessageTo("'To' date cannot be earlier than 'From' date.");
         return;
       } else {
