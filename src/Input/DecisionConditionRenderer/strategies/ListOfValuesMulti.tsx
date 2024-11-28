@@ -17,8 +17,8 @@ function ListOfValuesMultiStrategy({
       $type={type === "condition" ? "flex-start" : "center"}
     >
       <MultipleChoices
-        id={name}
-        labelSelect={nameLabel}
+        id={name!}
+        labelSelect={nameLabel!}
         labelSelected={textValues.selectOption}
         placeholderSelect={textValues.selectOptions}
         options={

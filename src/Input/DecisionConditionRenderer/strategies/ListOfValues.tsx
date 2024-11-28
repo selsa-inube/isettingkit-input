@@ -1,20 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Select } from "@inubekit/select";
 import { StyledLabelAlignment } from "../styles";
 import { IStrategy } from "../types";
+import { useDecisionHandlers } from "../utils/useDecisionHandlers";
 
-function ListOfValuesStrategy({
-  name,
-  nameLabel,
-  possibleValues,
-  message,
-  type,
-  handleSelectChange,
-}: IStrategy) {
+function ListOfValuesStrategy(props: IStrategy) {
+  const { message, type } = props;
+
+  const { form, handleSelectChange, name, nameLabel, possibleValues } =
+    useDecisionHandlers(props as any);
+
   const interceptHandleSelectChange = (name: string, value: string) => {
     try {
       handleSelectChange && handleSelectChange(name, value);
     } catch (error) {
-      console.error(error);
+      console.error("Error in interceptHandleSelectChange:", error);
     }
   };
 
@@ -24,7 +24,7 @@ function ListOfValuesStrategy({
     >
       <Select
         id={name}
-        name={name}
+        name={name!}
         label={nameLabel}
         options={
           Array.isArray(possibleValues?.list)
@@ -38,7 +38,7 @@ function ListOfValuesStrategy({
         message={String(message)}
         fullwidth
         onChange={(name, value) => interceptHandleSelectChange(name, value)}
-        value={""}
+        value={String(form[name!])}
       />
     </StyledLabelAlignment>
   );

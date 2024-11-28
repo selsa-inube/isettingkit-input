@@ -5,8 +5,8 @@ import { IRangeMessages } from "../utils";
 
 interface IStrategy {
   element: IDecision | ICondition;
-  name: string;
-  nameLabel: string;
+  name?: string;
+  nameLabel?: string;
   form?: any;
   value?: any;
   valueData?: any;

@@ -30,8 +30,8 @@ function RangeStrategy({
       $type={type === "condition" ? "flex-start" : "center"}
     >
       <InputRange
-        id={name}
-        label={nameLabel}
+        id={name!}
+        label={nameLabel!}
         valueFrom={valueData?.from}
         valueTo={valueData?.to}
         messageFrom={messageFrom}

@@ -25,12 +25,12 @@ function GreaterThanStrategy({
       $type={type === "condition" ? "flex-start" : "center"}
     >
       <DynamicField
-        name={name}
-        label={nameLabel}
+        name={name!}
+        label={nameLabel!}
         value={valueData}
         messageValidate={String(message)}
         statusValidate={status}
-        onChange={(value) => handleDecision(value, name)}
+        onChange={(value) => handleDecision(value, name!)}
         type={dataType}
       />
     </StyledLabelAlignment>
