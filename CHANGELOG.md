@@ -1,3 +1,15 @@
+# v0.1.34 (Fri Nov 29 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: remove unnecessary code ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.33 (Thu Nov 28 2024)
 
 #### ⚠️ Pushed to `main`
