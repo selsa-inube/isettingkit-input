@@ -3,9 +3,9 @@ import { StyledLabelAlignment } from "../styles";
 import { IStrategy } from "../types";
 
 function GreaterThanStrategy({
+  form,
   name,
   nameLabel,
-  valueData,
   message,
   status,
   type,
@@ -27,7 +27,7 @@ function GreaterThanStrategy({
       <DynamicField
         name={name!}
         label={nameLabel!}
-        value={valueData}
+        value={form[name!]}
         messageValidate={String(message)}
         statusValidate={status}
         onChange={(value) => handleDecision(value, name!)}
