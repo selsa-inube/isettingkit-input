@@ -88,10 +88,20 @@ const ValueHowToSetUp = {
   RANGE: "range",
 } as const;
 
+declare const inputTypes: readonly [
+  "alphabetical",
+  "currency",
+  "date",
+  "number",
+  "percentage",
+];
+
+declare type IInputType = (typeof inputTypes)[number];
 export { ValueDataType, ValueHowToSetUp };
 export type {
   ICondition,
   IDecision,
+  IInputType,
   IFormType,
   IInputStatus,
   IRangeValue,

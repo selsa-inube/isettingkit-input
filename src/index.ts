@@ -1,4 +1,4 @@
-export { DecisionConditionRenderer } from "./Input/DecisionConditionRenderer";
+export { DecisionConditionRender } from "./Input/DecisionConditionRender";
 export { InputRange } from "./Input/InputRange";
 export { DynamicField } from "./Input/DynamicField";
 export { MultipleChoices } from "./Input/MultipleChoices";
@@ -23,5 +23,5 @@ export type {
   TypeDataOutput,
   IInputStatus,
 } from "./Input/types";
-export type { IStrategy } from "./Input/DecisionConditionRenderer/types";
+export type { IStrategy } from "./Input/DecisionConditionRender/utils";
 export type { IFieldStrategy } from "./Input/DynamicField/types";
