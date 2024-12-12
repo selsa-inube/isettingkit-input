@@ -1,6 +1,6 @@
-import { IInputStatus, InputRange } from "@isettingkit/input";
+import { InputRange } from "../../InputRange";
 import { Condition, FormikType } from "../types/types";
-import { IInputType } from "../../types";
+import { IInputStatus, IInputType } from "../../types";
 
 const renderDecisionRange = ({
   condition,

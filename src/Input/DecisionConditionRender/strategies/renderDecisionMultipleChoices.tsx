@@ -1,4 +1,4 @@
-import { MultipleChoices } from "@isettingkit/input";
+import { MultipleChoices } from "../../MultipleChoices";
 import { Condition, FormikType } from "../types/types";
 
 const renderDecisionMultipleChoices = ({

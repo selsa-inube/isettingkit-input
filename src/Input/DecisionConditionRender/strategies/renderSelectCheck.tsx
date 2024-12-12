@@ -1,6 +1,6 @@
-import { SelectCheck } from "@isettingkit/input";
+import { SelectCheck } from "../../SelectCheck";
 import { Condition, FormikType } from "../types/types";
-import { IOptionItemChecked } from "src/Input/SelectCheck/OptionItem";
+import { IOptionItemChecked } from "../../SelectCheck/OptionItem";
 
 const renderSelectCheck = ({
   condition,

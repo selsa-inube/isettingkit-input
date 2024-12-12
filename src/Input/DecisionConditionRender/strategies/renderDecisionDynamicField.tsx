@@ -1,4 +1,4 @@
-import { DynamicField } from "@isettingkit/input";
+import { DynamicField } from "../../DynamicField";
 import { Condition, FormikType } from "../types/types";
 
 const renderDecisionDynamicField = ({
