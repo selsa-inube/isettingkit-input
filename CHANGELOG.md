@@ -1,3 +1,16 @@
+# v0.1.35 (Thu Dec 12 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust importations ([@cmarin001](https://github.com/cmarin001))
+- fix: adjust DecisionConditionRender in order to use the new structure ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.34 (Fri Nov 29 2024)
 
 #### ⚠️ Pushed to `main`
