@@ -9,6 +9,7 @@ interface ICondition {
   value?: string | string[] | number | IValue | undefined;
   howToSetTheCondition: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   labelName: string;
+  descriptionUse?: string;
 }
 
 interface IDecision {
@@ -21,6 +22,7 @@ interface IDecision {
   effectiveFrom?: Date;
   value?: string | string[] | number | IValue | undefined;
   howToSetTheDecision: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  descriptionUse?: string;
 }
 
 interface IFormType {
