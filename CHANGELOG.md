@@ -1,3 +1,15 @@
+# v0.1.38 (Thu Dec 19 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added missing property to the conditions ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.37 (Thu Dec 19 2024)
 
 #### ⚠️ Pushed to `main`
