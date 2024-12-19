@@ -1,23 +1,25 @@
 import { NumberSchema, StringSchema } from "yup";
 
 interface ICondition {
-  dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
+  conditionDataType: (typeof ValueDataType)[keyof typeof ValueDataType];
   hidden?: boolean;
-  name: string;
-  possibleValue?: IValue;
+  conditionName: string;
+  listOfPossibleValues?: IValue;
   switchPlaces?: boolean;
   value?: string | string[] | number | IValue | undefined;
-  valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  howToSetTheCondition: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
 }
 
 interface IDecision {
-  dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
-  endDate?: Date;
-  name: string;
-  possibleValue?: IValue;
-  startDate?: Date;
+  decisionDataType: (typeof ValueDataType)[keyof typeof ValueDataType];
+  validUntil?: Date;
+  labelName: string;
+  ruleDataType: (typeof ValueDataType)[keyof typeof ValueDataType];
+  ruleName: string;
+  listOfPossibleValues?: IValue;
+  effectiveFrom?: Date;
   value?: string | string[] | number | IValue | undefined;
-  valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  howToSetTheDecision: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
 }
 
 interface IFormType {
@@ -39,6 +41,8 @@ interface IRuleDecision {
   conditionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   conditionName?: string;
   conditionThatEstablishesTheDecision?: ICondition[];
+  decision?: IDecision;
+  decisions?: IDecision[];
   decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   decisionId?: string;
   descriptionOfChange?: string;
