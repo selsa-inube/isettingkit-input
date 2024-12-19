@@ -1,20 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  string,
-  number,
-  StringSchema,
-  NumberSchema,
-  object,
-  ObjectSchema,
-  AnyObject,
-} from "yup";
-import {
-  ICondition,
-  IDecision,
-  IRuleDecision,
-  IValue,
-  ValueHowToSetUp,
-} from "./types";
+import { StringSchema, NumberSchema, ObjectSchema, AnyObject } from "yup";
+import { IValue } from "./types";
 
 declare const inputTypes: readonly [
   "alphabetical",
@@ -60,107 +46,6 @@ const percentageFormat = (percentage: number): string => {
     return "0%";
   }
   return `${percentage.toFixed(0)}%`;
-};
-
-const typeData = (
-  element:
-    | IDecision
-    | ICondition
-    | IRuleDecision
-    | IValue
-    | undefined
-    | string[],
-): TypeDataOutput | undefined => {
-  if (
-    "value" in element! &&
-    "valueUse" in element! &&
-    element.value !== undefined
-  ) {
-    const value = element.value;
-    const fromNumber =
-      typeof value === "object" &&
-      "from" in value &&
-      typeof value.from === "number"
-        ? value.from
-        : 0;
-    const toNumber =
-      typeof value === "object" && "to" in value && typeof value.to === "number"
-        ? value.to
-        : Infinity;
-
-    switch (element!.valueUse) {
-      case ValueHowToSetUp.LIST_OF_VALUES:
-        return {
-          schema: string(),
-          value: value,
-        };
-      case ValueHowToSetUp.LIST_OF_VALUES_MULTI:
-        return {
-          schema: string(),
-          value: value,
-        };
-      case ValueHowToSetUp.RANGE:
-        return {
-          schema: object({
-            from: number()
-              .required("Range From is required")
-              .max(toNumber, "'Range From' cannot be greater than 'Range To'")
-              .min(0, "'Range From' cannot be less than 0"),
-            to: number()
-              .required("Range To is required")
-              .min(fromNumber, "'Range To' cannot be less than 'Range From'")
-              .min(0, "'Range To' cannot be less than 0"),
-          }),
-          value: {
-            from: fromNumber,
-            to: toNumber,
-          },
-        };
-      case ValueHowToSetUp.GREATER_THAN:
-      case ValueHowToSetUp.LESS_THAN:
-      case ValueHowToSetUp.EQUAL:
-        return {
-          schema: string().required("Required"),
-          value: value,
-        };
-      default:
-        return {
-          schema: string(),
-          value: undefined,
-        };
-    }
-  }
-};
-
-const ValueValidationSchema = (decision: IRuleDecision) => {
-  const respValue: {
-      [key: string]:
-        | StringSchema
-        | NumberSchema
-        | ObjectSchema<any, AnyObject, any>;
-    } = {},
-    initialValues: {
-      [key: string]: IValue | undefined | string | number | string[];
-    } = {};
-
-  if (decision) {
-    const decisionData = typeData(decision);
-    if (decisionData) {
-      respValue[decision.name] = decisionData.schema;
-      initialValues[decision.name] = decisionData.value;
-    }
-  }
-
-  if (decision.conditions) {
-    decision.conditions.forEach((condition: { name: string | number }) => {
-      const typeDataResult = typeData(condition as ICondition);
-      if (typeDataResult) {
-        respValue[condition.name] = typeDataResult.schema;
-        initialValues[condition.name] = typeDataResult.value;
-      }
-    });
-  }
-  return { validationSchema: object().shape(respValue), initialValues };
 };
 
 const formatters: Record<
@@ -222,7 +107,5 @@ export {
   parseCurrencyString,
   parsePercentageString,
   percentageFormat,
-  typeData,
-  ValueValidationSchema,
 };
 export type { IRangeMessages, TypeDataOutput };

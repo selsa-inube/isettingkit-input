@@ -10,7 +10,7 @@ const renderDecisionSelectCheck = ({
   formik: FormikType;
 }) => {
   const options: IOptionItemChecked[] =
-    condition.possibleValue?.list?.map((item: string) => ({
+    condition.listOfPossibleValues?.list?.map((item: string) => ({
       id: item,
       label: item,
       checked: formik.values.value?.includes(item),

@@ -33,7 +33,7 @@ const renderDecisionRange = ({
         : "pending") as IInputStatus
     }
     onBlur={formik.handleBlur}
-    typeInput={condition.dataType!.toLowerCase() as IInputType}
+    typeInput={condition.conditionDataType!.toLowerCase() as IInputType}
   />
 );
 

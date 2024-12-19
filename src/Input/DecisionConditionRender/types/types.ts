@@ -7,8 +7,9 @@ interface Condition {
     | "GREATER_THAN"
     | "LESS_THAN";
   name: string;
-  possibleValue?: { list?: string[] };
-  dataType?: string;
+  listOfPossibleValues?: { list?: string[] };
+  conditionDataType: string;
+  howToSetTheCondition: string;
 }
 
 interface FormikType {

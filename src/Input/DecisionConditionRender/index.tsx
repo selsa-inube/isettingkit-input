@@ -11,7 +11,7 @@ const DecisionConditionRender = ({
   formik: FormikType;
   isDecision?: boolean;
 }) => {
-  const normalizedValueUse = normalizeValueUse(condition.valueUse);
+  const normalizedValueUse = normalizeValueUse(condition.howToSetTheCondition);
 
   const strategyKey = isDecision
     ? `DECISION_${normalizedValueUse}`

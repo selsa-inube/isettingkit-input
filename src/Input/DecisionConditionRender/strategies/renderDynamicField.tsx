@@ -9,7 +9,7 @@ const renderDynamicField = ({
   formik: FormikType;
 }) => (
   <DynamicField
-    type={condition.dataType!.toLowerCase()}
+    type={condition.conditionDataType!.toLowerCase()}
     name={`conditions.${condition.name}`}
     label={condition.name}
     value={formik.values.conditions[condition.name]}

@@ -11,8 +11,6 @@ export {
   parseCurrencyString,
   parsePercentageString,
   percentageFormat,
-  typeData,
-  ValueValidationSchema,
 } from "./Input/utils";
 export { ValueDataType, ValueHowToSetUp } from "./Input/types";
 export type {

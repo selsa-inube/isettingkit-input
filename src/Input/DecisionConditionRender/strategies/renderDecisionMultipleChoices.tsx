@@ -11,7 +11,7 @@ const renderDecisionMultipleChoices = ({
   <MultipleChoices
     id="value"
     options={
-      condition.possibleValue?.list?.map((item) => ({
+      condition.listOfPossibleValues?.list?.map((item) => ({
         id: item,
         label: item,
         checked: formik.values.value?.includes(item),

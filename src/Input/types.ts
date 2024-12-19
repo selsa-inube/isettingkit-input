@@ -35,17 +35,32 @@ interface IRangeValue {
 }
 
 interface IRuleDecision {
-  conditions?: ICondition[];
-  dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
-  decision?: IDecision;
-  decisions?: IDecision[];
-  endDate?: Date | string;
-  id?: string;
-  name: string;
-  possibleValue?: IValue;
-  startDate?: Date | string;
+  // conditions?: ICondition[];
+  // dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
+  // decision?: IDecision;
+  // decisions?: IDecision[];
+  // endDate?: Date | string;
+  // id?: string;
+  // name: string;
+  // possibleValue?: IValue;
+  // startDate?: Date | string;
+  // valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  businessRuleId?: string;
+  conditionThatEstablishesTheDecision?: ICondition[];
+  labelName?: string;
+  ruleName?: string;
+  descriptionUse?: string;
+  decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
+  howToSetTheDecision?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  conditionName?: string;
+  conditionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
+  howToSetTheCondition?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  listOfPossibleValues?: IValue;
+  effectiveFrom?: Date | string;
+  validUntil?: Date | string;
+  transactionOperation?: string;
   value?: string | string[] | number | IValue | undefined;
-  valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  descriptionOfChange?: string;
 }
 
 interface ITextfieldInputType {
@@ -80,12 +95,12 @@ const ValueDataType = {
 } as const;
 
 const ValueHowToSetUp = {
-  EQUAL: "equal",
-  GREATER_THAN: "greater_than",
-  LESS_THAN: "less_than",
-  LIST_OF_VALUES: "list_of_values",
-  LIST_OF_VALUES_MULTI: "list_of_values_multi",
-  RANGE: "range",
+  EQUAL: "EqualTo",
+  GREATER_THAN: "GreaterThan",
+  LESS_THAN: "LessThan",
+  LIST_OF_VALUES: "ListOfValues",
+  LIST_OF_VALUES_MULTI: "ListOfValuesMulti",
+  RANGE: "Range",
 } as const;
 
 declare const inputTypes: readonly [
