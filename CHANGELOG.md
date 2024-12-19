@@ -1,3 +1,16 @@
+# v0.1.36 (Thu Dec 19 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: sort interface properties ordered ASC ([@cmarin001](https://github.com/cmarin001))
+- fix: remove unnecessary code ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.35 (Thu Dec 12 2024)
 
 #### ⚠️ Pushed to `main`
