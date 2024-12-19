@@ -35,32 +35,24 @@ interface IRangeValue {
 }
 
 interface IRuleDecision {
-  // conditions?: ICondition[];
-  // dataType: (typeof ValueDataType)[keyof typeof ValueDataType];
-  // decision?: IDecision;
-  // decisions?: IDecision[];
-  // endDate?: Date | string;
-  // id?: string;
-  // name: string;
-  // possibleValue?: IValue;
-  // startDate?: Date | string;
-  // valueUse: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   businessRuleId?: string;
-  conditionThatEstablishesTheDecision?: ICondition[];
-  labelName?: string;
-  ruleName?: string;
-  descriptionUse?: string;
-  decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
-  howToSetTheDecision?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
-  conditionName?: string;
   conditionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
-  howToSetTheCondition?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
-  listOfPossibleValues?: IValue;
-  effectiveFrom?: Date | string;
-  validUntil?: Date | string;
-  transactionOperation?: string;
-  value?: string | string[] | number | IValue | undefined;
+  conditionName?: string;
+  conditionThatEstablishesTheDecision?: ICondition[];
+  decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
+  decisionId?: string;
   descriptionOfChange?: string;
+  descriptionUse?: string;
+  effectiveFrom?: Date | string;
+  howToSetTheCondition?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  howToSetTheDecision?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  labelName?: string;
+  listOfPossibleValues?: IValue;
+  ruleDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
+  ruleName?: string;
+  transactionOperation?: string;
+  validUntil?: Date | string;
+  value?: string | string[] | number | IValue | undefined;
 }
 
 interface ITextfieldInputType {
