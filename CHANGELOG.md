@@ -1,3 +1,15 @@
+# v0.1.39 (Thu Dec 19 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added missing property to interfaces ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.38 (Thu Dec 19 2024)
 
 #### ⚠️ Pushed to `main`
