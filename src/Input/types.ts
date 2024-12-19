@@ -8,6 +8,7 @@ interface ICondition {
   switchPlaces?: boolean;
   value?: string | string[] | number | IValue | undefined;
   howToSetTheCondition: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
+  labelName: string;
 }
 
 interface IDecision {
