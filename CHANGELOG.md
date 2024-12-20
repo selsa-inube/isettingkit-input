@@ -1,3 +1,15 @@
+# v0.1.43 (Fri Dec 20 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment in order to set the right datatype for range decision ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.42 (Fri Dec 20 2024)
 
 #### ⚠️ Pushed to `main`
