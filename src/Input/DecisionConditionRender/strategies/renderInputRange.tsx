@@ -21,10 +21,16 @@ const renderInputRange = ({
         ?.to
     }
     handleInputChangeFrom={(value) =>
-      formik.setFieldValue(`conditions.${condition.conditionName}.from`, value)
+      formik.setFieldValue(
+        `conditionThatEstablishesTheDecision.${condition.conditionName}.from`,
+        value,
+      )
     }
     handleInputChangeTo={(value) =>
-      formik.setFieldValue(`conditions.${condition.conditionName}.to`, value)
+      formik.setFieldValue(
+        `conditionThatEstablishesTheDecision.${condition.conditionName}.to`,
+        value,
+      )
     }
     messageFrom={
       formik.errors.conditionThatEstablishesTheDecision?.[

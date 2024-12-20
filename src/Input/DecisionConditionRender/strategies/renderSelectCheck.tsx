@@ -22,7 +22,7 @@ const renderSelectCheck = ({
   return (
     <SelectCheck
       id={condition.conditionName}
-      name={`conditions.${condition.conditionName}`}
+      name={`conditionThatEstablishesTheDecision.${condition.conditionName}`}
       options={options}
       value={
         formik.values.conditionThatEstablishesTheDecision[
@@ -32,7 +32,7 @@ const renderSelectCheck = ({
       onChange={(e) => {
         const selectedValue = e.target.value;
         formik.setFieldValue(
-          `conditions.${condition.conditionName}`,
+          `conditionThatEstablishesTheDecision.${condition.conditionName}`,
           selectedValue,
         );
       }}
@@ -46,7 +46,7 @@ const renderSelectCheck = ({
           ? currentValues.filter((v: string) => v !== selectedOption)
           : [...currentValues, selectedOption];
         formik.setFieldValue(
-          `conditions.${condition.conditionName}`,
+          `conditionThatEstablishesTheDecision.${condition.conditionName}`,
           updatedValues,
         );
       }}

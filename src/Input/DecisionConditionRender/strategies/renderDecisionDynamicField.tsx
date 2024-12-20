@@ -10,7 +10,7 @@ const renderDecisionDynamicField = ({
 }) => (
   <DynamicField
     type={condition.decisionDataType!.toLowerCase()}
-    name={condition.conditionName!}
+    name={condition.ruleName!}
     label={condition.labelName!}
     value={formik.values.value}
     onChange={(value) => formik.setFieldValue("value", value)}
