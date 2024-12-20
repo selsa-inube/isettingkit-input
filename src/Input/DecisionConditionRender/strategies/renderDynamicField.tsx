@@ -12,16 +12,26 @@ const renderDynamicField = ({
     type={condition.conditionDataType!.toLowerCase()}
     name={`conditions.${condition.conditionName}`}
     label={condition.labelName!}
-    value={formik.values.conditions[condition.conditionName!]}
+    value={
+      formik.values.conditionThatEstablishesTheDecision[
+        condition.conditionName!
+      ]
+    }
     onChange={(value) =>
       formik.setFieldValue(`conditions.${condition.conditionName}`, value)
     }
     messageValidate={String(
-      formik.errors.conditions?.[condition.conditionName!] || "",
+      formik.errors.conditionThatEstablishesTheDecision?.[
+        condition.conditionName!
+      ] || "",
     )}
     statusValidate={
-      formik.touched.conditions?.[condition.conditionName]
-        ? formik.errors.conditions?.[condition.conditionName]
+      formik.touched.conditionThatEstablishesTheDecision?.[
+        condition.conditionName
+      ]
+        ? formik.errors.conditionThatEstablishesTheDecision?.[
+            condition.conditionName
+          ]
           ? "invalid"
           : "valid"
         : undefined

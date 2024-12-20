@@ -15,7 +15,9 @@ const renderMultipleChoices = ({
         id: item,
         label: item,
         checked:
-          formik.values.conditions[condition.conditionName]?.includes(item),
+          formik.values.conditionThatEstablishesTheDecision[
+            condition.conditionName
+          ]?.includes(item),
       })) || []
     }
     onHandleSelectCheckChange={(newOptions) => {
@@ -28,7 +30,11 @@ const renderMultipleChoices = ({
         selectedValues,
       );
     }}
-    message={formik.errors.conditions?.[condition.conditionName]}
+    message={
+      formik.errors.conditionThatEstablishesTheDecision?.[
+        condition.conditionName
+      ]
+    }
     placeholderSelect={`Select ${condition.conditionName}`}
     onBlur={() =>
       formik.setFieldTouched(

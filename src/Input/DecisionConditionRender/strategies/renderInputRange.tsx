@@ -12,26 +12,48 @@ const renderInputRange = ({
   <InputRange
     id={`range-${condition.conditionName}`}
     label={condition.conditionName}
-    valueFrom={formik.values.conditions[condition.conditionName]?.from}
-    valueTo={formik.values.conditions[condition.conditionName]?.to}
+    valueFrom={
+      formik.values.conditionThatEstablishesTheDecision[condition.conditionName]
+        ?.from
+    }
+    valueTo={
+      formik.values.conditionThatEstablishesTheDecision[condition.conditionName]
+        ?.to
+    }
     handleInputChangeFrom={(value) =>
       formik.setFieldValue(`conditions.${condition.conditionName}.from`, value)
     }
     handleInputChangeTo={(value) =>
       formik.setFieldValue(`conditions.${condition.conditionName}.to`, value)
     }
-    messageFrom={formik.errors.conditions?.[condition.conditionName]?.from}
-    messageTo={formik.errors.conditions?.[condition.conditionName]?.to}
+    messageFrom={
+      formik.errors.conditionThatEstablishesTheDecision?.[
+        condition.conditionName
+      ]?.from
+    }
+    messageTo={
+      formik.errors.conditionThatEstablishesTheDecision?.[
+        condition.conditionName
+      ]?.to
+    }
     statusFrom={
-      (formik.touched.conditions?.[condition.conditionName]?.from
-        ? formik.errors.conditions?.[condition.conditionName]?.from
+      (formik.touched.conditionThatEstablishesTheDecision?.[
+        condition.conditionName
+      ]?.from
+        ? formik.errors.conditionThatEstablishesTheDecision?.[
+            condition.conditionName
+          ]?.from
           ? "invalid"
           : "valid"
         : "pending") as IInputStatus
     }
     statusTo={
-      (formik.touched.conditions?.[condition.conditionName]?.to
-        ? formik.errors.conditions?.[condition.conditionName]?.to
+      (formik.touched.conditionThatEstablishesTheDecision?.[
+        condition.conditionName
+      ]?.to
+        ? formik.errors.conditionThatEstablishesTheDecision?.[
+            condition.conditionName
+          ]?.to
           ? "invalid"
           : "valid"
         : "pending") as IInputStatus

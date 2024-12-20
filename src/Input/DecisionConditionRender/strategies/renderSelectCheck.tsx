@@ -14,7 +14,9 @@ const renderSelectCheck = ({
       id: item,
       label: item,
       checked:
-        formik.values.conditions[condition.conditionName]?.includes(item),
+        formik.values.conditionThatEstablishesTheDecision[
+          condition.conditionName
+        ]?.includes(item),
     })) || [];
 
   return (
@@ -22,7 +24,11 @@ const renderSelectCheck = ({
       id={condition.conditionName}
       name={`conditions.${condition.conditionName}`}
       options={options}
-      value={formik.values.conditions[condition.conditionName]}
+      value={
+        formik.values.conditionThatEstablishesTheDecision[
+          condition.conditionName
+        ]
+      }
       onChange={(e) => {
         const selectedValue = e.target.value;
         formik.setFieldValue(
@@ -33,7 +39,9 @@ const renderSelectCheck = ({
       onChangeCheck={(e) => {
         const selectedOption = e.target.value;
         const currentValues =
-          formik.values.conditions[condition.conditionName] || [];
+          formik.values.conditionThatEstablishesTheDecision[
+            condition.conditionName
+          ] || [];
         const updatedValues = currentValues.includes(selectedOption)
           ? currentValues.filter((v: string) => v !== selectedOption)
           : [...currentValues, selectedOption];
@@ -43,10 +51,18 @@ const renderSelectCheck = ({
         );
       }}
       placeholder={`Select ${condition.conditionName}`}
-      message={formik.errors.conditions?.[condition.conditionName]}
+      message={
+        formik.errors.conditionThatEstablishesTheDecision?.[
+          condition.conditionName
+        ]
+      }
       status={
-        formik.touched.conditions?.[condition.conditionName]
-          ? formik.errors.conditions?.[condition.conditionName]
+        formik.touched.conditionThatEstablishesTheDecision?.[
+          condition.conditionName
+        ]
+          ? formik.errors.conditionThatEstablishesTheDecision?.[
+              condition.conditionName
+            ]
             ? "invalid"
             : "valid"
           : "pending"
