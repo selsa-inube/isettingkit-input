@@ -10,28 +10,28 @@ const renderInputRange = ({
   formik: FormikType;
 }) => (
   <InputRange
-    id={`range-${condition.name}`}
-    label={condition.name}
-    valueFrom={formik.values.conditions[condition.name]?.from}
-    valueTo={formik.values.conditions[condition.name]?.to}
+    id={`range-${condition.conditionName}`}
+    label={condition.conditionName}
+    valueFrom={formik.values.conditions[condition.conditionName]?.from}
+    valueTo={formik.values.conditions[condition.conditionName]?.to}
     handleInputChangeFrom={(value) =>
-      formik.setFieldValue(`conditions.${condition.name}.from`, value)
+      formik.setFieldValue(`conditions.${condition.conditionName}.from`, value)
     }
     handleInputChangeTo={(value) =>
-      formik.setFieldValue(`conditions.${condition.name}.to`, value)
+      formik.setFieldValue(`conditions.${condition.conditionName}.to`, value)
     }
-    messageFrom={formik.errors.conditions?.[condition.name]?.from}
-    messageTo={formik.errors.conditions?.[condition.name]?.to}
+    messageFrom={formik.errors.conditions?.[condition.conditionName]?.from}
+    messageTo={formik.errors.conditions?.[condition.conditionName]?.to}
     statusFrom={
-      (formik.touched.conditions?.[condition.name]?.from
-        ? formik.errors.conditions?.[condition.name]?.from
+      (formik.touched.conditions?.[condition.conditionName]?.from
+        ? formik.errors.conditions?.[condition.conditionName]?.from
           ? "invalid"
           : "valid"
         : "pending") as IInputStatus
     }
     statusTo={
-      (formik.touched.conditions?.[condition.name]?.to
-        ? formik.errors.conditions?.[condition.name]?.to
+      (formik.touched.conditions?.[condition.conditionName]?.to
+        ? formik.errors.conditions?.[condition.conditionName]?.to
           ? "invalid"
           : "valid"
         : "pending") as IInputStatus

@@ -9,12 +9,13 @@ const renderMultipleChoices = ({
   formik: FormikType;
 }) => (
   <MultipleChoices
-    id={condition.name}
+    id={condition.conditionName}
     options={
       condition.listOfPossibleValues?.list?.map((item) => ({
         id: item,
         label: item,
-        checked: formik.values.conditions[condition.name]?.includes(item),
+        checked:
+          formik.values.conditions[condition.conditionName]?.includes(item),
       })) || []
     }
     onHandleSelectCheckChange={(newOptions) => {
@@ -22,12 +23,19 @@ const renderMultipleChoices = ({
         .filter((option) => option.checked)
         .map((option) => option.id);
 
-      formik.setFieldValue(`conditions.${condition.name}`, selectedValues);
+      formik.setFieldValue(
+        `conditions.${condition.conditionName}`,
+        selectedValues,
+      );
     }}
-    message={formik.errors.conditions?.[condition.name]}
-    placeholderSelect={`Select ${condition.name}`}
+    message={formik.errors.conditions?.[condition.conditionName]}
+    placeholderSelect={`Select ${condition.conditionName}`}
     onBlur={() =>
-      formik.setFieldTouched(`conditions.${condition.name}`, true, true)
+      formik.setFieldTouched(
+        `conditions.${condition.conditionName}`,
+        true,
+        true,
+      )
     }
     labelSelect={""}
     labelSelected={""}

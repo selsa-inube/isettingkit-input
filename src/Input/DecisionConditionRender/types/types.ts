@@ -1,5 +1,3 @@
-import { ValueDataType } from "src/Input/types";
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface Condition {
   valueUse:
@@ -8,15 +6,14 @@ interface Condition {
     | "EQUAL"
     | "GREATER_THAN"
     | "LESS_THAN";
-  name: string;
   listOfPossibleValues?: { list?: string[] };
   conditionDataType: string;
-  decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
+  decisionDataType?: string;
   howToSetTheCondition: string;
-  howToSetTheDecision?: string;
-  conditionName?: string;
-  ruleName?: string;
-  labelName?: string;
+  howToSetTheDecision: string;
+  conditionName: string;
+  ruleName: string;
+  labelName: string;
 }
 
 interface FormikType {

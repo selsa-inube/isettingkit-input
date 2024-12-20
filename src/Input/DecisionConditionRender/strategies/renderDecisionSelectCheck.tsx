@@ -34,7 +34,7 @@ const renderDecisionSelectCheck = ({
           : [...currentValues, selectedOption];
         formik.setFieldValue("value", updatedValues);
       }}
-      placeholder={`Select ${condition.name}`}
+      placeholder={`Select ${condition.conditionName}`}
       message={formik.errors.value}
       status={
         formik.touched.value

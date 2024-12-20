@@ -10,16 +10,18 @@ const renderDynamicField = ({
 }) => (
   <DynamicField
     type={condition.conditionDataType!.toLowerCase()}
-    name={`conditions.${condition.name}`}
-    label={condition.name}
-    value={formik.values.conditions[condition.name]}
+    name={`conditions.${condition.conditionName}`}
+    label={condition.labelName!}
+    value={formik.values.conditions[condition.conditionName!]}
     onChange={(value) =>
-      formik.setFieldValue(`conditions.${condition.name}`, value)
+      formik.setFieldValue(`conditions.${condition.conditionName}`, value)
     }
-    messageValidate={String(formik.errors.conditions?.[condition.name] || "")}
+    messageValidate={String(
+      formik.errors.conditions?.[condition.conditionName!] || "",
+    )}
     statusValidate={
-      formik.touched.conditions?.[condition.name]
-        ? formik.errors.conditions?.[condition.name]
+      formik.touched.conditions?.[condition.conditionName]
+        ? formik.errors.conditions?.[condition.conditionName]
           ? "invalid"
           : "valid"
         : undefined
