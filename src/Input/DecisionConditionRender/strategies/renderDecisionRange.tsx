@@ -10,8 +10,8 @@ const renderDecisionRange = ({
   formik: FormikType;
 }) => (
   <InputRange
-    id="valueRange"
-    label={condition.name}
+    id={condition.ruleName!}
+    label={condition.labelName!}
     valueFrom={formik.values.value?.from}
     valueTo={formik.values.value?.to}
     handleInputChangeFrom={(value) => formik.setFieldValue("value.from", value)}

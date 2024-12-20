@@ -18,8 +18,8 @@ const renderDecisionSelectCheck = ({
 
   return (
     <SelectCheck
-      id="value"
-      name="value"
+      id={condition.ruleName!}
+      name={condition.ruleName!}
       options={options}
       value={formik.values.value}
       onChange={(e) => {

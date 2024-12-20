@@ -1,3 +1,5 @@
+import { ValueDataType } from "src/Input/types";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 interface Condition {
   valueUse:
@@ -9,7 +11,12 @@ interface Condition {
   name: string;
   listOfPossibleValues?: { list?: string[] };
   conditionDataType: string;
+  decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   howToSetTheCondition: string;
+  howToSetTheDecision?: string;
+  conditionName?: string;
+  ruleName?: string;
+  labelName?: string;
 }
 
 interface FormikType {

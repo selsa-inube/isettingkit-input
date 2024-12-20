@@ -9,9 +9,9 @@ const renderDecisionDynamicField = ({
   formik: FormikType;
 }) => (
   <DynamicField
-    type={condition.conditionDataType!.toLowerCase()}
-    name="value"
-    label={condition.name}
+    type={condition.decisionDataType!.toLowerCase()}
+    name={condition.conditionName!}
+    label={condition.labelName!}
     value={formik.values.value}
     onChange={(value) => formik.setFieldValue("value", value)}
     messageValidate={String(formik.errors.value || "")}
