@@ -1,3 +1,15 @@
+# v0.1.40 (Fri Dec 20 2024)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment fordecision- strategies ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.39 (Thu Dec 19 2024)
 
 #### ⚠️ Pushed to `main`
