@@ -1,6 +1,5 @@
-import { SelectCheck } from "../../SelectCheck";
+import { Select } from "@inubekit/inubekit";
 import { Condition, FormikType } from "../types/types";
-import { IOptionItemChecked } from "../../SelectCheck/OptionItem";
 
 const renderSelectCheck = ({
   condition,
@@ -9,18 +8,21 @@ const renderSelectCheck = ({
   condition: Condition;
   formik: FormikType;
 }) => {
-  const options: IOptionItemChecked[] =
+  const options =
     condition.listOfPossibleValues?.list?.map((item: string) => ({
       id: item,
       label: item,
-      checked:
-        formik.values.conditionThatEstablishesTheDecision[
-          condition.conditionName
-        ]?.includes(item),
+      value: item,
     })) || [];
+  const handleChange = (_: string, newValue: string) => {
+    formik.setFieldValue(
+      `conditionThatEstablishesTheDecision.${condition.conditionName}`,
+      newValue,
+    );
+  };
 
   return (
-    <SelectCheck
+    <Select
       id={condition.conditionName}
       name={`conditionThatEstablishesTheDecision.${condition.conditionName}`}
       options={options}
@@ -29,44 +31,21 @@ const renderSelectCheck = ({
           condition.conditionName
         ]
       }
-      onChange={(e) => {
-        const selectedValue = e.target.value;
-        formik.setFieldValue(
-          `conditionThatEstablishesTheDecision.${condition.conditionName}`,
-          selectedValue,
-        );
-      }}
-      onChangeCheck={(e) => {
-        const selectedOption = e.target.value;
-        const currentValues =
-          formik.values.conditionThatEstablishesTheDecision[
-            condition.conditionName
-          ] || [];
-        const updatedValues = currentValues.includes(selectedOption)
-          ? currentValues.filter((v: string) => v !== selectedOption)
-          : [...currentValues, selectedOption];
-        formik.setFieldValue(
-          `conditionThatEstablishesTheDecision.${condition.conditionName}`,
-          updatedValues,
-        );
-      }}
+      onChange={handleChange}
       placeholder={`Select ${condition.conditionName}`}
       message={
         formik.errors.conditionThatEstablishesTheDecision?.[
           condition.conditionName
         ]
       }
-      status={
+      invalid={Boolean(
         formik.touched.conditionThatEstablishesTheDecision?.[
           condition.conditionName
-        ]
-          ? formik.errors.conditionThatEstablishesTheDecision?.[
-              condition.conditionName
-            ]
-            ? "invalid"
-            : "valid"
-          : "pending"
-      }
+        ] &&
+          formik.errors.conditionThatEstablishesTheDecision?.[
+            condition.conditionName
+          ],
+      )}
     />
   );
 };
