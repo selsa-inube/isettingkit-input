@@ -1,3 +1,15 @@
+# v0.1.45 (Mon Feb 24 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: update the use of select from inubekit in order to handle the list of values ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.44 (Mon Feb 24 2025)
 
 #### ⚠️ Pushed to `main`
