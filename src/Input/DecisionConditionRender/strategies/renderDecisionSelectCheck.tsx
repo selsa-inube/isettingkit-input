@@ -34,7 +34,7 @@ const renderDecisionSelectCheck = ({
           : [...currentValues, selectedOption];
         formik.setFieldValue("value", updatedValues);
       }}
-      placeholder={`Select ${condition.conditionName}`}
+      placeholder={`Select ${condition.labelName}`}
       message={formik.errors.value}
       status={
         formik.touched.value
@@ -43,6 +43,7 @@ const renderDecisionSelectCheck = ({
             : "valid"
           : "pending"
       }
+      fullwidth
     />
   );
 };
