@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Textfield } from "@inubekit/input";
-import { Grid } from "@inubekit/grid";
+import { Textfield } from "@inubekit/inubekit";
+import { Grid } from "@inubekit/inubekit";
 import { currencyFormat, parseCurrencyString } from "../utils";
-import { Date as DateInput, IDateStatus } from "@inubekit/date";
-import { Text } from "@inubekit/text";
+import { Date as DateInput, IDateStatus } from "@inubekit/inubekit";
+import { Text } from "@inubekit/inubekit";
 import { IInputStatus } from "../types";
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 
 interface IInputRange {
   handleInputChangeFrom: (valueFrom: number | Date) => void;

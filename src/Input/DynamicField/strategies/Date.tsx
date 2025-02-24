@@ -1,5 +1,5 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Date as Datefield } from "@inubekit/date";
+import { Date as Datefield } from "@inubekit/inubekit";
 
 const DateStrategy: FieldStrategy = {
   render: ({

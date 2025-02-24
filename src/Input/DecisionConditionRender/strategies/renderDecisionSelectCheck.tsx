@@ -1,6 +1,5 @@
-import { SelectCheck } from "../../SelectCheck";
+import { IOption, Select } from "@inubekit/inubekit";
 import { Condition, FormikType } from "../types/types";
-import { IOptionItemChecked } from "../../SelectCheck/OptionItem";
 
 const renderDecisionSelectCheck = ({
   condition,
@@ -9,40 +8,25 @@ const renderDecisionSelectCheck = ({
   condition: Condition;
   formik: FormikType;
 }) => {
-  const options: IOptionItemChecked[] =
+  const options =
     condition.listOfPossibleValues?.list?.map((item: string) => ({
       id: item,
       label: item,
-      checked: formik.values.value?.includes(item),
+      value: item,
     })) || [];
-
+  const handleChange = (_: string, newValue: string) => {
+    formik.setFieldValue("value", newValue);
+  };
   return (
-    <SelectCheck
+    <Select
       id={condition.ruleName!}
       name={condition.ruleName!}
-      options={options}
+      options={options as IOption[]}
       value={formik.values.value}
-      onChange={(e) => {
-        const selectedValue = e.target.value;
-        formik.setFieldValue("value", selectedValue);
-      }}
-      onChangeCheck={(e) => {
-        const selectedOption = e.target.value;
-        const currentValues = formik.values.value || [];
-        const updatedValues = currentValues.includes(selectedOption)
-          ? currentValues.filter((v: string) => v !== selectedOption)
-          : [...currentValues, selectedOption];
-        formik.setFieldValue("value", updatedValues);
-      }}
+      onChange={handleChange}
       placeholder={`Select ${condition.labelName}`}
       message={formik.errors.value}
-      status={
-        formik.touched.value
-          ? formik.errors.value
-            ? "invalid"
-            : "valid"
-          : "pending"
-      }
+      invalid={Boolean(formik.touched.value && formik.errors.value)}
       fullwidth
     />
   );

@@ -1,6 +1,6 @@
-import { Stack } from "@inubekit/stack";
+import { Stack } from "@inubekit/inubekit";
 import { StyledOptionItemChecked } from "./styles";
-import { Checkbox } from "@inubekit/checkbox";
+import { Checkbox } from "@inubekit/inubekit";
 
 interface IOptionItemChecked {
   id: string;

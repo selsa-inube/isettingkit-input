@@ -1,6 +1,6 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Textfield } from "@inubekit/input";
-import { Icon } from "@inubekit/icon";
+import { Textfield } from "@inubekit/inubekit";
+import { Icon } from "@inubekit/inubekit";
 import { MdOutlinePercent } from "react-icons/md";
 
 const PercentageStrategy: FieldStrategy = {

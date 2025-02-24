@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Tag } from "@inubekit/tag";
-import { Text } from "@inubekit/text";
+import { Tag } from "@inubekit/inubekit";
+import { Text } from "@inubekit/inubekit";
 import { SelectCheck } from "../SelectCheck";
 import { StyledContainer, StyledSelection } from "./styles";
 import { IOptionItemChecked } from "../SelectCheck/OptionItem";

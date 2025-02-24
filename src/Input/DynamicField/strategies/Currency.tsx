@@ -1,5 +1,5 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Textfield } from "@inubekit/input";
+import { Textfield } from "@inubekit/inubekit";
 import { currencyFormat } from "../../utils";
 
 const CurrencyStrategy: FieldStrategy = {
