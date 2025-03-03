@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
-export const StyledOptionItemChecked = styled.li`
+const StyledOptionItemChecked = styled.li`
   display: flex;
   align-items: center;
   align-self: stretch;
@@ -34,3 +34,5 @@ export const StyledOptionItemChecked = styled.li`
     }
   }
 `;
+
+export { StyledOptionItemChecked };

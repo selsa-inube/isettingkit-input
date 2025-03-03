@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
-export const StyledOptionList = styled.ul`
+const StyledOptionList = styled.ul`
   display: flex;
   flex-direction: column;
   width: -webkit-fill-available;
@@ -16,3 +16,5 @@ export const StyledOptionList = styled.ul`
     0px 1px 2px rgba(0, 0, 0, 0.3),
     0px 2px 6px 2px rgba(0, 0, 0, 0.15);
 `;
+
+export { StyledOptionList };

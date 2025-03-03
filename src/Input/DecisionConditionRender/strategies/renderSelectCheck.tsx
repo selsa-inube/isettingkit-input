@@ -46,6 +46,7 @@ const renderSelectCheck = ({
             condition.conditionName
           ],
       )}
+      fullwidth
     />
   );
 };
