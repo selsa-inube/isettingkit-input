@@ -1,3 +1,15 @@
+# v0.1.47 (Mon Mar 03 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust the code in order to align standards ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.46 (Mon Feb 24 2025)
 
 #### ⚠️ Pushed to `main`
