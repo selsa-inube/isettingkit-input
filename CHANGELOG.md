@@ -1,3 +1,15 @@
+# v0.1.48 (Wed Apr 09 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: update dependencies inubekit on the styles ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.47 (Mon Mar 03 2025)
 
 #### ⚠️ Pushed to `main`
