@@ -1,3 +1,16 @@
+# v0.1.50 (Tue May 06 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/selsa-inube/isettingkit-input ([@cmarin001](https://github.com/cmarin001))
+- chore: update inubekit dependencies ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.49 (Tue May 06 2025)
 
 #### ⚠️ Pushed to `main`
