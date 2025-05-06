@@ -1,3 +1,15 @@
+# v0.1.49 (Tue May 06 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust interface key for conditions to align with structure and avoid need for mapping logic ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.48 (Wed Apr 09 2025)
 
 #### ⚠️ Pushed to `main`
