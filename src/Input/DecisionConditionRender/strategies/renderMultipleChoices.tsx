@@ -15,7 +15,7 @@ const renderMultipleChoices = ({
         id: item,
         label: item,
         checked:
-          formik.values.conditionThatEstablishesTheDecision[
+          formik.values.conditionsThatEstablishesTheDecision[
             condition.conditionName
           ]?.includes(item),
       })) || []
@@ -26,19 +26,19 @@ const renderMultipleChoices = ({
         .map((option) => option.id);
 
       formik.setFieldValue(
-        `conditionThatEstablishesTheDecision.${condition.conditionName}`,
+        `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
         selectedValues,
       );
     }}
     message={
-      formik.errors.conditionThatEstablishesTheDecision?.[
+      formik.errors.conditionsThatEstablishesTheDecision?.[
         condition.conditionName
       ]
     }
     placeholderSelect={`Select ${condition.conditionName}`}
     onBlur={() =>
       formik.setFieldTouched(
-        `conditionThatEstablishesTheDecision.${condition.conditionName}`,
+        `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
         true,
         true,
       )

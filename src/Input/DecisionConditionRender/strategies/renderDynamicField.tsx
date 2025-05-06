@@ -10,29 +10,29 @@ const renderDynamicField = ({
 }) => (
   <DynamicField
     type={condition.conditionDataType!.toLowerCase()}
-    name={`conditionThatEstablishesTheDecision.${condition.conditionName}`}
+    name={`conditionsThatEstablishesTheDecision.${condition.conditionName}`}
     label={condition.labelName!}
     value={
-      formik.values.conditionThatEstablishesTheDecision[
+      formik.values.conditionsThatEstablishesTheDecision[
         condition.conditionName!
       ]
     }
     onChange={(value) =>
       formik.setFieldValue(
-        `conditionThatEstablishesTheDecision.${condition.conditionName}`,
+        `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
         value,
       )
     }
     messageValidate={String(
-      formik.errors.conditionThatEstablishesTheDecision?.[
+      formik.errors.conditionsThatEstablishesTheDecision?.[
         condition.conditionName!
       ] || "",
     )}
     statusValidate={
-      formik.touched.conditionThatEstablishesTheDecision?.[
+      formik.touched.conditionsThatEstablishesTheDecision?.[
         condition.conditionName
       ]
-        ? formik.errors.conditionThatEstablishesTheDecision?.[
+        ? formik.errors.conditionsThatEstablishesTheDecision?.[
             condition.conditionName
           ]
           ? "invalid"

@@ -43,7 +43,7 @@ interface IRuleDecision {
   businessRuleId?: string;
   conditionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   conditionName?: string;
-  conditionThatEstablishesTheDecision?: ICondition[];
+  conditionsThatEstablishesTheDecision?: ICondition[];
   decision?: IDecision;
   decisions?: IDecision[];
   decisionDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];

@@ -13,40 +13,42 @@ const renderInputRange = ({
     id={`range-${condition.conditionName}`}
     label={condition.conditionName}
     valueFrom={
-      formik.values.conditionThatEstablishesTheDecision[condition.conditionName]
-        ?.from
+      formik.values.conditionsThatEstablishesTheDecision[
+        condition.conditionName
+      ]?.from
     }
     valueTo={
-      formik.values.conditionThatEstablishesTheDecision[condition.conditionName]
-        ?.to
+      formik.values.conditionsThatEstablishesTheDecision[
+        condition.conditionName
+      ]?.to
     }
     handleInputChangeFrom={(value) =>
       formik.setFieldValue(
-        `conditionThatEstablishesTheDecision.${condition.conditionName}.from`,
+        `conditionsThatEstablishesTheDecision.${condition.conditionName}.from`,
         value,
       )
     }
     handleInputChangeTo={(value) =>
       formik.setFieldValue(
-        `conditionThatEstablishesTheDecision.${condition.conditionName}.to`,
+        `conditionsThatEstablishesTheDecision.${condition.conditionName}.to`,
         value,
       )
     }
     messageFrom={
-      formik.errors.conditionThatEstablishesTheDecision?.[
+      formik.errors.conditionsThatEstablishesTheDecision?.[
         condition.conditionName
       ]?.from
     }
     messageTo={
-      formik.errors.conditionThatEstablishesTheDecision?.[
+      formik.errors.conditionsThatEstablishesTheDecision?.[
         condition.conditionName
       ]?.to
     }
     statusFrom={
-      (formik.touched.conditionThatEstablishesTheDecision?.[
+      (formik.touched.conditionsThatEstablishesTheDecision?.[
         condition.conditionName
       ]?.from
-        ? formik.errors.conditionThatEstablishesTheDecision?.[
+        ? formik.errors.conditionsThatEstablishesTheDecision?.[
             condition.conditionName
           ]?.from
           ? "invalid"
@@ -54,10 +56,10 @@ const renderInputRange = ({
         : "pending") as IInputStatus
     }
     statusTo={
-      (formik.touched.conditionThatEstablishesTheDecision?.[
+      (formik.touched.conditionsThatEstablishesTheDecision?.[
         condition.conditionName
       ]?.to
-        ? formik.errors.conditionThatEstablishesTheDecision?.[
+        ? formik.errors.conditionsThatEstablishesTheDecision?.[
             condition.conditionName
           ]?.to
           ? "invalid"

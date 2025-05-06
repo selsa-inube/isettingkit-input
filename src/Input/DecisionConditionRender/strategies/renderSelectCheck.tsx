@@ -16,7 +16,7 @@ const renderSelectCheck = ({
     })) || [];
   const handleChange = (_: string, newValue: string) => {
     formik.setFieldValue(
-      `conditionThatEstablishesTheDecision.${condition.conditionName}`,
+      `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
       newValue,
     );
   };
@@ -24,25 +24,25 @@ const renderSelectCheck = ({
   return (
     <Select
       id={condition.conditionName}
-      name={`conditionThatEstablishesTheDecision.${condition.conditionName}`}
+      name={`conditionsThatEstablishesTheDecision.${condition.conditionName}`}
       options={options}
       value={
-        formik.values.conditionThatEstablishesTheDecision[
+        formik.values.conditionsThatEstablishesTheDecision[
           condition.conditionName
         ]
       }
       onChange={handleChange}
       placeholder={`Select ${condition.conditionName}`}
       message={
-        formik.errors.conditionThatEstablishesTheDecision?.[
+        formik.errors.conditionsThatEstablishesTheDecision?.[
           condition.conditionName
         ]
       }
       invalid={Boolean(
-        formik.touched.conditionThatEstablishesTheDecision?.[
+        formik.touched.conditionsThatEstablishesTheDecision?.[
           condition.conditionName
         ] &&
-          formik.errors.conditionThatEstablishesTheDecision?.[
+          formik.errors.conditionsThatEstablishesTheDecision?.[
             condition.conditionName
           ],
       )}
