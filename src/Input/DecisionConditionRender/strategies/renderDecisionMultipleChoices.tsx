@@ -10,6 +10,7 @@ const renderDecisionMultipleChoices = ({
 }) => (
   <MultipleChoices
     id={condition.ruleName!}
+    labelSelected={condition.labelName!}
     options={
       condition.listOfPossibleValues?.list?.map((item) => ({
         id: item,
@@ -28,7 +29,6 @@ const renderDecisionMultipleChoices = ({
     placeholderSelect={`Select ${condition.ruleName}`}
     onBlur={() => formik.setFieldTouched("value", true, true)}
     labelSelect=""
-    labelSelected=""
   />
 );
 

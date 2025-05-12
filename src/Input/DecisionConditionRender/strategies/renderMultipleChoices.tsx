@@ -10,6 +10,7 @@ const renderMultipleChoices = ({
 }) => (
   <MultipleChoices
     id={condition.conditionName}
+    labelSelected={condition?.conditionName}
     options={
       condition.listOfPossibleValues?.list?.map((item) => ({
         id: item,
@@ -44,7 +45,6 @@ const renderMultipleChoices = ({
       )
     }
     labelSelect={""}
-    labelSelected={""}
   />
 );
 

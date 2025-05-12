@@ -21,6 +21,7 @@ const renderDecisionSelectCheck = ({
     <Select
       id={condition.ruleName!}
       name={condition.ruleName!}
+      label={condition?.labelName}
       options={options as IOption[]}
       value={formik.values.value}
       onChange={handleChange}

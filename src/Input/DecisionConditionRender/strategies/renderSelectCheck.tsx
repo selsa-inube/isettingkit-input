@@ -24,6 +24,7 @@ const renderSelectCheck = ({
   return (
     <Select
       id={condition.conditionName}
+      label={condition?.labelName}
       name={`conditionsThatEstablishesTheDecision.${condition.conditionName}`}
       options={options}
       value={
