@@ -1,3 +1,15 @@
+# v0.1.51 (Mon May 12 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment in order to add labels to field select and multiples ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.50 (Tue May 06 2025)
 
 #### ⚠️ Pushed to `main`
