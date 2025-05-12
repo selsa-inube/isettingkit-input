@@ -1,3 +1,15 @@
+# v1.0.0 (Mon May 12 2025)
+
+#### 💥 Breaking Change
+
+- adjustment in order to add labels to field select and multiples [#1](https://github.com/selsa-inube/isettingkit-input/pull/1) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v0.1.51 (Mon May 12 2025)
 
 #### ⚠️ Pushed to `main`
