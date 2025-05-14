@@ -17,7 +17,7 @@ const style = {
   width: "400px",
 };
 
-export const Currency: Story = (args: IInputRange) => (
+const Currency: Story = (args: IInputRange) => (
   <div style={style}>
     <InputRangeController {...args} />
   </div>
@@ -33,7 +33,7 @@ Currency.args = {
   required: false,
 };
 
-export const Number: Story = (args: IInputRange) => (
+const Number: Story = (args: IInputRange) => (
   <div style={style}>
     <InputRangeController {...args} />
   </div>
@@ -49,4 +49,5 @@ Number.args = {
   required: false,
 };
 
+export { Currency, Number };
 export default meta;

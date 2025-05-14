@@ -1,110 +1,96 @@
-import { useState } from "react";
-import { Tag } from "@inubekit/inubekit";
-import { Text } from "@inubekit/inubekit";
-import { SelectCheck } from "../SelectCheck";
+import { Checkpicker, IOption, Tag, Text } from "@inubekit/inubekit";
 import { StyledContainer, StyledSelection } from "./styles";
-import { IOptionItemChecked } from "../SelectCheck/OptionItem";
+import { ICheckpickerSize } from "./stories/props";
 
-interface MultipleChoicesProps {
+interface IMultipleChoices {
   id: string;
   labelSelect: string;
   labelSelected: string;
-  onHandleSelectCheckChange: (options: IOptionItemChecked[]) => void;
-  options: IOptionItemChecked[];
+  options: IOption[];
   placeholderSelect?: string;
   required?: boolean;
   message?: string;
   onBlur?: () => void;
+  values: string;
+  onChange: (name: string, value: string) => void;
+  size?: ICheckpickerSize;
 }
 
-const MultipleChoices = (props: MultipleChoicesProps) => {
+const MultipleChoices = (props: IMultipleChoices) => {
   const {
     id,
     labelSelect,
     labelSelected,
-    onHandleSelectCheckChange,
     options,
     placeholderSelect = "",
     required = false,
     message,
-    onBlur,
+    values,
+    onChange,
+    size = "wide",
   } = props;
 
-  const [optionsSelect, setOptionsSelect] = useState(options);
+  const selectedIds =
+    typeof values === "string" ? values.split(",").filter(Boolean) : [];
 
-  const onHandleSelectCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked, id } = event.target;
-    const newOptions = optionsSelect.map((option) => {
-      if (option.id === id) {
-        return { ...option, checked };
-      }
-      return option;
-    });
-    setOptionsSelect(newOptions);
-    onHandleSelectCheckChange(newOptions);
+  const selectedOptions = options.filter((option) =>
+    selectedIds.includes(option.id),
+  );
+
+  const handleCheckpickerChange = (name: string, newValue: string) => {
+    onChange(name, newValue);
   };
 
-  const onRemoveTag = (id: string) => {
-    const newOptions = optionsSelect.map((option) => {
-      if (option.id === id) {
-        return { ...option, checked: false };
-      }
-      return option;
-    });
-    setOptionsSelect(newOptions);
-    onHandleSelectCheckChange(newOptions);
+  const onRemoveTag = (removedValue: string) => {
+    const updatedIds = selectedIds
+      .filter((val) => val !== removedValue)
+      .join(",");
+    onChange(id, updatedIds);
   };
 
   return (
     <StyledContainer>
-      {optionsSelect.length > 0 &&
-        optionsSelect.some((option) => option.checked) && (
-          <>
-            <Text
-              margin="0 0 4px 0"
-              padding="0 0 0 16px"
-              type="label"
-              size="medium"
-              weight="bold"
-            >
-              {labelSelected}
-            </Text>
-            <StyledSelection>
-              {optionsSelect
-                .filter((option) => option.checked)
-                .map((option) => (
-                  <Tag
-                    key={option.id}
-                    appearance="gray"
-                    label={option.label}
-                    weight="strong"
-                    removable
-                    onClose={() => {
-                      onRemoveTag(option.id);
-                    }}
-                  />
-                ))}
-            </StyledSelection>
-          </>
-        )}
+      {selectedOptions.length > 0 && (
+        <>
+          <Text
+            margin="0 0 4px 0"
+            padding="0 0 0 16px"
+            type="label"
+            size="medium"
+            weight="bold"
+          >
+            {labelSelected}
+          </Text>
+          <StyledSelection>
+            {selectedOptions.map((option) => (
+              <Tag
+                key={option.id}
+                appearance="gray"
+                label={option.label}
+                removable
+                onClose={() => onRemoveTag(option.value)}
+              />
+            ))}
+          </StyledSelection>
+        </>
+      )}
 
-      <SelectCheck
+      <Checkpicker
         id={id}
         label={labelSelect}
         name={id}
-        onChangeCheck={onHandleSelectCheck}
-        options={optionsSelect}
+        onChange={handleCheckpickerChange}
+        options={options}
         placeholder={placeholderSelect}
         required={required}
-        value=""
-        size="compact"
+        values={values}
+        size={size}
         fullwidth
         message={message}
-        onBlur={onBlur}
       />
     </StyledContainer>
   );
 };
 
 export { MultipleChoices };
-export type { MultipleChoicesProps };
+export type { IMultipleChoices };

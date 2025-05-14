@@ -1,5 +1,5 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Textfield } from "@inubekit/inubekit";
+import { Moneyfield } from "@inubekit/inubekit";
 import { currencyFormat } from "../../utils";
 
 const CurrencyStrategy: FieldStrategy = {
@@ -12,14 +12,13 @@ const CurrencyStrategy: FieldStrategy = {
     statusValidate,
     onBlur,
   }: IFieldStrategy) => (
-    <Textfield
+    <Moneyfield
       id={name}
       label={label}
       value={currencyFormat(value as number)}
       onChange={(e) =>
         onChange(parseFloat(e.target.value.replace(/[^0-9.]/g, "")) || 0)
       }
-      type="text"
       fullwidth
       message={messageValidate}
       status={statusValidate as "invalid" | "pending" | undefined}

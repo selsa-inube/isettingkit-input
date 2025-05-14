@@ -36,7 +36,7 @@
     "autorelease": "auto shipit"
   },
   "dependencies": {
-    "@inubekit/inubekit": "^2.1.0"
+    "@inubekit/inubekit": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",

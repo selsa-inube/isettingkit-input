@@ -2,9 +2,6 @@ export { DecisionConditionRender } from "./Input/DecisionConditionRender";
 export { InputRange } from "./Input/InputRange";
 export { DynamicField } from "./Input/DynamicField";
 export { MultipleChoices } from "./Input/MultipleChoices";
-export { SelectCheck } from "./Input/SelectCheck";
-export { OptionList } from "./Input/SelectCheck/OptionList";
-export { OptionItemChecked } from "./Input/SelectCheck/OptionItem";
 export {
   currencyFormat,
   formatValue,

@@ -1,35 +1,21 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { parameters, props } from "./props";
-import { MultipleChoices, MultipleChoicesProps } from "..";
-
-const options = [
-  { id: "1", label: "Option 1", checked: false },
-  { id: "2", label: "Option 2", checked: false },
-  { id: "3", label: "Option 3", checked: false },
-  { id: "4", label: "Option 4", checked: false },
-];
+import { MultipleChoices } from "..";
+import { MultipleChoicesController } from "./MultipleChoices.controller";
 
 const meta: Meta<typeof MultipleChoices> = {
   title: "components/inputs/MultipleChoices",
-  component: MultipleChoices,
+  component: MultipleChoicesController,
   parameters,
   argTypes: props,
 };
 
-type Story = StoryObj<typeof MultipleChoices>;
+type Story = StoryObj<typeof MultipleChoicesController>;
 
-export const Default: Story = (args: MultipleChoicesProps) => (
-  <MultipleChoices {...args} />
-);
-Default.args = {
-  id: "MultipleOptionesCategorias",
-  labelSelect: "Selecciones las categorias",
-  labelSelected: "Categorias Seleccionadas",
-  onHandleSelectCheckChange: (options) => console.log(options),
-  options: options,
-  required: false,
-  placeholderSelect: "Selecciona una categoria",
+const Default: Story = {
+  render: () => <MultipleChoicesController />,
 };
 
+export { Default };
 export default meta;

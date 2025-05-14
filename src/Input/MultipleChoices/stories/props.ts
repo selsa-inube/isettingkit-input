@@ -1,8 +1,10 @@
 import { ArgTypes } from "@storybook/react";
+import { IMultipleChoices } from "..";
 
-import { MultipleChoicesProps } from "..";
+const sizes = ["wide", "compact"] as const;
+type ICheckpickerSize = (typeof sizes)[number];
 
-export const parameters = {
+const parameters = {
   docs: {
     description: {
       component:
@@ -14,7 +16,7 @@ export const parameters = {
   },
 };
 
-export const props: Partial<ArgTypes<MultipleChoicesProps>> = {
+const props: Partial<ArgTypes<IMultipleChoices>> = {
   id: {
     description:
       "uniquely identifies the **Textfield Component**, it will also allow the **label element** to be connected to the **input element** through the htmlFor of the label",
@@ -24,10 +26,6 @@ export const props: Partial<ArgTypes<MultipleChoicesProps>> = {
   },
   labelSelect: {
     description: "prompts the user what value to enter",
-  },
-  onHandleSelectCheckChange: {
-    description:
-      "allows you to control what to do when the user changes the value of the checkbox",
   },
   options: {
     description: "defines the options of the select",
@@ -45,3 +43,6 @@ export const props: Partial<ArgTypes<MultipleChoicesProps>> = {
     },
   },
 };
+
+export { props, parameters, sizes };
+export type { ICheckpickerSize };

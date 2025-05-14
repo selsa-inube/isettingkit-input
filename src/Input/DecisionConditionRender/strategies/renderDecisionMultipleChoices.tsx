@@ -1,4 +1,5 @@
 import { MultipleChoices } from "../../MultipleChoices";
+import { StyledDecisionAlignmentMultipleChoicesContainer } from "../styles";
 import { Condition, FormikType } from "../types/types";
 
 const renderDecisionMultipleChoices = ({
@@ -7,29 +8,38 @@ const renderDecisionMultipleChoices = ({
 }: {
   condition: Condition;
   formik: FormikType;
-}) => (
-  <MultipleChoices
-    id={condition.ruleName!}
-    labelSelected={condition.labelName!}
-    labelSelect={condition.labelName!}
-    options={
-      condition.listOfPossibleValues?.list?.map((item) => ({
-        id: item,
-        label: item,
-        checked: formik.values.value?.includes(item),
-      })) || []
-    }
-    onHandleSelectCheckChange={(newOptions) => {
-      const selectedValues = newOptions
-        .filter((option) => option.checked)
-        .map((option) => option.id);
+}) => {
+  const list = condition.listOfPossibleValues?.list || [];
 
-      formik.setFieldValue("value", selectedValues);
-    }}
-    message={formik.errors.value}
-    placeholderSelect={`Select ${condition.ruleName}`}
-    onBlur={() => formik.setFieldTouched("value", true, true)}
-  />
-);
+  const options = list.map((item) => ({
+    id: item,
+    label: item,
+    value: item,
+  }));
+
+  const formikValue =
+    Array.isArray(formik.values.value) && formik.values.value.length > 0
+      ? formik.values.value.join(",")
+      : "";
+
+  return (
+    <StyledDecisionAlignmentMultipleChoicesContainer>
+      <MultipleChoices
+        id={condition.ruleName!}
+        labelSelected={condition.labelName!}
+        labelSelect={condition.labelName!}
+        options={options}
+        values={formikValue}
+        onChange={(_name, value) => {
+          const updatedArray = value.split(",").filter(Boolean);
+          formik.setFieldValue("value", updatedArray);
+        }}
+        message={formik.errors.value}
+        placeholderSelect={`Select ${condition.ruleName}`}
+        onBlur={() => formik.setFieldTouched("value", true, true)}
+      />
+    </StyledDecisionAlignmentMultipleChoicesContainer>
+  );
+};
 
 export { renderDecisionMultipleChoices };

@@ -1,5 +1,6 @@
 import { IOption, Select } from "@inubekit/inubekit";
 import { Condition, FormikType } from "../types/types";
+import { StyledDecisionAlignmentContainer } from "../styles";
 
 const renderDecisionSelectCheck = ({
   condition,
@@ -18,18 +19,20 @@ const renderDecisionSelectCheck = ({
     formik.setFieldValue("value", newValue);
   };
   return (
-    <Select
-      id={condition.ruleName!}
-      name={condition.ruleName!}
-      label={condition?.labelName}
-      options={options as IOption[]}
-      value={formik.values.value}
-      onChange={handleChange}
-      placeholder={`Select ${condition.labelName}`}
-      message={formik.errors.value}
-      invalid={Boolean(formik.touched.value && formik.errors.value)}
-      fullwidth
-    />
+    <StyledDecisionAlignmentContainer>
+      <Select
+        id={condition.ruleName!}
+        name={condition.ruleName!}
+        label={condition?.labelName}
+        options={options as IOption[]}
+        value={formik.values.value}
+        onChange={handleChange}
+        placeholder={`Select ${condition.labelName}`}
+        message={formik.errors.value}
+        invalid={Boolean(formik.touched.value && formik.errors.value)}
+        fullwidth
+      />
+    </StyledDecisionAlignmentContainer>
   );
 };
 

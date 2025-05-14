@@ -1,5 +1,5 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Textfield } from "@inubekit/inubekit";
+import { Numberfield } from "@inubekit/inubekit";
 import { Icon } from "@inubekit/inubekit";
 import { MdOutlinePercent } from "react-icons/md";
 
@@ -13,12 +13,11 @@ const PercentageStrategy: FieldStrategy = {
     statusValidate,
     onBlur,
   }: IFieldStrategy) => (
-    <Textfield
+    <Numberfield
       id={name}
       label={label}
       value={value}
       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-      type="number"
       fullwidth
       iconAfter={
         <Icon appearance="dark" icon={<MdOutlinePercent />} size="18px" />

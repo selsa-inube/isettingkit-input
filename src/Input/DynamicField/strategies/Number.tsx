@@ -1,5 +1,5 @@
 import { FieldStrategy, IFieldStrategy } from "../types";
-import { Textfield } from "@inubekit/inubekit";
+import { Numberfield } from "@inubekit/inubekit";
 
 const NumberStrategy: FieldStrategy = {
   render: ({
@@ -11,12 +11,11 @@ const NumberStrategy: FieldStrategy = {
     statusValidate,
     onBlur,
   }: IFieldStrategy) => (
-    <Textfield
+    <Numberfield
       id={name}
       label={label}
       value={value}
       onChange={(e) => onChange(parseFloat(e.target.value) || 0)}
-      type="number"
       fullwidth
       message={messageValidate}
       status={statusValidate as "invalid" | "pending" | undefined}
