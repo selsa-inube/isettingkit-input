@@ -1,3 +1,15 @@
+# v1.0.1 (Wed May 14 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: remove unnecessary component Select-check due to inubekit update ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.0 (Mon May 12 2025)
 
 #### 💥 Breaking Change
