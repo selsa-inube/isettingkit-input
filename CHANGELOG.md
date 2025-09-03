@@ -1,3 +1,15 @@
+# v1.0.3 (Wed Sep 03 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: update public directory ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.2 (Tue Sep 02 2025)
 
 #### ⚠️ Pushed to `main`
