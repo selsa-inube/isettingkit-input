@@ -69,6 +69,7 @@ const MultipleChoices = (props: IMultipleChoices) => {
                 label={option.label}
                 removable
                 onClose={() => onRemoveTag(option.value)}
+                displayIcon={false}
               />
             ))}
           </StyledSelection>

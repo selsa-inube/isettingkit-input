@@ -14,7 +14,18 @@ const DecisionConditionRenderController = () => {
     howToSetTheDecision: "",
     ruleName: "",
     listOfPossibleValues: {
-      list: ["Muy alto", "Alto", "Medio", "Bajo", "Muy bajo"],
+      list: [
+        "Muy alto",
+        "Alto",
+        "Medio",
+        "Bajo",
+        "Muy bajo",
+        "Muy alto1",
+        "Alto1",
+        "Medio1",
+        "Bajo1",
+        "Muy bajo1",
+      ],
     },
   };
 
