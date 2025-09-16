@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
-import { DecisionConditionRender } from "..";
+import { DecisionConditionRenderNew } from "..";
 import { ValueDataType, ValueHowToSetUp } from "../../types";
 import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
 
-const DecisionConditionRenderController = () => {
+const DecisionConditionRenderControllerNew = () => {
   const condition: IConditionNew = {
     labelName: "Reciprocidad de ahorro",
     conditionName: "ReciprocidadDeAhorro",
@@ -40,7 +40,7 @@ const DecisionConditionRenderController = () => {
   });
 
   return (
-    <DecisionConditionRender
+    <DecisionConditionRenderNew
       condition={condition}
       formik={formik as unknown as IFormikTypeNew}
       isDecision={true}
@@ -48,4 +48,4 @@ const DecisionConditionRenderController = () => {
   );
 };
 
-export { DecisionConditionRenderController };
+export { DecisionConditionRenderControllerNew };

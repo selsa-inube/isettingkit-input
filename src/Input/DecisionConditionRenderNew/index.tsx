@@ -3,7 +3,7 @@ import { IFormikTypeNew } from "./types/IFormikTypeNew";
 import { getStrategyNew } from "./utils";
 import { normalizeValueUseNew } from "./utils/normalizeValueUse";
 
-const DecisionConditionRender = ({
+const DecisionConditionRenderNew = ({
   condition,
   formik,
   isDecision = false,
@@ -32,4 +32,4 @@ const DecisionConditionRender = ({
   return renderStrategy({ condition, formik });
 };
 
-export { DecisionConditionRender };
+export { DecisionConditionRenderNew };

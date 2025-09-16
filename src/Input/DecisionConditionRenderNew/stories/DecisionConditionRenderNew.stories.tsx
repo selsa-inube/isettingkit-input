@@ -1,14 +1,14 @@
 import { parameters, props } from "./props";
-import { DecisionConditionRenderController } from "./DecisionConditionRender.controller";
+import { DecisionConditionRenderControllerNew } from "./DecisionConditionRender.controller";
 
 const story = {
   title: "components/inputs/DecisionConditionRenderNew",
-  component: DecisionConditionRenderController,
+  component: DecisionConditionRenderControllerNew,
   parameters,
   argTypes: props,
 };
 
-const Default = () => <DecisionConditionRenderController />;
+const Default = () => <DecisionConditionRenderControllerNew />;
 Default.args = {
   type: "percentage",
   name: "name",
