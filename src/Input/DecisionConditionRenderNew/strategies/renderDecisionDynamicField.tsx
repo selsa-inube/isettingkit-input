@@ -1,22 +1,24 @@
-import { DynamicField } from "../../../Input/DynamicField";
+import { DynamicFieldNew } from "../../../Input/DynamicFieldNew";
 import { StyledDecisionAlignmentContainer } from "../styles";
-import { Condition, FormikType } from "../types/types";
+import { IConditionNew } from "../types/IConditionNew";
+import { IFormikTypeNew } from "../types/IFormikTypeNew";
 
-const renderDecisionDynamicField = ({
+const renderDecisionDynamicFieldNew = ({
   condition,
   formik,
 }: {
-  condition: Condition;
-  formik: FormikType;
+  condition: IConditionNew;
+  formik: IFormikTypeNew;
 }) => (
   <StyledDecisionAlignmentContainer>
-    <DynamicField
+    <DynamicFieldNew
       type={condition.decisionDataType!.toLowerCase()}
       name={condition.ruleName!}
       label={condition.labelName!}
       value={formik.values.value}
       onChange={(value) => formik.setFieldValue("value", value)}
       messageValidate={String(formik.errors.value || "")}
+      placeholder={condition.placeholder!}
       statusValidate={
         formik.touched.value
           ? formik.errors.value
@@ -29,4 +31,4 @@ const renderDecisionDynamicField = ({
   </StyledDecisionAlignmentContainer>
 );
 
-export { renderDecisionDynamicField };
+export { renderDecisionDynamicFieldNew };
