@@ -1,3 +1,15 @@
+# v1.0.7 (Mon Sep 22 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust range iput in order to avoid the condition name be displayed ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.6 (Tue Sep 16 2025)
 
 #### ⚠️ Pushed to `main`
