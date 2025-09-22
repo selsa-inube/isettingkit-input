@@ -13,7 +13,7 @@ const renderInputRange = ({
   <InputRangeNew
     condition
     id={`range-${condition.conditionName}`}
-    label={condition.conditionName}
+    label={condition.labelName!}
     valueFrom={
       formik.values.conditionsThatEstablishesTheDecision[
         condition.conditionName

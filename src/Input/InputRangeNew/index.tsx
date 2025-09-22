@@ -127,8 +127,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onBlur={onBlur}
               placeholder={
                 typeInput === "number"
-                  ? "please type a number"
-                  : "please type a text"
+                  ? "por favor escriba un numero"
+                  : "por favor escriba un texto"
               }
             />
           )}
@@ -161,8 +161,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onBlur={onBlur}
               placeholder={
                 typeInput === "number"
-                  ? "please type a number"
-                  : "please type a text"
+                  ? "por favor escriba un numero"
+                  : "por favor escriba un texto"
               }
             />
           )}

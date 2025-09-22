@@ -10,7 +10,7 @@ const DecisionConditionRenderControllerNew = () => {
     conditionName: "ReciprocidadDeAhorro",
     decisionDataType: ValueDataType.ALPHABETICAL,
     conditionDataType: ValueDataType.ALPHABETICAL,
-    howToSetTheCondition: ValueHowToSetUp.LIST_OF_VALUES,
+    howToSetTheCondition: ValueHowToSetUp.RANGE,
     valueUse: "RANGE",
     howToSetTheDecision: "",
     ruleName: "",
