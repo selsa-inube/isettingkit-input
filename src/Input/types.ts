@@ -88,6 +88,7 @@ interface TypeDataOutput {
 const ValueDataType = {
   ALPHABETICAL: "alphabetical",
   CURRENCY: "currency",
+  MONETARY: "monetary",
   DATE: "date",
   NUMBER: "number",
   PERCENTAGE: "percentage",
@@ -106,6 +107,7 @@ declare const inputTypes: readonly [
   "alphabetical",
   "currency",
   "date",
+  "monetary",
   "number",
   "percentage",
 ];

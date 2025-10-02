@@ -31,7 +31,7 @@ const renderMultipleChoices = ({
     <MultipleChoicesNew
       condition
       id={condition.conditionName}
-      labelSelected={condition.conditionName}
+      labelSelected={condition.labelName}
       labelSelect={condition.labelName!}
       options={options}
       values={formikValue}

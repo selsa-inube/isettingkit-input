@@ -30,6 +30,7 @@ declare const inputTypes: readonly [
   "date",
   "currency",
   "number",
+  "monetary",
   "percentage",
 ];
 
@@ -57,7 +58,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
   const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
     let valueFrom: number | Date;
 
-    if (typeInput === "currency") {
+    if (typeInput === "currency" || typeInput === "monetary") {
       valueFrom = parseCurrencyString(e.target.value);
     } else if (typeInput === "date") {
       valueFrom = new Date(e.target.value);
@@ -72,7 +73,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
   const handleChangeTo = (e: React.ChangeEvent<HTMLInputElement>) => {
     let valueTo: number | Date;
 
-    if (typeInput === "currency") {
+    if (typeInput === "currency" || typeInput === "monetary") {
       valueTo = parseCurrencyString(e.target.value);
     } else if (typeInput === "date") {
       valueTo = new Date(e.target.value);
@@ -85,7 +86,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
   };
 
   const formatValue = (value: number | Date, type: ITextfieldInputType) => {
-    if (type === "currency") return currencyFormat(value as number);
+    if (type === "currency" || type === "monetary")
+      return currencyFormat(value as number);
     if (type === "date" && value instanceof Date)
       return value.toISOString().split("T")[0];
     return Number(value);
@@ -127,8 +129,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onBlur={onBlur}
               placeholder={
                 typeInput === "number"
-                  ? "por favor escriba un numero"
-                  : "por favor escriba un texto"
+                  ? "por favor escribe un numero"
+                  : "por favor escribe un texto"
               }
             />
           )}
@@ -161,8 +163,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onBlur={onBlur}
               placeholder={
                 typeInput === "number"
-                  ? "por favor escriba un numero"
-                  : "por favor escriba un texto"
+                  ? "por favor escribe un numero"
+                  : "por favor escribe un texto"
               }
             />
           )}

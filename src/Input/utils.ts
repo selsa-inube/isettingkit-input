@@ -7,6 +7,7 @@ declare const inputTypes: readonly [
   "date",
   "currency",
   "number",
+  "monetary",
   "percentage",
 ];
 
@@ -53,6 +54,8 @@ const formatters: Record<
   (value: number | string) => string | number
 > = {
   currency: (value) =>
+    typeof value === "number" ? currencyFormat(value) : value,
+  monetary: (value) =>
     typeof value === "number" ? currencyFormat(value) : value,
   percentage: (value) =>
     typeof value === "number" ? percentageFormat(value) : value,

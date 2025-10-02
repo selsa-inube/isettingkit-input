@@ -30,7 +30,14 @@ const props = {
       type: "select",
     },
     description: "The type of the input.",
-    options: ["number", "date", "alphabetical", "currency", "percentage"],
+    options: [
+      "number",
+      "date",
+      "alphabetical",
+      "currency",
+      "percentage",
+      "monetary",
+    ],
     table: {
       type: {
         summary: "string",

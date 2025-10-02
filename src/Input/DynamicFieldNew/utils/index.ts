@@ -8,6 +8,7 @@ import { PercentageStrategyNew } from "../strategies/Percentage";
 const fieldStrategies: IFieldStrategyMap = {
   alphabetical: AlphabeticalStrategyNew,
   currency: CurrencyStrategyNew,
+  monetary: CurrencyStrategyNew,
   date: DateStrategyNew,
   number: NumberStrategyNew,
   percentage: PercentageStrategyNew,
