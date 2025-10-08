@@ -1,3 +1,15 @@
+# v1.0.9 (Wed Oct 08 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added support for i18n attribute on ICondition ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.8 (Thu Oct 02 2025)
 
 #### ⚠️ Pushed to `main`
