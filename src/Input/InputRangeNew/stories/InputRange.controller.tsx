@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { InputRangeNew, IInputRangeNew } from "..";
-import { IInputStatus } from "../../types";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
 
 interface IInputRangeNewController
   extends Omit<

@@ -4,8 +4,8 @@ import { Grid } from "@inubekit/inubekit";
 import { currencyFormat, parseCurrencyString } from "../utils";
 import { Date as DateInput, IDateStatus } from "@inubekit/inubekit";
 import { Text } from "@inubekit/inubekit";
-import { IInputStatus } from "../types";
 import { Stack } from "@inubekit/inubekit";
+import { IInputStatus } from "../types/IInputStatus";
 
 interface IInputRange {
   handleInputChangeFrom: (valueFrom: number | Date) => void;

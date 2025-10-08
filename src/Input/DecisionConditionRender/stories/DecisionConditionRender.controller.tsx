@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import { DecisionConditionRender } from "..";
 import { Condition, FormikType } from "../types/types";
-import { ValueDataType, ValueHowToSetUp } from "../../../Input/types";
+import { ValueDataType } from "../../../Input/types/ValueDataType";
+import { ValueHowToSetUp } from "../../../Input/types/ValueHowToSetUp";
 
 const DecisionConditionRenderController = () => {
   const condition: Condition = {

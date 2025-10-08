@@ -1,8 +1,9 @@
-import { IInputStatus, IInputType } from "../../types";
 import { StyledDecisionAlignmentContainer } from "../styles";
 import { InputRangeNew } from "../../../Input/InputRangeNew";
 import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
+import { IInputType } from "../../../Input/types";
 
 const renderDecisionRange = ({
   condition,

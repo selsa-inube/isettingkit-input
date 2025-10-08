@@ -1,6 +1,7 @@
 import { InputRange } from "../../InputRange";
 import { Condition, FormikType } from "../types/types";
-import { IInputStatus, IInputType } from "../../types";
+import { IInputType } from "../../types";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
 
 const renderInputRange = ({
   condition,

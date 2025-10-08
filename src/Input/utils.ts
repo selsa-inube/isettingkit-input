@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { StringSchema, NumberSchema, ObjectSchema, AnyObject } from "yup";
-import { IValue } from "./types";
+import { IValue } from "./types/IValue";
 
 declare const inputTypes: readonly [
   "alphabetical",

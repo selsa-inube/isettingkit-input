@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { DynamicFieldNew } from "..";
 import { FieldType } from "../types";
-import { IInputStatus } from "../../types";
+
 import { IDynamicField } from "../../../Input/types/IDynamicField";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
 
 const validationStrategies: Record<FieldType, (value: string) => boolean> = {
   alphabetical: (value) => /^[a-zA-Z]+$/.test(value),

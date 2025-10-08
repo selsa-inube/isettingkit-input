@@ -1,7 +1,8 @@
 import { InputRange } from "../../InputRange";
 import { Condition, FormikType } from "../types/types";
-import { IInputStatus, IInputType } from "../../types";
+import { IInputType } from "../../types";
 import { StyledDecisionAlignmentContainer } from "../styles";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
 
 const renderDecisionRange = ({
   condition,

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { IInputStatus } from "../types";
+import { IInputStatus } from "../types/IInputStatus";
 
 interface IFieldStrategy {
   label: string;

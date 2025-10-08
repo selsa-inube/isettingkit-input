@@ -1,7 +1,8 @@
-import { IInputStatus, IInputType } from "../../types";
+import { IInputType } from "../../types";
 import { InputRangeNew } from "../../../Input/InputRangeNew";
 import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
 
 const renderInputRange = ({
   condition,
