@@ -3,6 +3,7 @@ import { ValueDataType } from "./ValueDataType";
 import { ValueHowToSetUp } from "./ValueHowToSetUp";
 
 interface ICondition {
+  conditionsThatEstablishesTheDecision?: ICondition[];
   conditionDataType: (typeof ValueDataType)[keyof typeof ValueDataType];
   hidden?: boolean;
   conditionName: string;
