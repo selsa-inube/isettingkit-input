@@ -9,6 +9,7 @@ const fieldStrategies: FieldStrategyMap = {
   alphabetical: AlphabeticalStrategy,
   currency: CurrencyStrategy,
   date: DateStrategy,
+  monetary: CurrencyStrategy,
   number: NumberStrategy,
   percentage: PercentageStrategy,
 };
