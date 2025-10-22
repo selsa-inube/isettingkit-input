@@ -1,3 +1,15 @@
+# v1.0.11 (Wed Oct 22 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: add type support for old structure ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.10 (Mon Oct 20 2025)
 
 #### ⚠️ Pushed to `main`
