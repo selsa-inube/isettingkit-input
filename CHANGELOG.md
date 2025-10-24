@@ -1,3 +1,15 @@
+# v1.0.12 (Fri Oct 24 2025)
+
+#### 🐛 Bug Fix
+
+- fix: adjust formater to correct funcionality for % and $ [#2](https://github.com/selsa-inube/isettingkit-input/pull/2) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.0.11 (Wed Oct 22 2025)
 
 #### ⚠️ Pushed to `main`
