@@ -17,9 +17,29 @@ interface TypeDataOutput {
   schema: StringSchema | NumberSchema | ObjectSchema<any, AnyObject, any>;
   value: IValue | undefined | string | number | string[];
 }
-const currencyFormat = (price: number): string => {
-  if (price === 0 || !price) {
+const currencyFormat = (price: number | string): string => {
+  if (!price || price === 0) {
     return "$ 0";
+  }
+
+  if (typeof price === "string") {
+    if (price.includes("Mayor a") || price.includes("Menor a")) {
+      return price.replace(/(\d+)$/, (match) => {
+        const number = parseInt(match);
+        const formattedNumber = Intl.NumberFormat("es-CO", {
+          minimumFractionDigits: 0,
+        }).format(number);
+        return `$${formattedNumber}`;
+      });
+    }
+    const num = parseFloat(price);
+    return !isNaN(num)
+      ? Intl.NumberFormat("es-CO", {
+          style: "currency",
+          currency: "COP",
+          minimumFractionDigits: 0,
+        }).format(num)
+      : `$ ${price}`;
   }
   return Intl.NumberFormat("es-CO", {
     style: "currency",
@@ -42,10 +62,20 @@ const parsePercentageString = (percentageString: string): number => {
   return parseFloat(percentageString.replace("%", ""));
 };
 
-const percentageFormat = (percentage: number): string => {
-  if (percentage === 0 || !percentage) {
+const percentageFormat = (percentage: number | string): string => {
+  if (!percentage || percentage === 0) {
     return "0%";
   }
+
+  if (typeof percentage === "string") {
+    if (percentage.includes("Mayor a") || percentage.includes("Menor a")) {
+      return percentage + "%";
+    }
+
+    const num = parseFloat(percentage);
+    return !isNaN(num) ? `${num.toFixed(0)}%` : percentage;
+  }
+
   return `${percentage.toFixed(0)}%`;
 };
 
@@ -53,12 +83,9 @@ const formatters: Record<
   ITextfieldInputType,
   (value: number | string) => string | number
 > = {
-  currency: (value) =>
-    typeof value === "number" ? currencyFormat(value) : value,
-  monetary: (value) =>
-    typeof value === "number" ? currencyFormat(value) : value,
-  percentage: (value) =>
-    typeof value === "number" ? percentageFormat(value) : value,
+  currency: (value) => currencyFormat(value),
+  monetary: (value) => currencyFormat(value),
+  percentage: (value) => percentageFormat(value),
   number: (value) => value,
   alphabetical: (value) => value,
   date: (value) => value,
