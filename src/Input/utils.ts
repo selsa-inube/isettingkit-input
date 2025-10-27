@@ -56,27 +56,29 @@ const parseCurrencyString = (currencyString: string): number => {
 };
 
 const parsePercentageString = (percentageString: string): number => {
-  if (percentageString === "0%") {
-    return NaN;
-  }
-  return parseFloat(percentageString.replace("%", ""));
+  const m = percentageString.match(/-?\d+(?:[.,]\d+)?/);
+  return m ? parseFloat(m[0].replace(",", ".")) : NaN;
 };
 
 const percentageFormat = (percentage: number | string): string => {
-  if (!percentage || percentage === 0) {
+  if (percentage === 0 || percentage === "0" || percentage === "0%") {
     return "0%";
   }
 
   if (typeof percentage === "string") {
-    if (percentage.includes("Mayor a") || percentage.includes("Menor a")) {
-      return percentage + "%";
+    const trimmed = percentage.trim();
+
+    if (/Mayor a|Menor a/i.test(trimmed)) {
+      return /%$/.test(trimmed) ? trimmed : `${trimmed}%`;
     }
 
-    const num = parseFloat(percentage);
-    return !isNaN(num) ? `${num.toFixed(0)}%` : percentage;
+    if (/%$/.test(trimmed)) return trimmed;
+
+    const num = parsePercentageString(trimmed);
+    return Number.isFinite(num) ? `${String(num)}%` : percentage;
   }
 
-  return `${percentage.toFixed(0)}%`;
+  return `${String(percentage)}%`;
 };
 
 const formatters: Record<
