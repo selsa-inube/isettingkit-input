@@ -18,29 +18,25 @@ interface TypeDataOutput {
   value: IValue | undefined | string | number | string[];
 }
 const currencyFormat = (price: number | string): string => {
-  if (!price || price === 0) {
-    return "$ 0";
-  }
+  if (!price || price === 0 || price === "0") return "$ 0";
 
   if (typeof price === "string") {
-    if (price.includes("Mayor a") || price.includes("Menor a")) {
-      return price.replace(/(\d+)$/, (match) => {
-        const number = parseInt(match);
-        const formattedNumber = Intl.NumberFormat("es-CO", {
-          minimumFractionDigits: 0,
-        }).format(number);
-        return `$${formattedNumber}`;
-      });
+    if (/^\d+$/.test(price)) {
+      return Intl.NumberFormat("es-CO", {
+        style: "currency",
+        currency: "COP",
+        minimumFractionDigits: 0,
+      }).format(parseFloat(price));
     }
-    const num = parseFloat(price);
-    return !isNaN(num)
-      ? Intl.NumberFormat("es-CO", {
-          style: "currency",
-          currency: "COP",
-          minimumFractionDigits: 0,
-        }).format(num)
-      : `$ ${price}`;
+
+    return price.replace(/(\d+)/g, (match) => {
+      const formattedNumber = Intl.NumberFormat("es-CO", {
+        minimumFractionDigits: 0,
+      }).format(parseInt(match));
+      return `$${formattedNumber}`;
+    });
   }
+
   return Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
@@ -68,14 +64,9 @@ const percentageFormat = (percentage: number | string): string => {
   if (typeof percentage === "string") {
     const trimmed = percentage.trim();
 
-    if (/Mayor a|Menor a/i.test(trimmed)) {
-      return /%$/.test(trimmed) ? trimmed : `${trimmed}%`;
-    }
-
     if (/%$/.test(trimmed)) return trimmed;
 
-    const num = parsePercentageString(trimmed);
-    return Number.isFinite(num) ? `${String(num)}%` : percentage;
+    return trimmed.replace(/(\d+)/g, "$1%");
   }
 
   return `${String(percentage)}%`;
