@@ -1,3 +1,15 @@
+# v1.0.13 (Mon Oct 27 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment on utils in order to preserve the decimals ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.12 (Fri Oct 24 2025)
 
 #### 🐛 Bug Fix
