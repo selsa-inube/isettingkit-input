@@ -1,3 +1,15 @@
+# v1.0.14 (Mon Oct 27 2025)
+
+#### 🐛 Bug Fix
+
+- fix: adjust % and $ for list values [#3](https://github.com/selsa-inube/isettingkit-input/pull/3) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.0.13 (Mon Oct 27 2025)
 
 #### ⚠️ Pushed to `main`
