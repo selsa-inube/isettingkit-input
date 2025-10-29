@@ -1,3 +1,15 @@
+# v1.0.15 (Wed Oct 29 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: update IRuleDecision in order to include timeUnit ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.14 (Mon Oct 27 2025)
 
 #### 🐛 Bug Fix
