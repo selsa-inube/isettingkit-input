@@ -23,6 +23,7 @@ interface IRuleDecision {
   listOfPossibleValues?: IValue;
   ruleDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   ruleName?: string;
+  timeUnit?: string;
   transactionOperation?: string;
   validUntil?: Date | string;
   value?: string | string[] | number | IValue | undefined;
