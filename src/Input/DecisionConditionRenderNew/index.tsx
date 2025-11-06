@@ -19,7 +19,6 @@ const DecisionConditionRenderNew = ({
   const strategyKey = isDecision
     ? `DECISION_${normalizedValueUse}`
     : normalizedValueUse;
-
   const renderStrategy = getStrategyNew(
     strategyKey as keyof typeof getStrategyNew,
   );
