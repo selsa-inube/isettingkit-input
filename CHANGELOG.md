@@ -1,3 +1,15 @@
+# v1.0.16 (Thu Nov 06 2025)
+
+#### 🐛 Bug Fix
+
+- feat: create label de - a - for range strategy [#4](https://github.com/selsa-inube/isettingkit-input/pull/4) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.0.15 (Wed Oct 29 2025)
 
 #### ⚠️ Pushed to `main`
