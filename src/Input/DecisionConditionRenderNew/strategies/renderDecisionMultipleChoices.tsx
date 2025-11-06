@@ -34,7 +34,7 @@ const renderDecisionMultipleChoices = ({
       </Text>
       <Checkpicker
         name={condition.conditionName}
-        placeholder={`Select`}
+        placeholder={`Seleccione`}
         onChange={(_name, value) => {
           const updatedArray = value.split(",").filter(Boolean);
           formik.setFieldValue("value", updatedArray);
