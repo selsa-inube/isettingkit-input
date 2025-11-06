@@ -1,3 +1,15 @@
+# v1.1.0 (Thu Nov 06 2025)
+
+#### 🚀 Enhancement
+
+- Ha/adjsut list of multi values [#5](https://github.com/selsa-inube/isettingkit-input/pull/5) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.0.17 (Thu Nov 06 2025)
 
 #### ⚠️ Pushed to `main`
