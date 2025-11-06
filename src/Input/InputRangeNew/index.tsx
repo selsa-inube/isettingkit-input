@@ -107,10 +107,11 @@ const InputRangeNew = (props: IInputRangeNew) => {
         <Stack alignItems="baseline" gap="8px">
           {!condition && (
             <Text
-              type="body"
+              type="title"
               size="medium"
-              appearance="dark"
+              appearance="gray"
               textAlign="center"
+              weight="bold"
             >
               De
             </Text>
@@ -146,7 +147,13 @@ const InputRangeNew = (props: IInputRangeNew) => {
             />
           )}
         </Stack>
-        <Text type="body" size="medium" appearance="dark" textAlign="center">
+        <Text
+          type={condition ? "body" : "title"}
+          size="medium"
+          appearance={condition ? "dark" : "gray"}
+          weight={condition ? "normal" : "bold"}
+          textAlign="center"
+        >
           {condition ? "y" : "A"}
         </Text>
         <Stack alignItems="baseline" gap="8px">
