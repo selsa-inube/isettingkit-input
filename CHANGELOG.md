@@ -1,3 +1,15 @@
+# v1.0.17 (Thu Nov 06 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: added properly use of text component for range types ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.0.16 (Thu Nov 06 2025)
 
 #### 🐛 Bug Fix
