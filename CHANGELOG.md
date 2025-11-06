@@ -1,3 +1,15 @@
+# v1.1.1 (Thu Nov 06 2025)
+
+#### 🐛 Bug Fix
+
+- feat: export checkpikcer [#6](https://github.com/selsa-inube/isettingkit-input/pull/6) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.0 (Thu Nov 06 2025)
 
 #### 🚀 Enhancement
