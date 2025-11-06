@@ -1,4 +1,5 @@
-import { MultipleChoicesNew } from "../../../Input/MultipleChoicesNew";
+import { Stack, Text } from "@inubekit/inubekit";
+import { Checkpicker } from "../../checkpicker";
 import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
 
@@ -26,36 +27,31 @@ const renderMultipleChoices = ({
     Array.isArray(currentValues) && currentValues.length > 0
       ? currentValues.join(",")
       : "";
-
   return (
-    <MultipleChoicesNew
-      condition
-      id={condition.conditionName}
-      labelSelected={condition.labelName}
-      labelSelect={condition.labelName!}
-      options={options}
-      values={formikValue}
-      onChange={(_name, value) => {
-        const selectedValues = value.split(",").filter(Boolean);
-        formik.setFieldValue(
-          `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
-          selectedValues,
-        );
-      }}
-      message={
-        formik.errors.conditionsThatEstablishesTheDecision?.[
-          condition.conditionName
-        ]
-      }
-      placeholderSelect={`Select ${condition.conditionName}`}
-      onBlur={() =>
-        formik.setFieldTouched(
-          `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
-          true,
-          true,
-        )
-      }
-    />
+    <Stack alignItems="center" gap="16px" width="100%">
+      <Text
+        type={condition ? "body" : "title"}
+        weight={condition ? "normal" : "bold"}
+        size="medium"
+        appearance={condition ? "dark" : "primary"}
+      >
+        {condition.labelName}
+      </Text>
+      <Checkpicker
+        name={condition.conditionName}
+        placeholder={`Seleccione`}
+        onChange={(_name, value) => {
+          const selectedValues = value.split(",").filter(Boolean);
+          formik.setFieldValue(
+            `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
+            selectedValues,
+          );
+        }}
+        options={options}
+        values={formikValue}
+        fullwidth
+      ></Checkpicker>
+    </Stack>
   );
 };
 
