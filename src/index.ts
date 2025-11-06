@@ -13,6 +13,7 @@ export {
   parsePercentageString,
   percentageFormat,
 } from "./Input/utils";
+export { Checkpicker } from "./Input/checkpicker";
 export { ValueDataType } from "./Input/types/ValueDataType";
 export type { IInputStatus } from "./Input/types/IInputStatus";
 export { ValueHowToSetUp } from "./Input/types/ValueHowToSetUp";
