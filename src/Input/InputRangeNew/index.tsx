@@ -105,6 +105,9 @@ const InputRangeNew = (props: IInputRangeNew) => {
       </Text>
       <Stack gap="16px" alignItems="center">
         <Stack alignItems="baseline" gap="8px">
+          <Text type="body" size="medium" appearance="dark" textAlign="center">
+            De
+          </Text>
           {typeInput === "date" ? (
             <DateInput
               id={`${id}DateFrom`}
@@ -136,7 +139,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
           )}
         </Stack>
         <Text type="body" size="medium" appearance="dark" textAlign="center">
-          y
+          a
         </Text>
         <Stack alignItems="baseline" gap="8px">
           {typeInput === "date" ? (
