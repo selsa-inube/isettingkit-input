@@ -14,7 +14,7 @@ export {
   percentageFormat,
 } from "./Input/utils";
 export { Checkpicker } from "./Input/checkpicker";
-export { validUntilManagement } from "./Input/DecisionConditionRenderNew/utils/validUntilManagement";
+export { useValidUntilManagement } from "./Input/DecisionConditionRenderNew/utils/validUntilManagement";
 export { ValueDataType } from "./Input/types/ValueDataType";
 export type { IInputStatus } from "./Input/types/IInputStatus";
 export { ValueHowToSetUp } from "./Input/types/ValueHowToSetUp";
