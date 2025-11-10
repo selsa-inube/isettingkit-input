@@ -1,3 +1,15 @@
+# v1.1.2 (Mon Nov 10 2025)
+
+#### 🐛 Bug Fix
+
+- feat: create funcion to evaluate valid until [#7](https://github.com/selsa-inube/isettingkit-input/pull/7) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.1 (Thu Nov 06 2025)
 
 #### 🐛 Bug Fix
