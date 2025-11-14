@@ -79,7 +79,6 @@ const InputRangeNew = (props: IInputRangeNew) => {
     handleInputChangeFrom(valueFrom);
   };
   const handleChangeSelect = (name: string, value: string) => {
-    console.log("select changed:", name, value);
     if (name === `${id}SelectFrom`) {
       setInputValueFrom(value);
       handleInputChangeFrom(value);

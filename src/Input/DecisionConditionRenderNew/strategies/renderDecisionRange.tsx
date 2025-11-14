@@ -11,11 +11,6 @@ const renderDecisionRange = ({
   condition: IConditionNew;
   formik: IFormikTypeNew;
 }) => {
-  console.log(
-    "Rendering Decision Range for condition:",
-    condition,
-    formik.values,
-  );
   return (
     <StyledDecisionAlignmentContainer>
       <InputRangeNew
