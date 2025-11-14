@@ -19,7 +19,9 @@ const renderDynamicField = ({
   const groupTouched =
     formik.touched.conditionsThatEstablishesTheDecision?.[groupKey] || {};
 
-  const value = groupValues[condition.conditionName!].value;
+  const value =
+    groupValues[condition.conditionName!].value ??
+    groupValues[condition.conditionName!];
   const error = groupErrors[condition.conditionName!];
   const touched = groupTouched[condition.conditionName!];
 
