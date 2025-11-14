@@ -1,4 +1,7 @@
+import { IValue } from "../../../Input/types/IValue";
+
 interface IConditionNew {
+  groupKey?: string;
   valueUse:
     | "RANGE"
     | "LIST_OF_VALUES_MULTI"
@@ -14,6 +17,7 @@ interface IConditionNew {
   ruleName: string;
   labelName: string;
   placeholder?: string;
+  value?: string | string[] | number | IValue | undefined;
 }
 
 export type { IConditionNew };

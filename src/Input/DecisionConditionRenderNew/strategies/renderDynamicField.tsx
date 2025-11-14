@@ -8,41 +8,34 @@ const renderDynamicField = ({
 }: {
   condition: IConditionNew;
   formik: IFormikTypeNew;
-}) => (
-  <DynamicFieldNew
-    condition
-    type={condition.conditionDataType!.toLowerCase()}
-    name={`conditionsThatEstablishesTheDecision.${condition.conditionName}`}
-    label={condition.labelName!}
-    value={
-      formik.values.conditionsThatEstablishesTheDecision[
-        condition.conditionName!
-      ]
-    }
-    onChange={(value) =>
-      formik.setFieldValue(
-        `conditionsThatEstablishesTheDecision.${condition.conditionName}`,
-        value,
-      )
-    }
-    messageValidate={String(
-      formik.errors.conditionsThatEstablishesTheDecision?.[
-        condition.conditionName!
-      ] || "",
-    )}
-    statusValidate={
-      formik.touched.conditionsThatEstablishesTheDecision?.[
-        condition.conditionName
-      ]
-        ? formik.errors.conditionsThatEstablishesTheDecision?.[
-            condition.conditionName
-          ]
-          ? "invalid"
-          : "valid"
-        : undefined
-    }
-    onBlur={formik.handleBlur}
-  />
-);
+}) => {
+  const groupKey = condition.groupKey!;
+  const basePath = `conditionsThatEstablishesTheDecision.${groupKey}.${condition.conditionName}`;
+
+  const groupValues =
+    formik.values.conditionsThatEstablishesTheDecision?.[groupKey] || {};
+  const groupErrors =
+    formik.errors.conditionsThatEstablishesTheDecision?.[groupKey] || {};
+  const groupTouched =
+    formik.touched.conditionsThatEstablishesTheDecision?.[groupKey] || {};
+
+  const value = groupValues[condition.conditionName!].value;
+  const error = groupErrors[condition.conditionName!];
+  const touched = groupTouched[condition.conditionName!];
+
+  return (
+    <DynamicFieldNew
+      condition
+      type={condition.conditionDataType!.toLowerCase()}
+      name={basePath}
+      label={condition.labelName!}
+      value={value}
+      onChange={(newValue) => formik.setFieldValue(basePath, newValue)}
+      messageValidate={String(error || "")}
+      statusValidate={touched ? (error ? "invalid" : "valid") : undefined}
+      onBlur={formik.handleBlur}
+    />
+  );
+};
 
 export { renderDynamicField };
