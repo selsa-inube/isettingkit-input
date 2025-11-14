@@ -114,7 +114,6 @@ const InputRangeNew = (props: IInputRangeNew) => {
       return value.toISOString().split("T")[0];
     return Number(value);
   };
-  console.log("options", inputValueFrom, inputValueTo);
 
   return (
     <Stack alignItems="center" gap="16px" width="100%">
