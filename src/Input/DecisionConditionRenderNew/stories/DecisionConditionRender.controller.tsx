@@ -12,7 +12,7 @@ const DecisionConditionRenderControllerNew = () => {
     conditionName: "ReciprocidadDeAhorro",
     decisionDataType: ValueDataType.ALPHABETICAL,
     conditionDataType: ValueDataType.ALPHABETICAL,
-    howToSetTheCondition: ValueHowToSetUp.LIST_OF_VALUES,
+    howToSetTheCondition: ValueHowToSetUp.RANGE,
     valueUse: "RANGE",
     howToSetTheDecision: "",
     ruleName: "",
@@ -36,10 +36,9 @@ const DecisionConditionRenderControllerNew = () => {
 
   const formik = useFormik({
     initialValues: {
-      conditionsThatEstablishesTheDecision: {
-        "group-primary": {
-          ReciprocidadDeAhorro: condition,
-        },
+      value: {
+        from: "medio",
+        to: "Bajo",
       },
     },
     onSubmit: () => {},
