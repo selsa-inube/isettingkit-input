@@ -1,3 +1,15 @@
+# v1.1.3 (Fri Nov 14 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment on conditionRenderNew in order to make sure the right behavior about formik ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.2 (Mon Nov 10 2025)
 
 #### 🐛 Bug Fix
