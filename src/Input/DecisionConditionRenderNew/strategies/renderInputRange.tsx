@@ -71,6 +71,7 @@ const renderInputRange = ({
       statusTo={statusTo}
       onBlur={formik.handleBlur}
       typeInput={condition.conditionDataType!.toLowerCase() as IInputType}
+      listOfPossibleValues={condition.listOfPossibleValues}
     />
   );
 };

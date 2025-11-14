@@ -13,12 +13,14 @@ const InputRangeNewController = (props: IInputRangeNewController) => {
   const [statusTo, setStatusTo] = useState<IInputStatus | undefined>();
   const [messageFrom, setMessageFrom] = useState<string | undefined>();
   const [messageTo, setMessageTo] = useState<string | undefined>();
-  const [valueFrom, setValueFrom] = useState<number | Date>(
+  const [valueFrom, setValueFrom] = useState<number | Date | string>(
     props.valueFrom || 0,
   );
-  const [valueTo, setValueTo] = useState<number | Date>(props.valueTo || 0);
+  const [valueTo, setValueTo] = useState<number | Date | string>(
+    props.valueTo || 0,
+  );
 
-  const handleInputChangeFrom = (newValueFrom: number | Date) => {
+  const handleInputChangeFrom = (newValueFrom: number | Date | string) => {
     if (props.typeInput === "number" || props.typeInput === "currency") {
       if (typeof newValueFrom === "number") {
         if (newValueFrom < 0) {
@@ -49,7 +51,7 @@ const InputRangeNewController = (props: IInputRangeNewController) => {
     props.handleInputChangeFrom(newValueFrom);
   };
 
-  const handleInputChangeTo = (newValueTo: number | Date) => {
+  const handleInputChangeTo = (newValueTo: number | Date | string) => {
     if (props.typeInput === "number" || props.typeInput === "currency") {
       if (typeof newValueTo === "number") {
         if (newValueTo < 0) {
