@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DynamicFieldNew } from "../../../Input/DynamicFieldNew";
 import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
@@ -9,21 +10,65 @@ const renderDynamicField = ({
   condition: IConditionNew;
   formik: IFormikTypeNew;
 }) => {
-  const groupKey = condition.groupKey!;
-  const basePath = `conditionsThatEstablishesTheDecision.${groupKey}.${condition.conditionName}`;
+  const groupKey = condition.groupKey || "group-primary";
+  const condName = condition.conditionName!;
+  const basePath = `conditionsThatEstablishesTheDecision.${groupKey}.${condName}`;
 
   const groupValues =
-    formik.values.conditionsThatEstablishesTheDecision?.[groupKey] || {};
+    (formik.values as any).conditionsThatEstablishesTheDecision?.[groupKey] ||
+    {};
   const groupErrors =
-    formik.errors.conditionsThatEstablishesTheDecision?.[groupKey] || {};
+    (formik.errors as any).conditionsThatEstablishesTheDecision?.[groupKey] ||
+    {};
   const groupTouched =
-    formik.touched.conditionsThatEstablishesTheDecision?.[groupKey] || {};
+    (formik.touched as any).conditionsThatEstablishesTheDecision?.[groupKey] ||
+    {};
 
-  const value =
-    groupValues[condition.conditionName!].value ??
-    groupValues[condition.conditionName!];
-  const error = groupErrors[condition.conditionName!];
-  const touched = groupTouched[condition.conditionName!];
+  const node = groupValues[condName];
+
+  let value: any = "";
+  if (node != null) {
+    if (typeof node === "object" && !Array.isArray(node) && "value" in node) {
+      value = (node as any).value ?? "";
+    } else {
+      value = node;
+    }
+  } else if (condition.value !== undefined) {
+    value = condition.value;
+  }
+
+  const rawError = groupErrors[condName];
+  const rawTouched = groupTouched[condName];
+
+  const messageValidate =
+    typeof rawError === "string"
+      ? rawError
+      : rawError &&
+          typeof rawError === "object" &&
+          typeof rawError.value === "string"
+        ? rawError.value
+        : "";
+
+  const isTouched =
+    rawTouched && typeof rawTouched === "object"
+      ? !!(rawTouched as any).value
+      : !!rawTouched;
+
+  const statusValidate =
+    isTouched && messageValidate ? "invalid" : isTouched ? "valid" : undefined;
+
+  const handleChange = (newValue: any) => {
+    const current = groupValues[condName];
+
+    if (current && typeof current === "object" && !Array.isArray(current)) {
+      formik.setFieldValue(`${basePath}.value`, newValue);
+    } else {
+      formik.setFieldValue(basePath, {
+        ...(current && typeof current === "object" ? current : {}),
+        value: newValue,
+      });
+    }
+  };
 
   return (
     <DynamicFieldNew
@@ -32,9 +77,9 @@ const renderDynamicField = ({
       name={basePath}
       label={condition.labelName!}
       value={value}
-      onChange={(newValue) => formik.setFieldValue(basePath, newValue)}
-      messageValidate={String(error || "")}
-      statusValidate={touched ? (error ? "invalid" : "valid") : undefined}
+      onChange={handleChange}
+      messageValidate={messageValidate}
+      statusValidate={statusValidate}
       onBlur={formik.handleBlur}
     />
   );
