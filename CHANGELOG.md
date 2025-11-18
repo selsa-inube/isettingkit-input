@@ -1,3 +1,15 @@
+# v1.1.6 (Tue Nov 18 2025)
+
+#### 🐛 Bug Fix
+
+- feat: create list of values for ranges [#8](https://github.com/selsa-inube/isettingkit-input/pull/8) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.5 (Fri Nov 14 2025)
 
 #### ⚠️ Pushed to `main`
