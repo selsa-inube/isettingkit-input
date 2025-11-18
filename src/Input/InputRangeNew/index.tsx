@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Textfield } from "@inubekit/inubekit";
+import { IOption, Select, Textfield } from "@inubekit/inubekit";
 import { currencyFormat, parseCurrencyString } from "../utils";
 import { Date as DateInput, IDateStatus } from "@inubekit/inubekit";
 import { Text } from "@inubekit/inubekit";
@@ -8,19 +8,20 @@ import { IInputStatus } from "../types/IInputStatus";
 
 interface IInputRangeNew {
   condition?: boolean;
-  handleInputChangeFrom: (valueFrom: number | Date) => void;
-  handleInputChangeTo: (valueTo: number | Date) => void;
+  handleInputChangeFrom: (valueFrom: number | Date | string) => void;
+  handleInputChangeTo: (valueTo: number | Date | string) => void;
   id: string;
   typeInput: ITextfieldInputType;
   label: string;
   required?: boolean;
-  valueFrom?: number | Date;
-  valueTo?: number | Date;
+  valueFrom?: number | Date | string;
+  valueTo?: number | Date | string;
   messageFrom?: string;
   messageTo?: string;
   statusFrom?: IInputStatus;
   statusTo?: IInputStatus;
   onBlur?: () => void;
+  listOfPossibleValues?: { list?: string[] };
 }
 
 declare type ITextfieldInputType = (typeof inputTypes)[number];
@@ -43,17 +44,25 @@ const InputRangeNew = (props: IInputRangeNew) => {
     typeInput,
     label,
     required = false,
-    valueFrom = 0,
-    valueTo = 0,
+    valueFrom = "",
+    valueTo = "",
     messageFrom,
     messageTo,
     statusFrom,
     statusTo,
     onBlur,
+    listOfPossibleValues,
   } = props;
 
   const [inputValueFrom, setInputValueFrom] = useState(valueFrom);
   const [inputValueTo, setInputValueTo] = useState(valueTo);
+
+  const options =
+    listOfPossibleValues?.list?.map((item: string) => ({
+      id: item,
+      label: item,
+      value: item,
+    })) || [];
 
   const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
     let valueFrom: number | Date;
@@ -68,6 +77,16 @@ const InputRangeNew = (props: IInputRangeNew) => {
 
     setInputValueFrom(valueFrom);
     handleInputChangeFrom(valueFrom);
+  };
+  const handleChangeSelect = (name: string, value: string) => {
+    if (name === `${id}SelectFrom`) {
+      setInputValueFrom(value);
+      handleInputChangeFrom(value);
+    }
+    if (name === `${id}SelectTo`) {
+      setInputValueTo(value);
+      handleInputChangeTo(value);
+    }
   };
 
   const handleChangeTo = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +104,10 @@ const InputRangeNew = (props: IInputRangeNew) => {
     handleInputChangeTo(valueTo);
   };
 
-  const formatValue = (value: number | Date, type: ITextfieldInputType) => {
+  const formatValue = (
+    value: number | Date | string,
+    type: ITextfieldInputType,
+  ) => {
     if (type === "currency" || type === "monetary")
       return currencyFormat(value as number);
     if (type === "date" && value instanceof Date)
@@ -116,8 +138,17 @@ const InputRangeNew = (props: IInputRangeNew) => {
               De
             </Text>
           )}
-
-          {typeInput === "date" ? (
+          {listOfPossibleValues ? (
+            <Select
+              id={`${id}SelectFrom`}
+              options={options as IOption[]}
+              value={String(inputValueFrom)}
+              onChange={handleChangeSelect}
+              message={messageFrom}
+              fullwidth
+              name={`${id}SelectFrom`}
+            />
+          ) : typeInput === "date" ? (
             <DateInput
               id={`${id}DateFrom`}
               value={formatValue(inputValueFrom, typeInput)}
@@ -157,7 +188,17 @@ const InputRangeNew = (props: IInputRangeNew) => {
           {condition ? "y" : "A"}
         </Text>
         <Stack alignItems="baseline" gap="8px">
-          {typeInput === "date" ? (
+          {listOfPossibleValues ? (
+            <Select
+              id={`${id}SelectTo`}
+              options={options as IOption[]}
+              value={String(inputValueTo)}
+              onChange={handleChangeSelect}
+              message={messageFrom}
+              fullwidth
+              name={`${id}SelectTo`}
+            />
+          ) : typeInput === "date" ? (
             <DateInput
               id={`${id}DateTo`}
               value={formatValue(inputValueTo, typeInput)}
