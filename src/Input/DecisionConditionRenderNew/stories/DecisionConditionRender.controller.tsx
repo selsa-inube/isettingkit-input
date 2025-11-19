@@ -40,7 +40,7 @@ const DecisionConditionRenderControllerNew = () => {
     },
     onSubmit: () => {},
   });
-  console.log("formik ", formik, " condition ", condition);
+
   return (
     <DecisionConditionRenderNew
       condition={condition}
