@@ -57,15 +57,15 @@ const renderDynamicField = ({
   const statusValidate =
     isTouched && messageValidate ? "invalid" : isTouched ? "valid" : undefined;
 
-  const handleChange = (newValue: any) => {
+  const handleChange = (_name?: any, value?: any) => {
     const current = groupValues[condName];
 
     if (current && typeof current === "object" && !Array.isArray(current)) {
-      formik.setFieldValue(`${basePath}.value`, newValue);
+      formik.setFieldValue(`${basePath}.value`, value);
     } else {
       formik.setFieldValue(basePath, {
         ...(current && typeof current === "object" ? current : {}),
-        value: newValue,
+        value: value,
       });
     }
   };
@@ -81,6 +81,7 @@ const renderDynamicField = ({
       messageValidate={messageValidate}
       statusValidate={statusValidate}
       onBlur={formik.handleBlur}
+      listOfPossibleValues={condition.listOfPossibleValues}
     />
   );
 };

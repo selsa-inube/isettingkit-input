@@ -13,6 +13,7 @@ const DynamicFieldNew = (props: IDynamicField) => {
     messageValidate,
     statusValidate,
     onBlur,
+    listOfPossibleValues,
   } = props;
   const strategy = getFieldStrategy(type);
 
@@ -20,7 +21,6 @@ const DynamicFieldNew = (props: IDynamicField) => {
     console.error(`Unsupported field type: ${type}`);
     return null;
   }
-
   return (
     <>
       {strategy.render({
@@ -33,6 +33,7 @@ const DynamicFieldNew = (props: IDynamicField) => {
         messageValidate,
         statusValidate,
         onBlur,
+        listOfPossibleValues,
       })}
     </>
   );
