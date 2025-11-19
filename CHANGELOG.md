@@ -1,3 +1,15 @@
+# v1.1.7 (Wed Nov 19 2025)
+
+#### 🐛 Bug Fix
+
+- feat: create list of values for all data type [#9](https://github.com/selsa-inube/isettingkit-input/pull/9) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.6 (Tue Nov 18 2025)
 
 #### 🐛 Bug Fix
