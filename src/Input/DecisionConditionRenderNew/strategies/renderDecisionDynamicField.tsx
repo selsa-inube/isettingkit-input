@@ -9,26 +9,29 @@ const renderDecisionDynamicFieldNew = ({
 }: {
   condition: IConditionNew;
   formik: IFormikTypeNew;
-}) => (
-  <StyledDecisionAlignmentContainer>
-    <DynamicFieldNew
-      type={condition.decisionDataType!.toLowerCase()}
-      name={condition.ruleName!}
-      label={condition.labelName!}
-      value={formik.values.value}
-      onChange={(value) => formik.setFieldValue("value", value)}
-      messageValidate={String(formik.errors.value || "")}
-      placeholder={condition.placeholder!}
-      statusValidate={
-        formik.touched.value
-          ? formik.errors.value
-            ? "invalid"
-            : "valid"
-          : undefined
-      }
-      onBlur={formik.handleBlur}
-    />
-  </StyledDecisionAlignmentContainer>
-);
+}) => {
+  return (
+    <StyledDecisionAlignmentContainer>
+      <DynamicFieldNew
+        type={condition.decisionDataType!.toLowerCase()}
+        name={condition.ruleName!}
+        label={condition.labelName!}
+        value={formik.values.value}
+        onChange={(_name, value) => formik.setFieldValue("value", value)}
+        messageValidate={String(formik.errors.value || "")}
+        placeholder={condition.placeholder!}
+        statusValidate={
+          formik.touched.value
+            ? formik.errors.value
+              ? "invalid"
+              : "valid"
+            : undefined
+        }
+        onBlur={formik.handleBlur}
+        listOfPossibleValues={condition.listOfPossibleValues}
+      />
+    </StyledDecisionAlignmentContainer>
+  );
+};
 
 export { renderDecisionDynamicFieldNew };

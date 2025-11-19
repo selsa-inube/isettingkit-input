@@ -10,36 +10,33 @@ const DecisionConditionRenderControllerNew = () => {
   const condition: IConditionNew = {
     labelName: "Reciprocidad de ahorro",
     conditionName: "ReciprocidadDeAhorro",
-    decisionDataType: ValueDataType.ALPHABETICAL,
-    conditionDataType: ValueDataType.ALPHABETICAL,
+    decisionDataType: ValueDataType.CURRENCY,
+    conditionDataType: ValueDataType.CURRENCY,
     howToSetTheCondition: ValueHowToSetUp.RANGE,
     valueUse: "RANGE",
     howToSetTheDecision: "",
     ruleName: "",
     listOfPossibleValues: {
       list: [
-        "Muy alto",
-        "Alto",
-        "Medio",
-        "Bajo",
-        "Muy bajo",
-        "Muy alto1",
-        "Alto1",
-        "Medio1",
-        "Bajo1",
-        "Muy bajo1",
+        "999900321",
+        "4",
+        "3",
+        "2",
+        "1",
+        "3",
+        "99",
+        "4",
+        "10000",
+        "100000",
       ],
     },
-    value: ["Muy alto"],
+    value: ["10000"],
     groupKey: "group-primary",
   };
 
   const formik = useFormik({
     initialValues: {
-      value: {
-        from: "medio",
-        to: "Bajo",
-      },
+      value: ["2222"],
     },
     onSubmit: () => {},
   });
@@ -48,7 +45,7 @@ const DecisionConditionRenderControllerNew = () => {
     <DecisionConditionRenderNew
       condition={condition}
       formik={formik as unknown as IFormikTypeNew}
-      isDecision={false}
+      isDecision={true}
     />
   );
 };

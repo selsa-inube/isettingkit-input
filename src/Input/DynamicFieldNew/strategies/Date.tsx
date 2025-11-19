@@ -24,7 +24,7 @@ const DateStrategyNew: FieldStrategyNew = {
       <Datefield
         id={name}
         value={value as string}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(name, e.target.value)}
         fullwidth
         message={messageValidate}
         status={statusValidate as "invalid" | "pending" | undefined}

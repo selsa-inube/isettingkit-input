@@ -1,5 +1,5 @@
 import { FieldStrategyNew, IFieldStrategyNew } from "../types";
-import { Stack, Text, Textfield } from "@inubekit/inubekit";
+import { Select, Stack, Text, Textfield } from "@inubekit/inubekit";
 
 const AlphabeticalStrategyNew: FieldStrategyNew = {
   render: ({
@@ -12,29 +12,52 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
     statusValidate,
     onBlur,
     condition,
-  }: IFieldStrategyNew) => (
-    <Stack alignItems="center" gap="16px" width="100%">
-      <Text
-        type={condition ? "body" : "title"}
-        weight={condition ? "normal" : "bold"}
-        size="medium"
-        appearance={condition ? "dark" : "primary"}
-      >
-        {label}
-      </Text>
-      <Textfield
-        id={name}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        type="text"
-        fullwidth
-        message={messageValidate}
-        status={statusValidate as "invalid" | "pending" | undefined}
-        onBlur={onBlur}
-      />
-    </Stack>
-  ),
+    listOfPossibleValues,
+  }: IFieldStrategyNew) => {
+    const options =
+      listOfPossibleValues?.list?.map((item: string) => ({
+        id: item,
+        label: item,
+        value: item,
+      })) || [];
+
+    return (
+      <Stack alignItems="center" gap="16px" width="100%">
+        <Text
+          type={condition ? "body" : "title"}
+          weight={condition ? "normal" : "bold"}
+          size="medium"
+          appearance={condition ? "dark" : "primary"}
+        >
+          {label}
+        </Text>
+
+        {listOfPossibleValues ? (
+          <Select
+            id={`${name}-select`}
+            options={options}
+            value={String(value)}
+            onChange={(name, val) => onChange(name, val)}
+            message={messageValidate}
+            fullwidth
+            name={`${name}-select`}
+          />
+        ) : (
+          <Textfield
+            id={name}
+            value={value}
+            onChange={(e) => onChange(name, e.target.value)}
+            placeholder={placeholder}
+            type="text"
+            fullwidth
+            message={messageValidate}
+            status={statusValidate as "invalid" | "pending" | undefined}
+            onBlur={onBlur}
+          />
+        )}
+      </Stack>
+    );
+  },
 };
 
 export { AlphabeticalStrategyNew };

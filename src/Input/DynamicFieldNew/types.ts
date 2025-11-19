@@ -7,10 +7,11 @@ interface IFieldStrategyNew {
   name: string;
   placeholder?: string;
   onBlur?: () => void;
-  onChange: (value: string | number) => void;
+  onChange: (name: string, value: string | number) => void;
   statusValidate?: string | IInputStatus;
   value: string | number;
   condition?: boolean;
+  listOfPossibleValues?: { list?: string[] };
 }
 
 type FieldStrategyNew = {
