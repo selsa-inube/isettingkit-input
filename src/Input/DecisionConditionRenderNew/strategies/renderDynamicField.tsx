@@ -57,7 +57,7 @@ const renderDynamicField = ({
   const statusValidate =
     isTouched && messageValidate ? "invalid" : isTouched ? "valid" : undefined;
 
-  const handleChange = (name?: any, value?: any) => {
+  const handleChange = (_name?: any, value?: any) => {
     const current = groupValues[condName];
 
     if (current && typeof current === "object" && !Array.isArray(current)) {
