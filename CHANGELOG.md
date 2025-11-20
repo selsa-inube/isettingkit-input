@@ -1,3 +1,15 @@
+# v1.1.8 (Thu Nov 20 2025)
+
+#### 🐛 Bug Fix
+
+- feat: adjust validate list [#10](https://github.com/selsa-inube/isettingkit-input/pull/10) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.7 (Wed Nov 19 2025)
 
 #### 🐛 Bug Fix
