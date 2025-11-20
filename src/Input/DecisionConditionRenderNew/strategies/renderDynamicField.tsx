@@ -81,7 +81,11 @@ const renderDynamicField = ({
       messageValidate={messageValidate}
       statusValidate={statusValidate}
       onBlur={formik.handleBlur}
-      listOfPossibleValues={condition.listOfPossibleValues}
+      listOfPossibleValues={
+        condition.listOfPossibleValues?.list?.length
+          ? condition.listOfPossibleValues
+          : undefined
+      }
     />
   );
 };

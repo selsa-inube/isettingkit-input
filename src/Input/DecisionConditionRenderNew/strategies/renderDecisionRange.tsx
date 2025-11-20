@@ -40,7 +40,11 @@ const renderDecisionRange = ({
         }
         onBlur={formik.handleBlur}
         typeInput={condition.decisionDataType!.toLowerCase() as IInputType}
-        listOfPossibleValues={condition.listOfPossibleValues}
+        listOfPossibleValues={
+          condition.listOfPossibleValues?.list?.length
+            ? condition.listOfPossibleValues
+            : undefined
+        }
       />
     </StyledDecisionAlignmentContainer>
   );
