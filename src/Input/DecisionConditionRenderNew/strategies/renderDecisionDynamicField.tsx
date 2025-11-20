@@ -28,7 +28,11 @@ const renderDecisionDynamicFieldNew = ({
             : undefined
         }
         onBlur={formik.handleBlur}
-        listOfPossibleValues={condition.listOfPossibleValues}
+        listOfPossibleValues={
+          condition.listOfPossibleValues?.list?.length
+            ? condition.listOfPossibleValues
+            : undefined
+        }
       />
     </StyledDecisionAlignmentContainer>
   );
