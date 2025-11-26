@@ -12,13 +12,6 @@ const renderSelectCheck = ({
 }) => {
   const groupKey = condition.groupKey || "group-primary";
 
-  const options =
-    condition.listOfPossibleValues?.list?.map((item: string) => ({
-      id: item,
-      label: item,
-      value: item,
-    })) || [];
-
   const condFromFormik =
     formik.values.conditionsThatEstablishesTheDecision?.[groupKey]?.[
       condition.conditionName!
@@ -65,7 +58,7 @@ const renderSelectCheck = ({
       <Select
         id={condition.conditionName}
         name={`conditionsThatEstablishesTheDecision.${groupKey}.${condition.conditionName}.value`}
-        options={options}
+        options={condition.listOfPossibleValues?.list || []}
         value={selectValue}
         onChange={handleChange}
         placeholder={`Select ${condition.conditionName}`}

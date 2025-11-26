@@ -1,5 +1,5 @@
 import { FieldStrategyNew, IFieldStrategyNew } from "../types";
-import { Moneyfield, Select, Stack, Text } from "@inubekit/inubekit";
+import { IOption, Moneyfield, Select, Stack, Text } from "@inubekit/inubekit";
 import { currencyFormat } from "../../utils";
 
 const CurrencyStrategyNew: FieldStrategyNew = {
@@ -7,19 +7,13 @@ const CurrencyStrategyNew: FieldStrategyNew = {
     condition,
     name,
     label,
-    value,
+    value = "",
     onChange,
     messageValidate,
     statusValidate,
     onBlur,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
-    const options =
-      listOfPossibleValues?.list?.map((item: string) => ({
-        id: item,
-        label: item,
-        value: item,
-      })) || [];
     return (
       <Stack alignItems="center" gap="16px" width="100%">
         <Text
@@ -33,12 +27,13 @@ const CurrencyStrategyNew: FieldStrategyNew = {
         {listOfPossibleValues ? (
           <Select
             id={`${name}-select`}
-            options={options}
+            options={listOfPossibleValues.list as IOption[]}
             value={String(value)}
             onChange={(name, val) => onChange(name, val)}
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
+            placeholder="Seleccione"
           />
         ) : (
           <Moneyfield

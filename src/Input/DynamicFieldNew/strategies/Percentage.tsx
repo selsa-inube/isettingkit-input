@@ -1,5 +1,12 @@
 import { FieldStrategyNew, IFieldStrategyNew } from "../types";
-import { Text, Stack, Numberfield, Icon, Select } from "@inubekit/inubekit";
+import {
+  Text,
+  Stack,
+  Numberfield,
+  Icon,
+  Select,
+  IOption,
+} from "@inubekit/inubekit";
 import { MdOutlinePercent } from "react-icons/md";
 
 const PercentageStrategyNew: FieldStrategyNew = {
@@ -7,19 +14,13 @@ const PercentageStrategyNew: FieldStrategyNew = {
     condition,
     name,
     label,
-    value,
+    value = "",
     onChange,
     messageValidate,
     statusValidate,
     onBlur,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
-    const options =
-      listOfPossibleValues?.list?.map((item: string) => ({
-        id: item,
-        label: item,
-        value: item,
-      })) || [];
     return (
       <Stack alignItems="center" gap="16px" width="100%">
         <Text
@@ -33,12 +34,13 @@ const PercentageStrategyNew: FieldStrategyNew = {
         {listOfPossibleValues ? (
           <Select
             id={`${name}-select`}
-            options={options}
+            options={listOfPossibleValues.list as IOption[]}
             value={String(value)}
             onChange={(name, val) => onChange(name, val)}
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
+            placeholder="Seleccione"
           />
         ) : (
           <Numberfield

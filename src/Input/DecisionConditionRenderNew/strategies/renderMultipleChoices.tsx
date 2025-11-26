@@ -10,14 +10,6 @@ const renderMultipleChoices = ({
   condition: IConditionNew;
   formik: IFormikTypeNew;
 }) => {
-  const list = condition.listOfPossibleValues?.list || [];
-
-  const options = list.map((item) => ({
-    id: item,
-    label: item,
-    value: item,
-  }));
-
   const groupKey = condition.groupKey || "group-primary";
 
   const condFromFormik =
@@ -41,7 +33,7 @@ const renderMultipleChoices = ({
         name={condition.conditionName}
         placeholder="Seleccione"
         values={formikValue}
-        options={options}
+        options={condition.listOfPossibleValues?.list || []}
         fullwidth
         onChange={(_name, value) => {
           const selectedValues = value.split(",").filter(Boolean);

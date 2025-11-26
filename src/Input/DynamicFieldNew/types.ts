@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { IInputStatus } from "../types/IInputStatus";
+import { IOption } from "@inubekit/inubekit";
 
 interface IFieldStrategyNew {
   label: string;
@@ -11,7 +12,7 @@ interface IFieldStrategyNew {
   statusValidate?: string | IInputStatus;
   value: string | number;
   condition?: boolean;
-  listOfPossibleValues?: { list?: string[] };
+  listOfPossibleValues?: { list?: IOption[] };
 }
 
 type FieldStrategyNew = {
