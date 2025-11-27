@@ -1,3 +1,15 @@
+# v1.1.9 (Thu Nov 27 2025)
+
+#### 🐛 Bug Fix
+
+- feat: implement option values for select [#11](https://github.com/selsa-inube/isettingkit-input/pull/11) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.8 (Thu Nov 20 2025)
 
 #### 🐛 Bug Fix
