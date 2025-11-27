@@ -1,3 +1,4 @@
+import { IOption } from "@inubekit/inubekit";
 import { IValue } from "../../../Input/types/IValue";
 
 interface IConditionNew {
@@ -8,7 +9,7 @@ interface IConditionNew {
     | "EQUAL"
     | "GREATER_THAN"
     | "LESS_THAN";
-  listOfPossibleValues?: { list?: string[] };
+  listOfPossibleValues?: { list?: IOption[] };
   conditionDataType: string;
   decisionDataType?: string;
   howToSetTheCondition: string;

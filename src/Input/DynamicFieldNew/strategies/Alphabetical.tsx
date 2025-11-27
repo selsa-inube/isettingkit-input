@@ -5,7 +5,7 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
   render: ({
     name,
     label,
-    value,
+    value = "",
     placeholder,
     onChange,
     messageValidate,
@@ -14,13 +14,6 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
     condition,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
-    const options =
-      listOfPossibleValues?.list?.map((item: string) => ({
-        id: item,
-        label: item,
-        value: item,
-      })) || [];
-
     return (
       <Stack alignItems="center" gap="16px" width="100%">
         <Text
@@ -35,12 +28,13 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
         {listOfPossibleValues ? (
           <Select
             id={`${name}-select`}
-            options={options}
+            options={listOfPossibleValues.list!}
             value={String(value)}
             onChange={(name, val) => onChange(name, val)}
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
+            placeholder="Seleccione"
           />
         ) : (
           <Textfield

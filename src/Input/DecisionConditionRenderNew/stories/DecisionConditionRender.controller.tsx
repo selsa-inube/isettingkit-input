@@ -10,24 +10,64 @@ const DecisionConditionRenderControllerNew = () => {
   const condition: IConditionNew = {
     labelName: "Reciprocidad de ahorro",
     conditionName: "ReciprocidadDeAhorro",
-    decisionDataType: ValueDataType.CURRENCY,
-    conditionDataType: ValueDataType.CURRENCY,
+    decisionDataType: ValueDataType.PERCENTAGE,
+    conditionDataType: ValueDataType.PERCENTAGE,
     howToSetTheCondition: ValueHowToSetUp.RANGE,
     valueUse: "RANGE",
     howToSetTheDecision: "",
     ruleName: "",
     listOfPossibleValues: {
       list: [
-        "999900321",
-        "4",
-        "3",
-        "2",
-        "1",
-        "3",
-        "99",
-        "4",
-        "10000",
-        "100000",
+        {
+          id: "a",
+          label: "999900321",
+          value: "a",
+        },
+        {
+          id: "b",
+          label: "4",
+          value: "b",
+        },
+        {
+          id: "c",
+          label: "3",
+          value: "c",
+        },
+        {
+          id: "d",
+          label: "2",
+          value: "d",
+        },
+        {
+          id: "e",
+          label: "1",
+          value: "e",
+        },
+        {
+          id: "f",
+          label: "3",
+          value: "f",
+        },
+        {
+          id: "g",
+          label: "99",
+          value: "g",
+        },
+        {
+          id: "h",
+          label: "4",
+          value: "h",
+        },
+        {
+          id: "i",
+          label: "10000",
+          value: "i",
+        },
+        {
+          id: "j",
+          label: "100000",
+          value: "j",
+        },
       ],
     },
     value: ["10000"],
@@ -35,9 +75,7 @@ const DecisionConditionRenderControllerNew = () => {
   };
 
   const formik = useFormik({
-    initialValues: {
-      value: ["2222"],
-    },
+    initialValues: {},
     onSubmit: () => {},
   });
 
@@ -45,7 +83,7 @@ const DecisionConditionRenderControllerNew = () => {
     <DecisionConditionRenderNew
       condition={condition}
       formik={formik as unknown as IFormikTypeNew}
-      isDecision={true}
+      isDecision={false}
     />
   );
 };

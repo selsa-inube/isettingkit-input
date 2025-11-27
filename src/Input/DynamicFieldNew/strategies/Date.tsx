@@ -1,16 +1,23 @@
 import { FieldStrategyNew, IFieldStrategyNew } from "../types";
-import { Text, Stack, Date as Datefield } from "@inubekit/inubekit";
+import {
+  Text,
+  Stack,
+  Date as Datefield,
+  Select,
+  IOption,
+} from "@inubekit/inubekit";
 
 const DateStrategyNew: FieldStrategyNew = {
   render: ({
     condition,
     name,
     label,
-    value,
+    value = "",
     onChange,
     messageValidate,
     statusValidate,
     onBlur,
+    listOfPossibleValues,
   }: IFieldStrategyNew) => (
     <Stack alignItems="center" gap="16px" width="100%">
       <Text
@@ -21,15 +28,29 @@ const DateStrategyNew: FieldStrategyNew = {
       >
         {label}
       </Text>
-      <Datefield
-        id={name}
-        value={value as string}
-        onChange={(e) => onChange(name, e.target.value)}
-        fullwidth
-        message={messageValidate}
-        status={statusValidate as "invalid" | "pending" | undefined}
-        onBlur={onBlur}
-      />
+
+      {listOfPossibleValues ? (
+        <Select
+          id={`${name}-select`}
+          options={listOfPossibleValues.list as IOption[]}
+          value={String(value)}
+          onChange={(name, val) => onChange(name, val)}
+          message={messageValidate}
+          fullwidth
+          name={`${name}-select`}
+          placeholder="Seleccione"
+        />
+      ) : (
+        <Datefield
+          id={name}
+          value={value as string}
+          onChange={(e) => onChange(name, e.target.value)}
+          fullwidth
+          message={messageValidate}
+          status={statusValidate as "invalid" | "pending" | undefined}
+          onBlur={onBlur}
+        />
+      )}
     </Stack>
   ),
 };

@@ -10,14 +10,6 @@ const renderDecisionMultipleChoices = ({
   condition: IConditionNew;
   formik: IFormikTypeNew;
 }) => {
-  const list = condition.listOfPossibleValues?.list || [];
-
-  const options = list.map((item) => ({
-    id: item,
-    label: item,
-    value: item,
-  }));
-
   const formikValue =
     Array.isArray(formik.values.value) && formik.values.value.length > 0
       ? formik.values.value.join(",")
@@ -39,7 +31,7 @@ const renderDecisionMultipleChoices = ({
           const updatedArray = value.split(",").filter(Boolean);
           formik.setFieldValue("value", updatedArray);
         }}
-        options={options}
+        options={condition.listOfPossibleValues?.list || []}
         values={formikValue}
       ></Checkpicker>
     </Stack>

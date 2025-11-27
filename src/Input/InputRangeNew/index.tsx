@@ -21,7 +21,7 @@ interface IInputRangeNew {
   statusFrom?: IInputStatus;
   statusTo?: IInputStatus;
   onBlur?: () => void;
-  listOfPossibleValues?: { list?: string[] };
+  listOfPossibleValues?: { list?: IOption[] };
 }
 
 declare type ITextfieldInputType = (typeof inputTypes)[number];
@@ -56,13 +56,6 @@ const InputRangeNew = (props: IInputRangeNew) => {
 
   const [inputValueFrom, setInputValueFrom] = useState(valueFrom);
   const [inputValueTo, setInputValueTo] = useState(valueTo);
-
-  const options =
-    listOfPossibleValues?.list?.map((item: string) => ({
-      id: item,
-      label: item,
-      value: item,
-    })) || [];
 
   const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
     let valueFrom: number | Date;
@@ -141,7 +134,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
           {listOfPossibleValues ? (
             <Select
               id={`${id}SelectFrom`}
-              options={options as IOption[]}
+              options={listOfPossibleValues.list as IOption[]}
               value={String(inputValueFrom)}
               onChange={handleChangeSelect}
               message={messageFrom}
@@ -191,7 +184,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
           {listOfPossibleValues ? (
             <Select
               id={`${id}SelectTo`}
-              options={options as IOption[]}
+              options={listOfPossibleValues.list as IOption[]}
               value={String(inputValueTo)}
               onChange={handleChangeSelect}
               message={messageFrom}
