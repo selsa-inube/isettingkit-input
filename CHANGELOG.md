@@ -1,3 +1,15 @@
+# v1.1.10 (Fri Dec 19 2025)
+
+#### ⚠️ Pushed to `main`
+
+- chore: update react dependencies ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.9 (Thu Nov 27 2025)
 
 #### 🐛 Bug Fix
