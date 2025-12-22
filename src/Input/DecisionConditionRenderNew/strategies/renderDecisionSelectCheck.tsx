@@ -13,6 +13,7 @@ const renderDecisionSelectCheck = ({
   const handleChange = (_: string, newValue: string) => {
     formik.setFieldValue("value", newValue);
   };
+
   return (
     <StyledDecisionAlignmentContainer>
       <Stack gap="16px" alignItems="center">

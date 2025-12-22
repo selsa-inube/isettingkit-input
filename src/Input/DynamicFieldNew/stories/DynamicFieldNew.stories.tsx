@@ -25,6 +25,17 @@ Default.args = {
   valueInput: 0,
   handleChange: () => {},
   condition: false,
+  listOfPossibleValues: {
+    list: [
+      { id: "value-1", label: "Muy alto", value: "ass" },
+      { id: "value-2", label: "Alto", value: "cdd" },
+      { id: "value-3", label: "Medio", value: "vbfb" },
+      { id: "value-4", label: "Bajo", value: "hnh" },
+      { id: "value-5", label: "Muy bajo", value: "yyy" },
+    ],
+  },
+  messageValidate: "asadsa",
+  statusValidate: "invalid",
 };
 
 export { Default };

@@ -19,6 +19,12 @@ type FieldStrategyNew = {
   render: (props: IFieldStrategyNew) => ReactNode;
 };
 
-type FieldType = "alphabetical" | "currency" | "number" | "percentage";
+type FieldType =
+  | "alphabetical"
+  | "currency"
+  | "number"
+  | "percentage"
+  | "date"
+  | "monetary";
 
 export type { FieldStrategyNew, FieldType, IFieldStrategyNew };

@@ -14,12 +14,22 @@ const NumberStrategyNew: FieldStrategyNew = {
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
     return (
-      <Stack alignItems="center" gap="16px" width="100%">
+      <Stack
+        alignItems={statusValidate === "invalid" ? "baseline" : "center"}
+        gap="16px"
+        width="100%"
+      >
         <Text
           type={condition ? "body" : "title"}
           weight={condition ? "normal" : "bold"}
           size="medium"
-          appearance={condition ? "dark" : "primary"}
+          appearance={
+            statusValidate === "invalid"
+              ? "danger"
+              : condition
+                ? "dark"
+                : "primary"
+          }
         >
           {label}
         </Text>
@@ -32,7 +42,9 @@ const NumberStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione"
+            placeholder="Seleccione una opción"
+            invalid={statusValidate === "invalid"}
+            onBlur={onBlur}
           />
         ) : (
           <Numberfield
