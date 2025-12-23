@@ -3,9 +3,10 @@ import { Meta, StoryObj } from "@storybook/react";
 import { parameters, props } from "./props";
 import { InputRangeNew, IInputRangeNew } from "..";
 import { InputRangeNewController } from "./InputRange.controller";
+import { IInputStatus } from "../../../Input/types/IInputStatus";
 
 const meta: Meta<typeof InputRangeNew> = {
-  title: "components/inputs/InputRangeNewNew",
+  title: "components/inputs/InputRangeNew",
   component: InputRangeNewController,
   parameters,
   argTypes: props,
@@ -17,7 +18,7 @@ const Currency: Story = (args: IInputRangeNew) => (
   <InputRangeNewController {...args} />
 );
 Currency.args = {
-  condition: true,
+  condition: false,
   handleInputChangeFrom: () => {},
   handleInputChangeTo: () => {},
   id: "inputRango",
@@ -26,6 +27,10 @@ Currency.args = {
   valueTo: 0,
   typeInput: "currency",
   required: false,
+  messageFrom: "a",
+  messageTo: "a",
+  statusFrom: "invalid" as IInputStatus,
+  statusTo: "invalid" as IInputStatus,
 };
 
 const Number: Story = (args: IInputRangeNew) => (

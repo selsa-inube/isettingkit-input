@@ -22,6 +22,8 @@ interface IInputRangeNew {
   statusTo?: IInputStatus;
   onBlur?: () => void;
   listOfPossibleValues?: { list?: IOption[] };
+  onBlurFrom?: () => void;
+  onBlurTo?: () => void;
 }
 
 declare type ITextfieldInputType = (typeof inputTypes)[number];
@@ -51,6 +53,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
     statusFrom,
     statusTo,
     onBlur,
+    onBlurFrom,
+    onBlurTo,
     listOfPossibleValues,
   } = props;
 
@@ -108,18 +112,30 @@ const InputRangeNew = (props: IInputRangeNew) => {
     return Number(value);
   };
 
+  const blurFrom = onBlurFrom ?? onBlur;
+  const blurTo = onBlurTo ?? onBlur;
+
   return (
-    <Stack alignItems="center" gap="16px" width="100%">
+    <Stack
+      alignItems={messageFrom ? "baseline" : "center"}
+      gap="16px"
+      width="100%"
+    >
       <Text
         type={condition ? "body" : "title"}
         weight={condition ? "normal" : "bold"}
         size="medium"
-        appearance={condition ? "dark" : "primary"}
+        appearance={
+          messageFrom || messageTo ? "danger" : condition ? "dark" : "primary"
+        }
       >
         {label}
       </Text>
-      <Stack gap="16px" alignItems="center">
-        <Stack alignItems="baseline" gap="8px">
+      <Stack gap="16px" alignItems={messageFrom ? "baseline" : "center"}>
+        <Stack
+          alignItems={messageFrom || messageTo ? "baseline" : "center"}
+          gap="8px"
+        >
           {!condition && (
             <Text
               type="title"
@@ -140,6 +156,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
               message={messageFrom}
               fullwidth
               name={`${id}SelectFrom`}
+              invalid={statusFrom === ("invalid" as IInputStatus)}
+              onBlur={blurFrom}
             />
           ) : typeInput === "date" ? (
             <DateInput
@@ -149,7 +167,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               required={required}
               status={statusFrom as unknown as IDateStatus}
               message={messageFrom}
-              onBlur={onBlur}
+              onBlur={blurFrom}
             />
           ) : (
             <Textfield
@@ -162,7 +180,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               value={formatValue(inputValueFrom, typeInput)}
               message={messageFrom}
               status={statusFrom as unknown as IDateStatus}
-              onBlur={onBlur}
+              onBlur={blurFrom}
               placeholder={
                 typeInput === "number"
                   ? "por favor escribe un numero"
@@ -180,7 +198,10 @@ const InputRangeNew = (props: IInputRangeNew) => {
         >
           {condition ? "y" : "A"}
         </Text>
-        <Stack alignItems="baseline" gap="8px">
+        <Stack
+          alignItems={messageFrom || messageTo ? "baseline" : "center"}
+          gap="8px"
+        >
           {listOfPossibleValues ? (
             <Select
               id={`${id}SelectTo`}
@@ -190,6 +211,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
               message={messageFrom}
               fullwidth
               name={`${id}SelectTo`}
+              invalid={statusTo === ("invalid" as IInputStatus)}
+              onBlur={blurTo}
             />
           ) : typeInput === "date" ? (
             <DateInput
@@ -199,7 +222,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               required={required}
               status={statusTo as unknown as IDateStatus}
               message={messageTo}
-              onBlur={onBlur}
+              onBlur={blurTo}
             />
           ) : (
             <Textfield
@@ -212,7 +235,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               value={formatValue(inputValueTo, typeInput)}
               message={messageTo}
               status={statusTo as unknown as IDateStatus}
-              onBlur={onBlur}
+              onBlur={blurTo}
               placeholder={
                 typeInput === "number"
                   ? "por favor escribe un numero"

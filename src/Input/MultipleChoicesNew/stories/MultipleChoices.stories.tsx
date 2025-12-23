@@ -5,7 +5,7 @@ import { MultipleChoicesNew } from "..";
 import { MultipleChoicesNewController } from "./MultipleChoices.controller";
 
 const meta: Meta<typeof MultipleChoicesNew> = {
-  title: "components/inputs/MultipleChoicesNewNew",
+  title: "components/inputs/MultipleChoicesNew",
   component: MultipleChoicesNewController,
   parameters,
   argTypes: props,

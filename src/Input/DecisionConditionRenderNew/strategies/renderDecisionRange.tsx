@@ -4,6 +4,7 @@ import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
 import { IInputStatus } from "../../../Input/types/IInputStatus";
 import { IInputType } from "../../../Input/types";
+
 const renderDecisionRange = ({
   condition,
   formik,
@@ -11,6 +12,18 @@ const renderDecisionRange = ({
   condition: IConditionNew;
   formik: IFormikTypeNew;
 }) => {
+  const pathFrom = "value.from";
+  const pathTo = "value.to";
+
+  const touchedFrom = Boolean(formik.touched.value?.from);
+  const touchedTo = Boolean(formik.touched.value?.to);
+
+  const dirtyFrom = formik.submitCount > 0 || touchedFrom;
+  const dirtyTo = formik.submitCount > 0 || touchedTo;
+
+  const errorFrom = formik.errors.value?.from;
+  const errorTo = formik.errors.value?.to;
+
   return (
     <StyledDecisionAlignmentContainer>
       <InputRangeNew
@@ -18,27 +31,26 @@ const renderDecisionRange = ({
         label={condition.labelName!}
         valueFrom={formik.values.value?.from}
         valueTo={formik.values.value?.to}
-        handleInputChangeFrom={(value) =>
-          formik.setFieldValue("value.from", value)
-        }
-        handleInputChangeTo={(value) => formik.setFieldValue("value.to", value)}
-        messageFrom={formik.errors.value?.from}
-        messageTo={formik.errors.value?.to}
+        handleInputChangeFrom={(value) => formik.setFieldValue(pathFrom, value)}
+        handleInputChangeTo={(value) => formik.setFieldValue(pathTo, value)}
+        messageFrom={dirtyFrom ? errorFrom : undefined}
+        messageTo={dirtyTo ? errorTo : undefined}
         statusFrom={
-          (formik.touched.value?.from
-            ? formik.errors.value?.from
+          (dirtyFrom
+            ? errorFrom
               ? "invalid"
               : "valid"
             : "pending") as IInputStatus
         }
         statusTo={
-          (formik.touched.value?.to
-            ? formik.errors.value?.to
+          (dirtyTo
+            ? errorTo
               ? "invalid"
               : "valid"
             : "pending") as IInputStatus
         }
-        onBlur={formik.handleBlur}
+        onBlurFrom={() => formik.setFieldTouched(pathFrom, true, true)}
+        onBlurTo={() => formik.setFieldTouched(pathTo, true, true)}
         typeInput={condition.decisionDataType!.toLowerCase() as IInputType}
         listOfPossibleValues={
           condition.listOfPossibleValues?.list?.length
