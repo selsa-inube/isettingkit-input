@@ -1,3 +1,15 @@
+# v1.1.12 (Tue Dec 23 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: add support for ranges types for error messages ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.11 (Mon Dec 22 2025)
 
 #### ⚠️ Pushed to `main`
