@@ -27,6 +27,7 @@ interface IRuleDecision {
   transactionOperation?: string;
   validUntil?: Date | string;
   value?: string | string[] | number | IValue | undefined;
+  i18nValue?: string | string[] | number | IValue;
 }
 
 export type { IRuleDecision };
