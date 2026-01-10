@@ -1,3 +1,15 @@
+# v1.1.13 (Sat Jan 10 2026)
+
+#### ⚠️ Pushed to `main`
+
+- feat: add support for i18n values in decisions ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.12 (Tue Dec 23 2025)
 
 #### ⚠️ Pushed to `main`
