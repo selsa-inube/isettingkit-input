@@ -10,27 +10,19 @@ const DecisionConditionRenderControllerNew = () => {
   const condition: IConditionNew = {
     labelName: "Reciprocidad de ahorro",
     conditionName: "ReciprocidadDeAhorro",
-    decisionDataType: ValueDataType.CURRENCY,
-    conditionDataType: ValueDataType.CURRENCY,
-    howToSetTheCondition: ValueHowToSetUp.RANGE,
+    decisionDataType: ValueDataType.ALPHABETICAL,
+    conditionDataType: ValueDataType.ALPHABETICAL,
+    howToSetTheCondition: ValueHowToSetUp.EQUAL,
     valueUse: "RANGE",
     howToSetTheDecision: "",
     ruleName: "",
     listOfPossibleValues: {
       list: [
-        "999900321",
-        "4",
-        "3",
-        "2",
-        "1",
-        "3",
-        "99",
-        "4",
-        "10000",
-        "100000",
+        { id: "999900321", label: "999900321", value: "999900321" },
+        { id: "qwe", label: "vfd", value: "qwe" },
       ],
     },
-    value: ["10000"],
+    value: [""],
     groupKey: "group-primary",
   };
 

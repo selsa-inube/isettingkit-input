@@ -10,12 +10,7 @@ const renderDecisionSelectCheck = ({
   condition: IConditionNew;
   formik: IFormikTypeNew;
 }) => {
-  const options =
-    condition.listOfPossibleValues?.list?.map((item: string) => ({
-      id: item,
-      label: item,
-      value: item,
-    })) || [];
+  const options = condition.listOfPossibleValues?.list || [];
   const handleChange = (_: string, newValue: string) => {
     formik.setFieldValue("value", newValue);
   };

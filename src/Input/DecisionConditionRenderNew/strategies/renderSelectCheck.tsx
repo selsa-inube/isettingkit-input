@@ -12,12 +12,7 @@ const renderSelectCheck = ({
 }) => {
   const groupKey = condition.groupKey || "group-primary";
 
-  const options =
-    condition.listOfPossibleValues?.list?.map((item: string) => ({
-      id: item,
-      label: item,
-      value: item,
-    })) || [];
+  const options = condition.listOfPossibleValues?.list || [];
 
   const condFromFormik =
     formik.values.conditionsThatEstablishesTheDecision?.[groupKey]?.[

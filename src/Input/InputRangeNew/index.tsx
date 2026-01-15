@@ -21,7 +21,7 @@ interface IInputRangeNew {
   statusFrom?: IInputStatus;
   statusTo?: IInputStatus;
   onBlur?: () => void;
-  listOfPossibleValues?: { list?: string[] };
+  listOfPossibleValues?: { list?: IOption[] };
 }
 
 declare type ITextfieldInputType = (typeof inputTypes)[number];
@@ -57,12 +57,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
   const [inputValueFrom, setInputValueFrom] = useState(valueFrom);
   const [inputValueTo, setInputValueTo] = useState(valueTo);
 
-  const options =
-    listOfPossibleValues?.list?.map((item: string) => ({
-      id: item,
-      label: item,
-      value: item,
-    })) || [];
+  const options = listOfPossibleValues?.list;
 
   const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
     let valueFrom: number | Date;

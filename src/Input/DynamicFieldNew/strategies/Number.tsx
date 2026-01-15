@@ -13,12 +13,7 @@ const NumberStrategyNew: FieldStrategyNew = {
     onBlur,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
-    const options =
-      listOfPossibleValues?.list?.map((item: string) => ({
-        id: item,
-        label: item,
-        value: item,
-      })) || [];
+    const options = listOfPossibleValues?.list || [];
     return (
       <Stack alignItems="center" gap="16px" width="100%">
         <Text
