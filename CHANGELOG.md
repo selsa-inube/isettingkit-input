@@ -1,3 +1,15 @@
+# v1.1.14 (Thu Jan 22 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: include i18nValue on ICondition ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.13 (Sat Jan 10 2026)
 
 #### ⚠️ Pushed to `main`
