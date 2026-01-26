@@ -1,3 +1,15 @@
+# v1.1.19 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: allow decimalson percentage fields ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.18 (Mon Jan 26 2026)
 
 #### ⚠️ Pushed to `main`
