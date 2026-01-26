@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { IOption, Select, Textfield } from "@inubekit/inubekit";
-import { currencyFormat, parseCurrencyString } from "../utils";
+import {
+  currencyFormat,
+  parseCurrencyString,
+  parsePercentageString,
+} from "../utils";
 import { Date as DateInput, IDateStatus } from "@inubekit/inubekit";
 import { Text } from "@inubekit/inubekit";
 import { Stack } from "@inubekit/inubekit";
@@ -62,12 +67,18 @@ const InputRangeNew = (props: IInputRangeNew) => {
   const [inputValueTo, setInputValueTo] = useState(valueTo);
 
   const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let valueFrom: number | Date;
+    let valueFrom: number | Date | string;
 
     if (typeInput === "currency" || typeInput === "monetary") {
       valueFrom = parseCurrencyString(e.target.value);
     } else if (typeInput === "date") {
       valueFrom = new Date(e.target.value);
+    } else if (typeInput === "percentage") {
+      const raw = e.target.value;
+      setInputValueFrom(raw);
+      const parsed = parsePercentageString(raw);
+      handleInputChangeFrom(parsed);
+      return;
     } else {
       valueFrom = Number(e.target.value);
     }
@@ -75,6 +86,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
     setInputValueFrom(valueFrom);
     handleInputChangeFrom(valueFrom);
   };
+
   const handleChangeSelect = (name: string, value: string) => {
     if (name === `${id}SelectFrom`) {
       setInputValueFrom(value);
@@ -87,12 +99,18 @@ const InputRangeNew = (props: IInputRangeNew) => {
   };
 
   const handleChangeTo = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let valueTo: number | Date;
+    let valueTo: number | Date | string;
 
     if (typeInput === "currency" || typeInput === "monetary") {
       valueTo = parseCurrencyString(e.target.value);
     } else if (typeInput === "date") {
       valueTo = new Date(e.target.value);
+    } else if (typeInput === "percentage") {
+      const raw = e.target.value;
+      setInputValueTo(raw);
+      const parsed = parsePercentageString(raw);
+      handleInputChangeTo(parsed);
+      return;
     } else {
       valueTo = Number(e.target.value);
     }
@@ -105,11 +123,23 @@ const InputRangeNew = (props: IInputRangeNew) => {
     value: number | Date | string,
     type: ITextfieldInputType,
   ) => {
-    if (type === "currency" || type === "monetary")
+    if (type === "currency" || type === "monetary") {
       return currencyFormat(value as number);
-    if (type === "date" && value instanceof Date)
+    }
+
+    if (type === "date" && value instanceof Date) {
       return value.toISOString().split("T")[0];
-    return Number(value);
+    }
+
+    if (type === "percentage") {
+      // keep the raw value (string or number) so dots/commas don’t get lost
+      if (typeof value === "number") return String(value);
+      return value ?? "";
+    }
+
+    // default: numbers / alphabetical
+    if (typeof value === "number") return value;
+    return value ?? "";
   };
 
   const blurFrom = onBlurFrom ?? onBlur;
@@ -162,7 +192,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
           ) : typeInput === "date" ? (
             <DateInput
               id={`${id}DateFrom`}
-              value={formatValue(inputValueFrom, typeInput)}
+              value={formatValue(inputValueFrom, typeInput) as any}
               onChange={handleChangeFrom}
               required={required}
               status={statusFrom as unknown as IDateStatus}
@@ -177,7 +207,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               size="compact"
               fullwidth
               type={typeInput === "number" ? "number" : "text"}
-              value={formatValue(inputValueFrom, typeInput)}
+              value={formatValue(inputValueFrom, typeInput) as any}
               message={messageFrom}
               status={statusFrom as unknown as IDateStatus}
               onBlur={blurFrom}
@@ -217,7 +247,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
           ) : typeInput === "date" ? (
             <DateInput
               id={`${id}DateTo`}
-              value={formatValue(inputValueTo, typeInput)}
+              value={formatValue(inputValueTo, typeInput) as any}
               onChange={handleChangeTo}
               required={required}
               status={statusTo as unknown as IDateStatus}
@@ -232,7 +262,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               size="compact"
               fullwidth
               type={typeInput === "number" ? "number" : "text"}
-              value={formatValue(inputValueTo, typeInput)}
+              value={formatValue(inputValueTo, typeInput) as any}
               message={messageTo}
               status={statusTo as unknown as IDateStatus}
               onBlur={blurTo}

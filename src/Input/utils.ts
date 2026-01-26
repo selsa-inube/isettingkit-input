@@ -52,33 +52,41 @@ const parseCurrencyString = (currencyString: string): number => {
 };
 
 const parsePercentageString = (percentageString: string): number => {
-  const m = percentageString.match(/-?\d+(?:[.,]\d+)?/);
-  return m ? parseFloat(m[0].replace(",", ".")) : NaN;
+  const trimmed = percentageString.trim();
+
+  if (!trimmed) return NaN;
+
+  const validPattern = /^-?\d*(?:[.,]\d+)?$/;
+
+  if (!validPattern.test(trimmed)) {
+    return NaN;
+  }
+
+  return parseFloat(trimmed.replace(",", "."));
 };
 
 const percentageFormat = (percentage: number | string): string => {
-  if (percentage === 0 || percentage === "0" || percentage === "0%") {
-    return "0%";
+  if (percentage === 0 || percentage === "0") {
+    return "0";
   }
 
-  if (typeof percentage === "string") {
-    const trimmed = percentage.trim();
-
-    if (/%$/.test(trimmed)) {
-      const numeric = parsePercentageString(trimmed);
-      if (Number.isNaN(numeric)) return trimmed;
-      return `${numeric}%`;
-    }
-
-    const numeric = parsePercentageString(trimmed);
-    if (Number.isNaN(numeric)) {
-      return trimmed;
-    }
-
-    return `${numeric}%`;
+  if (typeof percentage === "number") {
+    return String(percentage);
   }
 
-  return `${percentage}%`;
+  const trimmed = percentage.trim();
+
+  const validPattern = /^-?\d*(?:[.,]\d+)?$/;
+  if (!validPattern.test(trimmed)) {
+    return trimmed;
+  }
+
+  const numeric = parsePercentageString(trimmed);
+  if (Number.isNaN(numeric)) {
+    return trimmed;
+  }
+
+  return String(numeric);
 };
 
 const formatters: Record<

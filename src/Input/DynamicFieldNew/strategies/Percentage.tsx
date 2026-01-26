@@ -57,8 +57,11 @@ const PercentageStrategyNew: FieldStrategyNew = {
         ) : (
           <Numberfield
             id={name}
-            value={value}
-            onChange={(e) => onChange(name, parseFloat(e.target.value) || 0)}
+            value={typeof value === "number" ? String(value) : value}
+            onChange={(e) => {
+              const raw = e.target.value;
+              onChange(name, raw);
+            }}
             fullwidth
             iconAfter={
               <Icon appearance="dark" icon={<MdOutlinePercent />} size="18px" />
