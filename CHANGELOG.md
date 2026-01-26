@@ -1,3 +1,15 @@
+# v1.1.16 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: allow decimals on percentage inputs ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.15 (Mon Jan 26 2026)
 
 #### ⚠️ Pushed to `main`
