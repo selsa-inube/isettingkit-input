@@ -10,7 +10,7 @@ const story = {
 
 const Default = () => <DecisionConditionRenderControllerNew />;
 Default.args = {
-  type: "alphabetical",
+  type: "percentage",
   name: "name",
   label: "label",
   valueInput: "",
