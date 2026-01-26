@@ -64,12 +64,21 @@ const percentageFormat = (percentage: number | string): string => {
   if (typeof percentage === "string") {
     const trimmed = percentage.trim();
 
-    if (/%$/.test(trimmed)) return trimmed;
+    if (/%$/.test(trimmed)) {
+      const numeric = parsePercentageString(trimmed);
+      if (Number.isNaN(numeric)) return trimmed;
+      return `${numeric}%`;
+    }
 
-    return trimmed.replace(/(\d+)/g, "$1%");
+    const numeric = parsePercentageString(trimmed);
+    if (Number.isNaN(numeric)) {
+      return trimmed;
+    }
+
+    return `${numeric}%`;
   }
 
-  return `${String(percentage)}%`;
+  return `${percentage}%`;
 };
 
 const formatters: Record<

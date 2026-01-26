@@ -1,11 +1,9 @@
 import { useFormik } from "formik";
 import { DecisionConditionRenderNew } from "..";
-
 import { IConditionNew } from "../types/IConditionNew";
 import { IFormikTypeNew } from "../types/IFormikTypeNew";
 import { ValueDataType } from "../../../Input/types/ValueDataType";
 import { ValueHowToSetUp } from "../../../Input/types/ValueHowToSetUp";
-import { useEffect } from "react";
 
 const DecisionConditionRenderControllerNew = () => {
   const condition: IConditionNew = {
@@ -19,16 +17,16 @@ const DecisionConditionRenderControllerNew = () => {
     ruleName: "",
     listOfPossibleValues: {
       list: [
-        { id: "a", label: "999900321", value: "a" },
-        { id: "b", label: "4", value: "b" },
-        { id: "c", label: "3", value: "c" },
-        { id: "d", label: "2", value: "d" },
-        { id: "e", label: "1", value: "e" },
-        { id: "f", label: "3", value: "f" },
-        { id: "g", label: "99", value: "g" },
-        { id: "h", label: "4", value: "h" },
-        { id: "i", label: "10000", value: "i" },
-        { id: "j", label: "100000", value: "j" },
+        { id: "a", label: "12.89", value: "12.89" },
+        { id: "b", label: "4", value: "4" },
+        { id: "c", label: "3", value: "3" },
+        { id: "d", label: "2", value: "2" },
+        { id: "e", label: "1", value: "1" },
+        { id: "f", label: "3", value: "3" },
+        { id: "g", label: "99", value: "99" },
+        { id: "h", label: "4", value: "4" },
+        { id: "i", label: "10000", value: "10000" },
+        { id: "j", label: "100000", value: "100000" },
       ],
     },
     value: ["10000"],
@@ -42,16 +40,20 @@ const DecisionConditionRenderControllerNew = () => {
         to: 0,
       },
     },
+    initialTouched: {
+      value: {
+        from: true,
+        to: true,
+      },
+    },
+    initialErrors: {
+      value: {
+        from: "From must be greater than 0.",
+        to: "To must be greater than 0.",
+      },
+    },
     onSubmit: () => {},
   });
-
-  useEffect(() => {
-    formik.setFieldTouched("value.from", true, false);
-    formik.setFieldTouched("value.to", true, false);
-
-    formik.setFieldError("value.from", "From must be greater than 0.");
-    formik.setFieldError("value.to", "To must be greater than 0.");
-  }, [formik]);
 
   return (
     <DecisionConditionRenderNew
