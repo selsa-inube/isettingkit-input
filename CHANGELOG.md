@@ -1,3 +1,16 @@
+# v1.1.20 (Tue Jan 27 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/selsa-inube/isettingkit-input ([@cmarin001](https://github.com/cmarin001))
+- fix: allow decimals on range types ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.19 (Mon Jan 26 2026)
 
 #### ⚠️ Pushed to `main`
