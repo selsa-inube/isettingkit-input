@@ -67,7 +67,7 @@ const parsePercentageString = (percentageString: string): number => {
 
 const percentageFormat = (percentage: number | string): string => {
   if (percentage === 0 || percentage === "0") {
-    return "0";
+    return "0%";
   }
 
   if (typeof percentage === "number") {
@@ -86,7 +86,7 @@ const percentageFormat = (percentage: number | string): string => {
     return trimmed;
   }
 
-  return String(numeric);
+  return `${String(percentage)}%`;
 };
 
 const formatters: Record<

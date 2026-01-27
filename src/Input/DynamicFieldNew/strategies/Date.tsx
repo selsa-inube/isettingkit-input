@@ -13,6 +13,7 @@ const DateStrategyNew: FieldStrategyNew = {
     name,
     label,
     value = "",
+    required,
     onChange,
     messageValidate,
     statusValidate,
@@ -58,6 +59,7 @@ const DateStrategyNew: FieldStrategyNew = {
           value={value as string}
           onChange={(e) => onChange(name, e.target.value)}
           fullwidth
+          required={required}
           message={messageValidate}
           status={statusValidate as "invalid" | "pending" | undefined}
           onBlur={onBlur}

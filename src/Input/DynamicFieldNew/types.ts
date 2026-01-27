@@ -7,6 +7,7 @@ interface IFieldStrategyNew {
   messageValidate?: string;
   name: string;
   placeholder?: string;
+  required?: boolean;
   onBlur?: () => void;
   onChange: (name: string, value: string | number) => void;
   statusValidate?: string | IInputStatus;

@@ -48,7 +48,7 @@ const DynamicFieldController = (props: IDynamicField) => {
     <DynamicField
       {...props}
       value={form.value}
-      onChange={onChange}
+      onChange={onChange!}
       statusValidate={form.status as IInputStatus}
       onBlur={onBlur}
       messageValidate={getMessage()}

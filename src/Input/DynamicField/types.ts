@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from "react";
 import { IInputStatus } from "../types/IInputStatus";
 
@@ -6,7 +7,7 @@ interface IFieldStrategy {
   messageValidate?: string;
   name: string;
   onBlur?: () => void;
-  onChange: (value: string | number) => void;
+  onChange: (value?: string | number | any) => void;
   statusValidate?: string | IInputStatus;
   value: string | number;
 }

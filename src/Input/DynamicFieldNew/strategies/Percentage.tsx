@@ -2,12 +2,13 @@ import { FieldStrategyNew, IFieldStrategyNew } from "../types";
 import {
   Text,
   Stack,
-  Numberfield,
+  Textfield,
   Icon,
   Select,
   IOption,
 } from "@inubekit/inubekit";
 import { MdOutlinePercent } from "react-icons/md";
+import { parsePercentageString } from "../../utils";
 
 const PercentageStrategyNew: FieldStrategyNew = {
   render: ({
@@ -16,11 +17,37 @@ const PercentageStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     onChange,
+    required,
     messageValidate,
     statusValidate,
     onBlur,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
+    const normalizedValue =
+      value === undefined || value === null ? "" : String(value);
+
+    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const raw = e.target.value;
+
+      if (raw === "") {
+        onChange(name, "");
+        return;
+      }
+
+      const validPattern = /^-?\d*(?:[.,]\d*)?$/;
+      if (!validPattern.test(raw)) {
+        return;
+      }
+
+      const parsed = parsePercentageString(raw);
+
+      if (Number.isNaN(parsed)) {
+        onChange(name, raw);
+      } else {
+        onChange(name, parsed);
+      }
+    };
+
     return (
       <Stack
         alignItems={statusValidate === "invalid" ? "baseline" : "center"}
@@ -41,6 +68,7 @@ const PercentageStrategyNew: FieldStrategyNew = {
         >
           {label}
         </Text>
+
         {listOfPossibleValues ? (
           <Select
             id={`${name}-select`}
@@ -55,20 +83,20 @@ const PercentageStrategyNew: FieldStrategyNew = {
             onBlur={onBlur}
           />
         ) : (
-          <Numberfield
+          <Textfield
             id={name}
-            value={typeof value === "number" ? String(value) : value}
-            onChange={(e) => {
-              const raw = e.target.value;
-              onChange(name, raw);
-            }}
+            value={normalizedValue}
+            onChange={handleTextChange}
             fullwidth
+            required={required}
             iconAfter={
               <Icon appearance="dark" icon={<MdOutlinePercent />} size="18px" />
             }
+            type="text"
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
+            placeholder="por favor escribe un numero"
           />
         )}
       </Stack>

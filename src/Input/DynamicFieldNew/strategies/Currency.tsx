@@ -9,6 +9,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     onChange,
+    required,
     messageValidate,
     statusValidate,
     onBlur,
@@ -58,6 +59,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
               onChange(name, cleanValue);
             }}
             fullwidth
+            required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}

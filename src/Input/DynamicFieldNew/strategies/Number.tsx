@@ -8,6 +8,7 @@ const NumberStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     onChange,
+    required,
     messageValidate,
     statusValidate,
     onBlur,
@@ -52,6 +53,7 @@ const NumberStrategyNew: FieldStrategyNew = {
             value={value}
             onChange={(e) => onChange(name, parseFloat(e.target.value) || 0)}
             fullwidth
+            required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}

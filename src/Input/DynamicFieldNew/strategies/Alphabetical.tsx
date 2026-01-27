@@ -7,6 +7,7 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     placeholder,
+    required,
     onChange,
     messageValidate,
     statusValidate,
@@ -56,6 +57,7 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
             placeholder={placeholder}
             type="text"
             fullwidth
+            required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
