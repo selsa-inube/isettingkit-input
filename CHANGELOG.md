@@ -1,3 +1,15 @@
+# v1.1.22 (Tue Jan 27 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: add support for placeholders along code base ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.21 (Tue Jan 27 2026)
 
 #### ⚠️ Pushed to `main`
