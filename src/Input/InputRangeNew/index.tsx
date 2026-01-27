@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { IOption, Select, Text, Stack } from "@inubekit/inubekit";
-import {
-  currencyFormat,
-  parseCurrencyString,
-  parsePercentageString,
-} from "../utils";
+import { parseCurrencyString, parsePercentageString } from "../utils";
 import { IInputStatus } from "../types/IInputStatus";
 import { DynamicFieldNew } from "../DynamicFieldNew";
 
@@ -119,24 +115,36 @@ const InputRangeNew = (props: IInputRangeNew) => {
     }
   };
 
+  // const formatValue = (
+  //   value: number | Date | string,
+  //   type: ITextfieldInputType,
+  // ) => {
+  //   if (type === "currency" || type === "monetary") {
+  //     return currencyFormat(value as number);
+  //   }
+
+  //   if (type === "date" && value instanceof Date) {
+  //     return value.toISOString().split("T")[0];
+  //   }
+
+  //   if (type === "percentage") {
+  //     if (typeof value === "number") return String(value);
+  //     return (value ?? "") as string;
+  //   }
+
+  //   if (typeof value === "number") return value;
+  //   return value ?? "";
+  // };
   const formatValue = (
     value: number | Date | string,
     type: ITextfieldInputType,
   ) => {
-    if (type === "currency" || type === "monetary") {
-      return currencyFormat(value as number);
-    }
-
     if (type === "date" && value instanceof Date) {
       return value.toISOString().split("T")[0];
     }
 
-    if (type === "percentage") {
-      if (typeof value === "number") return String(value);
-      return (value ?? "") as string;
-    }
-
     if (typeof value === "number") return value;
+
     return value ?? "";
   };
 
