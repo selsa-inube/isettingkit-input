@@ -22,6 +22,7 @@ const PercentageStrategyNew: FieldStrategyNew = {
     statusValidate,
     onBlur,
     listOfPossibleValues,
+    placeholder,
   }: IFieldStrategyNew) => {
     const normalizedValue =
       value === undefined || value === null ? "" : String(value);
@@ -78,7 +79,7 @@ const PercentageStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione una opción"
+            placeholder={placeholder}
             invalid={statusValidate === "invalid"}
             onBlur={onBlur}
           />
@@ -96,7 +97,7 @@ const PercentageStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
-            placeholder="por favor escribe un numero"
+            placeholder={placeholder}
           />
         )}
       </Stack>

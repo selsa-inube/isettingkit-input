@@ -20,6 +20,9 @@ interface IRuleDecision {
   howToSetTheCondition?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   howToSetTheDecision?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   labelName?: string;
+  placeholder?: string;
+  placeholderFrom?: string;
+  placeholderTo?: string;
   listOfPossibleValues?: IValue;
   ruleDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   ruleName?: string;

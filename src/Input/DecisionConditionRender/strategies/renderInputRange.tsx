@@ -69,6 +69,8 @@ const renderInputRange = ({
     }
     onBlur={formik.handleBlur}
     typeInput={condition.conditionDataType!.toLowerCase() as IInputType}
+    placeholderFrom={condition.placeholderFrom}
+    placeholderTo={condition.placeholderTo}
   />
 );
 

@@ -33,7 +33,7 @@ const renderSelectCheck = ({
         ]
       }
       onChange={handleChange}
-      placeholder={`Select ${condition.conditionName}`}
+      placeholder={condition.placeholder}
       message={
         formik.errors.conditionsThatEstablishesTheDecision?.[
           condition.conditionName

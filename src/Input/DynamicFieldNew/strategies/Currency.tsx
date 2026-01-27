@@ -13,6 +13,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
     messageValidate,
     statusValidate,
     onBlur,
+    placeholder,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
     return (
@@ -44,7 +45,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione una opción"
+            placeholder={placeholder}
             invalid={statusValidate === "invalid"}
             onBlur={onBlur}
           />
@@ -59,6 +60,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
               onChange(name, cleanValue);
             }}
             fullwidth
+            placeholder={placeholder}
             required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}

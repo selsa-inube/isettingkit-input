@@ -13,7 +13,9 @@ const renderDecisionSelectCheck = ({
   const handleChange = (_: string, newValue: string) => {
     formik.setFieldValue("value", newValue);
   };
-
+  const placeholder =
+    condition.placeholder ??
+    `Seleccione una opción para ${condition.labelName}`;
   return (
     <StyledDecisionAlignmentContainer>
       <Stack gap="16px" alignItems="center">
@@ -26,7 +28,7 @@ const renderDecisionSelectCheck = ({
           options={condition.listOfPossibleValues?.list as IOption[]}
           value={formik.values.value}
           onChange={handleChange}
-          placeholder={`Select ${condition.labelName}`}
+          placeholder={placeholder}
           message={formik.errors.value}
           invalid={Boolean(formik.touched.value && formik.errors.value)}
           fullwidth

@@ -45,7 +45,7 @@ const renderMultipleChoices = ({
           condition.conditionName
         ]
       }
-      placeholderSelect={`Select ${condition.conditionName}`}
+      placeholderSelect={condition.placeholder}
       onBlur={() =>
         formik.setFieldTouched(
           `conditionsThatEstablishesTheDecision.${condition.conditionName}`,

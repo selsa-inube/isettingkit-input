@@ -14,6 +14,7 @@ const DynamicField = ({
   messageValidate,
   statusValidate,
   onBlur,
+  placeholder,
 }: IDynamicField) => {
   const strategy = getFieldStrategy(type);
 
@@ -32,6 +33,7 @@ const DynamicField = ({
         messageValidate,
         statusValidate,
         onBlur,
+        placeholder,
       })}
     </>
   );

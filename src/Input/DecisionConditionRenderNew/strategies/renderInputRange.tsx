@@ -76,6 +76,8 @@ const renderInputRange = ({
           ? condition.listOfPossibleValues
           : undefined
       }
+      placeholderFrom={condition.placeholderFrom}
+      placeholderTo={condition.placeholderTo}
     />
   );
 };

@@ -10,6 +10,7 @@ const AlphabeticalStrategy: FieldStrategy = {
     messageValidate,
     statusValidate,
     onBlur,
+    placeholder,
   }: IFieldStrategy) => (
     <Textfield
       id={name}
@@ -21,6 +22,7 @@ const AlphabeticalStrategy: FieldStrategy = {
       message={messageValidate}
       status={statusValidate as "invalid" | "pending" | undefined}
       onBlur={onBlur}
+      placeholder={placeholder}
     />
   ),
 };

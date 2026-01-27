@@ -23,6 +23,8 @@ interface IInputRangeNew {
   listOfPossibleValues?: { list?: IOption[] };
   onBlurFrom?: () => void;
   onBlurTo?: () => void;
+  placeholderFrom?: string;
+  placeholderTo?: string;
 }
 
 declare const inputTypes: readonly [
@@ -55,6 +57,8 @@ const InputRangeNew = (props: IInputRangeNew) => {
     onBlurFrom,
     onBlurTo,
     listOfPossibleValues,
+    placeholderFrom,
+    placeholderTo,
   } = props;
 
   const [inputValueFrom, setInputValueFrom] = useState(valueFrom);
@@ -151,6 +155,14 @@ const InputRangeNew = (props: IInputRangeNew) => {
   const blurFrom = onBlurFrom ?? onBlur;
   const blurTo = onBlurTo ?? onBlur;
 
+  const defaultPlaceholderForType = (type: ITextfieldInputType) =>
+    type === "number" ||
+    type === "currency" ||
+    type === "monetary" ||
+    type === "percentage"
+      ? "por favor escribe un numero"
+      : "por favor escribe un texto";
+
   return (
     <Stack
       alignItems={messageFrom ? "baseline" : "center"}
@@ -193,6 +205,9 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onChange={handleChangeSelect}
               message={messageFrom}
               fullwidth
+              placeholder={
+                placeholderFrom ?? defaultPlaceholderForType(typeInput)
+              }
               name={`${id}SelectFrom`}
               invalid={statusFrom === ("invalid" as IInputStatus)}
               onBlur={blurFrom}
@@ -203,12 +218,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               name={`${id}DynamicFieldFrom`}
               label=""
               placeholder={
-                typeInput === "number" ||
-                typeInput === "currency" ||
-                typeInput === "monetary" ||
-                typeInput === "percentage"
-                  ? "por favor escribe un numero"
-                  : "por favor escribe un texto"
+                placeholderFrom ?? defaultPlaceholderForType(typeInput)
               }
               value={formatValue(inputValueFrom, typeInput) as any}
               required={required}
@@ -244,6 +254,9 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onChange={handleChangeSelect}
               message={messageTo}
               fullwidth
+              placeholder={
+                placeholderTo ?? defaultPlaceholderForType(typeInput)
+              }
               name={`${id}SelectTo`}
               invalid={statusTo === ("invalid" as IInputStatus)}
               onBlur={blurTo}
@@ -254,12 +267,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               name={`${id}DynamicFieldTo`}
               label=""
               placeholder={
-                typeInput === "number" ||
-                typeInput === "currency" ||
-                typeInput === "monetary" ||
-                typeInput === "percentage"
-                  ? "por favor escribe un numero"
-                  : "por favor escribe un texto"
+                placeholderTo ?? defaultPlaceholderForType(typeInput)
               }
               value={formatValue(inputValueTo, typeInput) as any}
               required={required}

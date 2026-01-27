@@ -14,6 +14,9 @@ interface Condition {
   conditionName: string;
   ruleName: string;
   labelName: string;
+  placeholder?: string;
+  placeholderFrom?: string;
+  placeholderTo?: string;
 }
 
 interface FormikType {

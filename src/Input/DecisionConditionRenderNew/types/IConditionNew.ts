@@ -18,6 +18,8 @@ interface IConditionNew {
   ruleName: string;
   labelName: string;
   placeholder?: string;
+  placeholderFrom?: string;
+  placeholderTo?: string;
   value?: string | string[] | number | IValue | undefined;
 }
 

@@ -25,6 +25,7 @@ const renderDecisionDynamicField = ({
           : undefined
       }
       onBlur={formik.handleBlur}
+      placeholder={condition.placeholder!}
     />
   </StyledDecisionAlignmentContainer>
 );

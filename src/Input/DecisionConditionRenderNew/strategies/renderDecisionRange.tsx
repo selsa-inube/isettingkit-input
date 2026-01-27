@@ -57,6 +57,8 @@ const renderDecisionRange = ({
             ? condition.listOfPossibleValues
             : undefined
         }
+        placeholderFrom={condition.placeholderFrom ?? condition.placeholder}
+        placeholderTo={condition.placeholderTo ?? condition.placeholder}
       />
     </StyledDecisionAlignmentContainer>
   );

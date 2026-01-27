@@ -45,7 +45,7 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione una opción"
+            placeholder={placeholder}
             invalid={statusValidate === "invalid"}
             onBlur={onBlur}
           />

@@ -40,6 +40,7 @@ const renderDynamicField = ({
         : undefined
     }
     onBlur={formik.handleBlur}
+    placeholder={condition.placeholder}
   />
 );
 

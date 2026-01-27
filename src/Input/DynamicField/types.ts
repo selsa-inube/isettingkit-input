@@ -10,6 +10,7 @@ interface IFieldStrategy {
   onChange: (value?: string | number | any) => void;
   statusValidate?: string | IInputStatus;
   value: string | number;
+  placeholder?: string;
 }
 
 type FieldStrategy = {

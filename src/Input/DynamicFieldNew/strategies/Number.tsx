@@ -13,6 +13,7 @@ const NumberStrategyNew: FieldStrategyNew = {
     statusValidate,
     onBlur,
     listOfPossibleValues,
+    placeholder,
   }: IFieldStrategyNew) => {
     return (
       <Stack
@@ -43,7 +44,7 @@ const NumberStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione una opción"
+            placeholder={placeholder}
             invalid={statusValidate === "invalid"}
             onBlur={onBlur}
           />
@@ -57,6 +58,7 @@ const NumberStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
+            placeholder={placeholder}
           />
         )}
       </Stack>

@@ -28,7 +28,7 @@ const renderDecisionSelectCheck = ({
         options={options as IOption[]}
         value={formik.values.value}
         onChange={handleChange}
-        placeholder={`Select ${condition.labelName}`}
+        placeholder={condition.placeholder}
         message={formik.errors.value}
         invalid={Boolean(formik.touched.value && formik.errors.value)}
         fullwidth
