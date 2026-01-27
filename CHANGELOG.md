@@ -1,3 +1,15 @@
+# v1.1.21 (Tue Jan 27 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: remove doble-format to avoid bug with 0-values ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.20 (Tue Jan 27 2026)
 
 #### ⚠️ Pushed to `main`
