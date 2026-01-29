@@ -31,11 +31,11 @@ const renderInputRange = ({
       condition.conditionName!
     ] || {};
 
-  const messageFrom = errorsForCond?.value?.from;
-  const messageTo = errorsForCond?.value?.to;
+  const messageFrom = errorsForCond?.value?.from || errorsForCond?.from;
+  const messageTo = errorsForCond?.value?.to || errorsForCond?.to;
 
   const statusFrom = (
-    touchedForCond?.value?.from
+    touchedForCond?.value?.from || touchedForCond?.from
       ? messageFrom
         ? "invalid"
         : "valid"
@@ -43,7 +43,11 @@ const renderInputRange = ({
   ) as IInputStatus;
 
   const statusTo = (
-    touchedForCond?.value?.to ? (messageTo ? "invalid" : "valid") : "pending"
+    touchedForCond?.value?.to || touchedForCond?.to
+      ? messageTo
+        ? "invalid"
+        : "valid"
+      : "pending"
   ) as IInputStatus;
 
   return (

@@ -15,14 +15,16 @@ const renderDecisionRange = ({
   const pathFrom = "value.from";
   const pathTo = "value.to";
 
-  const touchedFrom = Boolean(formik.touched.value?.from);
-  const touchedTo = Boolean(formik.touched.value?.to);
+  const touchedFrom = Boolean(
+    formik.touched.value?.from || formik.touched?.from,
+  );
+  const touchedTo = Boolean(formik.touched.value?.to || formik.touched?.to);
 
   const dirtyFrom = formik.submitCount > 0 || touchedFrom;
   const dirtyTo = formik.submitCount > 0 || touchedTo;
 
-  const errorFrom = formik.errors.value?.from;
-  const errorTo = formik.errors.value?.to;
+  const errorFrom = formik.errors.value?.from || formik.errors?.from;
+  const errorTo = formik.errors.value?.to || formik.errors?.to;
 
   return (
     <StyledDecisionAlignmentContainer>

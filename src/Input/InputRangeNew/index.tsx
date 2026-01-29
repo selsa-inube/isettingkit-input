@@ -155,14 +155,6 @@ const InputRangeNew = (props: IInputRangeNew) => {
   const blurFrom = onBlurFrom ?? onBlur;
   const blurTo = onBlurTo ?? onBlur;
 
-  const defaultPlaceholderForType = (type: ITextfieldInputType) =>
-    type === "number" ||
-    type === "currency" ||
-    type === "monetary" ||
-    type === "percentage"
-      ? "por favor escribe un numero"
-      : "por favor escribe un texto";
-
   return (
     <Stack
       alignItems={messageFrom ? "baseline" : "center"}
@@ -205,9 +197,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onChange={handleChangeSelect}
               message={messageFrom}
               fullwidth
-              placeholder={
-                placeholderFrom ?? defaultPlaceholderForType(typeInput)
-              }
+              placeholder={placeholderFrom}
               name={`${id}SelectFrom`}
               invalid={statusFrom === ("invalid" as IInputStatus)}
               onBlur={blurFrom}
@@ -217,9 +207,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               type={typeInput}
               name={`${id}DynamicFieldFrom`}
               label=""
-              placeholder={
-                placeholderFrom ?? defaultPlaceholderForType(typeInput)
-              }
+              placeholder={placeholderFrom}
               value={formatValue(inputValueFrom, typeInput) as any}
               required={required}
               onChange={(_name: string, value: any) => {
@@ -254,9 +242,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onChange={handleChangeSelect}
               message={messageTo}
               fullwidth
-              placeholder={
-                placeholderTo ?? defaultPlaceholderForType(typeInput)
-              }
+              placeholder={placeholderTo}
               name={`${id}SelectTo`}
               invalid={statusTo === ("invalid" as IInputStatus)}
               onBlur={blurTo}
@@ -266,9 +252,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               type={typeInput}
               name={`${id}DynamicFieldTo`}
               label=""
-              placeholder={
-                placeholderTo ?? defaultPlaceholderForType(typeInput)
-              }
+              placeholder={placeholderTo}
               value={formatValue(inputValueTo, typeInput) as any}
               required={required}
               onChange={(_name: string, value: any) => {

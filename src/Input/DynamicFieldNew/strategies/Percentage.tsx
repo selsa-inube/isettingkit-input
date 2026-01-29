@@ -52,7 +52,7 @@ const PercentageStrategyNew: FieldStrategyNew = {
     return (
       <Stack
         alignItems={statusValidate === "invalid" ? "baseline" : "center"}
-        gap="16px"
+        gap={condition === undefined ? "unset" : "16px"}
         width="100%"
       >
         <Text

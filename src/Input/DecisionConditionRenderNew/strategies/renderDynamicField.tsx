@@ -39,7 +39,6 @@ const renderDynamicField = ({
 
   const rawError = groupErrors[condName];
   const rawTouched = groupTouched[condName];
-
   const messageValidate =
     typeof rawError === "string"
       ? rawError

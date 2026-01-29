@@ -19,7 +19,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
     return (
       <Stack
         alignItems={statusValidate === "invalid" ? "baseline" : "center"}
-        gap="16px"
+        gap={condition === undefined ? "unset" : "16px"}
         width="100%"
       >
         <Text
@@ -65,6 +65,7 @@ const CurrencyStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
+            iconAfter={null}
           />
         )}
       </Stack>
