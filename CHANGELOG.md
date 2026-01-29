@@ -1,3 +1,15 @@
+# v1.1.23 (Thu Jan 29 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust layout for range-fields ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.22 (Tue Jan 27 2026)
 
 #### ⚠️ Pushed to `main`
