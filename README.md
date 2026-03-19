@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **`isettingkit-input`** library provides a set of reusable components for managing business logic in frontend applications, specifically focusing on rendering and handling various input fields. This library is designed to integrate seamlessly with other libraries and backend services, ensuring a smooth user experience.
+The **`isettingkit-input`** library provide a set of reusable components for managing business logic in frontend applications, specifically focusing on rendering and handling various input fields. This library is designed to integrate seamlessly with other libraries and backend services, ensuring a smooth user experience.
 
 This documentation covers key components of the library, their usage, and integration. You can also use **Storybook** to visualize and test these components.
 
@@ -13,9 +13,11 @@ This documentation covers key components of the library, their usage, and integr
 ### 1. `DecisionConditionRenderer`
 
 #### Description
+
 `DecisionConditionRenderer` dynamically renders the appropriate input component based on the configuration of the decision or condition (`howToSetUp`). It supports select inputs, multi-select, range inputs, and dynamic fields based on conditions like equality, greater than, or less than.
 
 #### Props
+
 - **element** (`IDecision | ICondition`): The decision or condition data to render the input field.
 - **onDecision** (`(value: IValue, nameCondition: string) => void`): Callback to handle decision updates.
 - **valueData** (`string | number | { rangeFrom?: number; rangeTo?: number }`): The value to be displayed in the input.
@@ -24,6 +26,7 @@ This documentation covers key components of the library, their usage, and integr
 - **textValues** (`{ selectOptions: string; selectOption: string; rangeMin: (label: string) => string; rangeMax: (label: string) => string }`): A set of texts to use for the input field.
 
 #### Usage Example
+
 ```tsx
 <DecisionConditionRenderer
   element={element}
@@ -43,9 +46,11 @@ This documentation covers key components of the library, their usage, and integr
 ### 2. `DynamicField`
 
 #### Description
+
 `DynamicField` is a flexible input component designed to render various input types such as number, date, alphabetical text, currency, and percentage values. This component adapts its behavior based on the specified input type, providing a dynamic user experience tailored to the form's requirements.
 
 #### Props
+
 - **type** (`ITextfieldInputType`): The type of input to render (e.g., `"number"`, `"currency"`, `"date"`, etc.).
 - **name** (`string`): The name attribute of the input field.
 - **label** (`string`): The label that is displayed for the input field, providing context to the user.
@@ -56,6 +61,7 @@ This documentation covers key components of the library, their usage, and integr
 - **onBlur** (`() => void?`): Optional. A callback function that is triggered when the input field loses focus.
 
 #### Usage Example
+
 ```tsx
 <DynamicField
   type="currency"
@@ -71,9 +77,11 @@ This documentation covers key components of the library, their usage, and integr
 ### 3. `InputRange`
 
 #### Description
+
 `InputRange` is a component that renders two input fields to handle a range of values, typically for cases where a minimum and maximum value are required.
 
 #### Props
+
 - **handleInputChangeFrom** (`(valueFrom: number) => void`): Callback to handle changes in the "from" value.
 - **handleInputChangeTo** (`(valueTo: number) => void`): Callback to handle changes in the "to" value.
 - **id** (`string`): The unique ID for the component.
@@ -87,6 +95,7 @@ This documentation covers key components of the library, their usage, and integr
 - **status** (`string?`): Validation status.
 
 #### Usage Example
+
 ```tsx
 <InputRange
   handleInputChangeFrom={handleFromChange}
@@ -101,12 +110,15 @@ This documentation covers key components of the library, their usage, and integr
   status="valid"
 />
 ```
+
 ### 4. `MultipleChoices`
 
 #### Description
+
 `MultipleChoices` is a component that renders a set of options where multiple values can be selected. It supports displaying the selected options as tags, and users can remove selected options.
 
 #### Props
+
 - **id** (`string`): The unique ID for the component.
 - **labelSelect** (`string`): The label for the selection input.
 - **labelSelected** (`string`): The label for the selected options.
@@ -117,6 +129,7 @@ This documentation covers key components of the library, their usage, and integr
 - **message** (`string?`): Validation feedback message.
 
 #### Usage Example
+
 ```tsx
 <MultipleChoices
   id="multiChoice"
@@ -135,9 +148,11 @@ This documentation covers key components of the library, their usage, and integr
 ### 5. `SelectCheck`
 
 #### Description
+
 `SelectCheck` is a checkbox-style select input component that allows for selecting multiple options with checkboxes.
 
 #### Props
+
 - **id** (`string`): The unique ID for the component.
 - **name** (`string`): The name of the input field.
 - **options** (`IOptionItemChecked[]`): The options for the select input.
@@ -151,6 +166,7 @@ This documentation covers key components of the library, their usage, and integr
 - **onChangeCheck** (`(event: React.ChangeEvent<HTMLInputElement>) => void?`): Callback for checking an option.
 
 #### Usage Example
+
 ```tsx
 <SelectCheck
   id="selectCheck"
@@ -171,77 +187,104 @@ This documentation covers key components of the library, their usage, and integr
 ### 1. `currencyFormat`
 
 #### Description
+
 Formats a number into a currency string (COP format).
 
 #### Usage Example
+
 ```tsx
 const formattedValue = currencyFormat(1000); // "$ 1.000"
 ```
+
 ## 🛠 Utility Functions
 
 ### 1. `currencyFormat`
 
 #### Description
+
 Formats a number into a currency string (COP format).
 
 #### Usage Example
+
 ```tsx
 const formattedValue = currencyFormat(1000); // "$ 1.000"
 ```
 
 ### 2. parseCurrencyString
+
 Description
 Parses a formatted currency string into a number.
 
 #### Usage Example
+
 ```tsx
 const numericValue = parseCurrencyString("$ 1.000"); // 1000
 ```
 
 ### 3. percentageFormat
+
 Description
 Formats a number into a percentage string (e.g., 50 becomes "50%").
 
 #### Usage Example
+
 ```tsx
 const formattedPercentage = percentageFormat(50); // "50%"
 ```
+
 ### 4. parsePercentageString
+
 Description
 Parses a percentage string into a numeric value.
 
 #### Usage Example
+
 ```tsx
 const numericPercentage = parsePercentageString("50%"); // 50
 ```
 
 ### 5. formatValue
+
 Description
 Formats a value based on its type (e.g., currency, percentage, date, number, alphabetical).
 
 #### Usage Example
+
 ```tsx
 const formattedValue = formatValue(1000, "currency"); // "$ 1.000"
 const formattedPercentage = formatValue(50, "percentage"); // "50%"
 ```
 
 ### 🚀 How to Use
+
 #### 1. Installation
+
 Install the library using npm:
+
 ```bash
 npm install isettingkit-input
 ```
 
 #### 2. Import Components
+
 Once installed, you can import and use the components like this:
 
 ```tsx
-import { DynamicField, InputRange, SelectCheck, MultipleChoices, DecisionConditionRenderer } from 'isettingkit-input';
+import {
+  DynamicField,
+  InputRange,
+  SelectCheck,
+  MultipleChoices,
+  DecisionConditionRenderer,
+} from "isettingkit-input";
 ```
+
 #### 3. Storybook Integration
+
 To visualize the components in action, we use Storybook. Storybook allows developers to interact with the components in isolation, view different states, and confirm that they behave as expected.
 
 You can run Storybook for this library by navigating to the project folder and using the following command:
+
 ```bash
 npm run storybook
 ```
