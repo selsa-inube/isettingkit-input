@@ -11,6 +11,7 @@ const CurrencyStrategy: FieldStrategy = {
     messageValidate,
     statusValidate,
     onBlur,
+    placeholder,
   }: IFieldStrategy) => (
     <Moneyfield
       id={name}
@@ -23,6 +24,7 @@ const CurrencyStrategy: FieldStrategy = {
       message={messageValidate}
       status={statusValidate as "invalid" | "pending" | undefined}
       onBlur={onBlur}
+      placeholder={placeholder}
     />
   ),
 };

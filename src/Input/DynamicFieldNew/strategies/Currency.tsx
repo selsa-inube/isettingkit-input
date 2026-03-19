@@ -9,18 +9,30 @@ const CurrencyStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     onChange,
+    required,
     messageValidate,
     statusValidate,
     onBlur,
+    placeholder,
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
     return (
-      <Stack alignItems="center" gap="16px" width="100%">
+      <Stack
+        alignItems={statusValidate === "invalid" ? "baseline" : "center"}
+        gap={condition === undefined ? "unset" : "16px"}
+        width="100%"
+      >
         <Text
           type={condition ? "body" : "title"}
           weight={condition ? "normal" : "bold"}
           size="medium"
-          appearance={condition ? "dark" : "primary"}
+          appearance={
+            statusValidate === "invalid"
+              ? "danger"
+              : condition
+                ? "dark"
+                : "primary"
+          }
         >
           {label}
         </Text>
@@ -33,7 +45,9 @@ const CurrencyStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione"
+            placeholder={placeholder}
+            invalid={statusValidate === "invalid"}
+            onBlur={onBlur}
           />
         ) : (
           <Moneyfield
@@ -46,9 +60,12 @@ const CurrencyStrategyNew: FieldStrategyNew = {
               onChange(name, cleanValue);
             }}
             fullwidth
+            placeholder={placeholder}
+            required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
+            iconAfter={null}
           />
         )}
       </Stack>

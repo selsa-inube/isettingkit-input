@@ -52,21 +52,38 @@ const parseCurrencyString = (currencyString: string): number => {
 };
 
 const parsePercentageString = (percentageString: string): number => {
-  const m = percentageString.match(/-?\d+(?:[.,]\d+)?/);
-  return m ? parseFloat(m[0].replace(",", ".")) : NaN;
+  const trimmed = percentageString.trim();
+
+  if (!trimmed) return NaN;
+
+  const validPattern = /^-?\d*(?:[.,]\d+)?$/;
+
+  if (!validPattern.test(trimmed)) {
+    return NaN;
+  }
+
+  return parseFloat(trimmed.replace(",", "."));
 };
 
 const percentageFormat = (percentage: number | string): string => {
-  if (percentage === 0 || percentage === "0" || percentage === "0%") {
+  if (percentage === 0 || percentage === "0") {
     return "0%";
   }
 
-  if (typeof percentage === "string") {
-    const trimmed = percentage.trim();
+  if (typeof percentage === "number") {
+    return String(percentage);
+  }
 
-    if (/%$/.test(trimmed)) return trimmed;
+  const trimmed = percentage.trim();
 
-    return trimmed.replace(/(\d+)/g, "$1%");
+  const validPattern = /^-?\d*(?:[.,]\d+)?$/;
+  if (!validPattern.test(trimmed)) {
+    return trimmed;
+  }
+
+  const numeric = parsePercentageString(trimmed);
+  if (Number.isNaN(numeric)) {
+    return trimmed;
   }
 
   return `${String(percentage)}%`;

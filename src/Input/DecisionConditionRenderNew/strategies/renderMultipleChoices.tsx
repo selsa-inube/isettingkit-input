@@ -31,7 +31,7 @@ const renderMultipleChoices = ({
 
       <Checkpicker
         name={condition.conditionName}
-        placeholder="Seleccione"
+        placeholder={condition.placeholder ?? "Seleccione una opción"}
         values={formikValue}
         options={condition.listOfPossibleValues?.list || []}
         fullwidth

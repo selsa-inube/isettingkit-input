@@ -1,3 +1,174 @@
+# v1.1.23 (Thu Jan 29 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjust layout for range-fields ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.22 (Tue Jan 27 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: add support for placeholders along code base ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.21 (Tue Jan 27 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: remove doble-format to avoid bug with 0-values ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.20 (Tue Jan 27 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/selsa-inube/isettingkit-input ([@cmarin001](https://github.com/cmarin001))
+- fix: allow decimals on range types ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.19 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: allow decimalson percentage fields ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.18 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/selsa-inube/isettingkit-input ([@cmarin001](https://github.com/cmarin001))
+- fix: allow decimals on percentage inputs ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.17 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/selsa-inube/isettingkit-input ([@cmarin001](https://github.com/cmarin001))
+- fix: allow decimals on percentage inputs ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.16 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: allow decimals on percentage inputs ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.15 (Mon Jan 26 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: allow decimals on percentage inputs ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.14 (Thu Jan 22 2026)
+
+#### ⚠️ Pushed to `main`
+
+- fix: include i18nValue on ICondition ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.13 (Sat Jan 10 2026)
+
+#### ⚠️ Pushed to `main`
+
+- feat: add support for i18n values in decisions ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.12 (Tue Dec 23 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: add support for ranges types for error messages ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.11 (Mon Dec 22 2025)
+
+#### ⚠️ Pushed to `main`
+
+- fix: adjustment in order to support invalid messages for dynamicField ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
+# v1.1.10 (Fri Dec 19 2025)
+
+#### ⚠️ Pushed to `main`
+
+- chore: update react dependencies ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.9 (Thu Nov 27 2025)
 
 #### 🐛 Bug Fix
@@ -6,7 +177,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -18,7 +189,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -30,7 +201,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -42,7 +213,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -90,7 +261,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -102,7 +273,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -114,7 +285,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -138,7 +309,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -162,7 +333,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 
@@ -186,7 +357,7 @@
 
 #### Authors: 1
 
-- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+- Heber Alvarez ([@heber59](https://github.com/heber59))
 
 ---
 

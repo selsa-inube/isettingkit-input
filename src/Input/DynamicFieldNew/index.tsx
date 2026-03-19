@@ -21,6 +21,7 @@ const DynamicFieldNew = (props: IDynamicField) => {
     console.error(`Unsupported field type: ${type}`);
     return null;
   }
+
   return (
     <>
       {strategy.render({

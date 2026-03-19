@@ -14,6 +14,7 @@ interface ICondition {
   labelName: string;
   descriptionUse?: string;
   i18n?: Partial<Record<string, string>>;
+  i18nValue?: string | string[] | number | IValue;
 }
 
 export type { ICondition };

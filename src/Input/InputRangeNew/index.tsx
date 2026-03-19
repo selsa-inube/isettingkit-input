@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
-import { IOption, Select, Textfield } from "@inubekit/inubekit";
-import { currencyFormat, parseCurrencyString } from "../utils";
-import { Date as DateInput, IDateStatus } from "@inubekit/inubekit";
-import { Text } from "@inubekit/inubekit";
-import { Stack } from "@inubekit/inubekit";
+import { IOption, Select, Text, Stack } from "@inubekit/inubekit";
+import { parseCurrencyString, parsePercentageString } from "../utils";
 import { IInputStatus } from "../types/IInputStatus";
+import { DynamicFieldNew } from "../DynamicFieldNew";
 
 interface IInputRangeNew {
   condition?: boolean;
@@ -22,9 +21,11 @@ interface IInputRangeNew {
   statusTo?: IInputStatus;
   onBlur?: () => void;
   listOfPossibleValues?: { list?: IOption[] };
+  onBlurFrom?: () => void;
+  onBlurTo?: () => void;
+  placeholderFrom?: string;
+  placeholderTo?: string;
 }
-
-declare type ITextfieldInputType = (typeof inputTypes)[number];
 
 declare const inputTypes: readonly [
   "alphabetical",
@@ -34,6 +35,8 @@ declare const inputTypes: readonly [
   "monetary",
   "percentage",
 ];
+
+declare type ITextfieldInputType = (typeof inputTypes)[number];
 
 const InputRangeNew = (props: IInputRangeNew) => {
   const {
@@ -51,26 +54,60 @@ const InputRangeNew = (props: IInputRangeNew) => {
     statusFrom,
     statusTo,
     onBlur,
+    onBlurFrom,
+    onBlurTo,
     listOfPossibleValues,
+    placeholderFrom,
+    placeholderTo,
   } = props;
 
   const [inputValueFrom, setInputValueFrom] = useState(valueFrom);
   const [inputValueTo, setInputValueTo] = useState(valueTo);
 
-  const handleChangeFrom = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let valueFrom: number | Date;
+  const updateFrom = (raw: string | number | Date) => {
+    let valueFrom: number | Date | string;
 
     if (typeInput === "currency" || typeInput === "monetary") {
-      valueFrom = parseCurrencyString(e.target.value);
+      valueFrom = parseCurrencyString(String(raw));
     } else if (typeInput === "date") {
-      valueFrom = new Date(e.target.value);
+      valueFrom = raw instanceof Date ? raw : new Date(String(raw));
+    } else if (typeInput === "percentage") {
+      const parsed = parsePercentageString(String(raw));
+      setInputValueFrom(String(raw));
+      handleInputChangeFrom(parsed);
+      return;
+    } else if (typeInput === "number") {
+      valueFrom = Number(raw);
     } else {
-      valueFrom = Number(e.target.value);
+      valueFrom = String(raw);
     }
 
     setInputValueFrom(valueFrom);
     handleInputChangeFrom(valueFrom);
   };
+
+  const updateTo = (raw: string | number | Date) => {
+    let valueTo: number | Date | string;
+
+    if (typeInput === "currency" || typeInput === "monetary") {
+      valueTo = parseCurrencyString(String(raw));
+    } else if (typeInput === "date") {
+      valueTo = raw instanceof Date ? raw : new Date(String(raw));
+    } else if (typeInput === "percentage") {
+      const parsed = parsePercentageString(String(raw));
+      setInputValueTo(String(raw));
+      handleInputChangeTo(parsed);
+      return;
+    } else if (typeInput === "number") {
+      valueTo = Number(raw);
+    } else {
+      valueTo = String(raw);
+    }
+
+    setInputValueTo(valueTo);
+    handleInputChangeTo(valueTo);
+  };
+
   const handleChangeSelect = (name: string, value: string) => {
     if (name === `${id}SelectFrom`) {
       setInputValueFrom(value);
@@ -82,44 +119,64 @@ const InputRangeNew = (props: IInputRangeNew) => {
     }
   };
 
-  const handleChangeTo = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let valueTo: number | Date;
+  // const formatValue = (
+  //   value: number | Date | string,
+  //   type: ITextfieldInputType,
+  // ) => {
+  //   if (type === "currency" || type === "monetary") {
+  //     return currencyFormat(value as number);
+  //   }
 
-    if (typeInput === "currency" || typeInput === "monetary") {
-      valueTo = parseCurrencyString(e.target.value);
-    } else if (typeInput === "date") {
-      valueTo = new Date(e.target.value);
-    } else {
-      valueTo = Number(e.target.value);
-    }
+  //   if (type === "date" && value instanceof Date) {
+  //     return value.toISOString().split("T")[0];
+  //   }
 
-    setInputValueTo(valueTo);
-    handleInputChangeTo(valueTo);
-  };
+  //   if (type === "percentage") {
+  //     if (typeof value === "number") return String(value);
+  //     return (value ?? "") as string;
+  //   }
 
+  //   if (typeof value === "number") return value;
+  //   return value ?? "";
+  // };
   const formatValue = (
     value: number | Date | string,
     type: ITextfieldInputType,
   ) => {
-    if (type === "currency" || type === "monetary")
-      return currencyFormat(value as number);
-    if (type === "date" && value instanceof Date)
+    if (type === "date" && value instanceof Date) {
       return value.toISOString().split("T")[0];
-    return Number(value);
+    }
+
+    if (typeof value === "number") return value;
+
+    return value ?? "";
   };
 
+  const blurFrom = onBlurFrom ?? onBlur;
+  const blurTo = onBlurTo ?? onBlur;
+
   return (
-    <Stack alignItems="center" gap="16px" width="100%">
+    <Stack
+      alignItems={messageFrom ? "baseline" : "center"}
+      gap="16px"
+      width="100%"
+    >
       <Text
         type={condition ? "body" : "title"}
         weight={condition ? "normal" : "bold"}
         size="medium"
-        appearance={condition ? "dark" : "primary"}
+        appearance={
+          messageFrom || messageTo ? "danger" : condition ? "dark" : "primary"
+        }
       >
         {label}
       </Text>
-      <Stack gap="16px" alignItems="center">
-        <Stack alignItems="baseline" gap="8px">
+
+      <Stack gap="16px" alignItems={messageFrom ? "baseline" : "center"}>
+        <Stack
+          alignItems={messageFrom || messageTo ? "baseline" : "center"}
+          gap="8px"
+        >
           {!condition && (
             <Text
               type="title"
@@ -131,6 +188,7 @@ const InputRangeNew = (props: IInputRangeNew) => {
               De
             </Text>
           )}
+
           {listOfPossibleValues ? (
             <Select
               id={`${id}SelectFrom`}
@@ -139,38 +197,29 @@ const InputRangeNew = (props: IInputRangeNew) => {
               onChange={handleChangeSelect}
               message={messageFrom}
               fullwidth
+              placeholder={placeholderFrom}
               name={`${id}SelectFrom`}
-            />
-          ) : typeInput === "date" ? (
-            <DateInput
-              id={`${id}DateFrom`}
-              value={formatValue(inputValueFrom, typeInput)}
-              onChange={handleChangeFrom}
-              required={required}
-              status={statusFrom as unknown as IDateStatus}
-              message={messageFrom}
-              onBlur={onBlur}
+              invalid={statusFrom === ("invalid" as IInputStatus)}
+              onBlur={blurFrom}
             />
           ) : (
-            <Textfield
-              id={`${id}TextFieldFrom`}
-              onChange={handleChangeFrom}
+            <DynamicFieldNew
+              type={typeInput}
+              name={`${id}DynamicFieldFrom`}
+              label=""
+              placeholder={placeholderFrom}
+              value={formatValue(inputValueFrom, typeInput) as any}
               required={required}
-              size="compact"
-              fullwidth
-              type={typeInput === "number" ? "number" : "text"}
-              value={formatValue(inputValueFrom, typeInput)}
-              message={messageFrom}
-              status={statusFrom as unknown as IDateStatus}
-              onBlur={onBlur}
-              placeholder={
-                typeInput === "number"
-                  ? "por favor escribe un numero"
-                  : "por favor escribe un texto"
-              }
+              onChange={(_name: string, value: any) => {
+                updateFrom(value as string | number);
+              }}
+              messageValidate={messageFrom}
+              statusValidate={statusFrom}
+              onBlur={blurFrom}
             />
           )}
         </Stack>
+
         <Text
           type={condition ? "body" : "title"}
           size="medium"
@@ -180,44 +229,38 @@ const InputRangeNew = (props: IInputRangeNew) => {
         >
           {condition ? "y" : "A"}
         </Text>
-        <Stack alignItems="baseline" gap="8px">
+
+        <Stack
+          alignItems={messageFrom || messageTo ? "baseline" : "center"}
+          gap="8px"
+        >
           {listOfPossibleValues ? (
             <Select
               id={`${id}SelectTo`}
               options={listOfPossibleValues.list as IOption[]}
               value={String(inputValueTo)}
               onChange={handleChangeSelect}
-              message={messageFrom}
-              fullwidth
-              name={`${id}SelectTo`}
-            />
-          ) : typeInput === "date" ? (
-            <DateInput
-              id={`${id}DateTo`}
-              value={formatValue(inputValueTo, typeInput)}
-              onChange={handleChangeTo}
-              required={required}
-              status={statusTo as unknown as IDateStatus}
               message={messageTo}
-              onBlur={onBlur}
+              fullwidth
+              placeholder={placeholderTo}
+              name={`${id}SelectTo`}
+              invalid={statusTo === ("invalid" as IInputStatus)}
+              onBlur={blurTo}
             />
           ) : (
-            <Textfield
-              id={`${id}TextFieldTo`}
-              onChange={handleChangeTo}
+            <DynamicFieldNew
+              type={typeInput}
+              name={`${id}DynamicFieldTo`}
+              label=""
+              placeholder={placeholderTo}
+              value={formatValue(inputValueTo, typeInput) as any}
               required={required}
-              size="compact"
-              fullwidth
-              type={typeInput === "number" ? "number" : "text"}
-              value={formatValue(inputValueTo, typeInput)}
-              message={messageTo}
-              status={statusTo as unknown as IDateStatus}
-              onBlur={onBlur}
-              placeholder={
-                typeInput === "number"
-                  ? "por favor escribe un numero"
-                  : "por favor escribe un texto"
-              }
+              onChange={(_name: string, value: any) => {
+                updateTo(value as string | number);
+              }}
+              messageValidate={messageTo}
+              statusValidate={statusTo}
+              onBlur={blurTo}
             />
           )}
         </Stack>

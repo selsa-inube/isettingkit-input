@@ -20,6 +20,9 @@ interface IRuleDecision {
   howToSetTheCondition?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   howToSetTheDecision?: (typeof ValueHowToSetUp)[keyof typeof ValueHowToSetUp];
   labelName?: string;
+  placeholder?: string;
+  placeholderFrom?: string;
+  placeholderTo?: string;
   listOfPossibleValues?: IValue;
   ruleDataType?: (typeof ValueDataType)[keyof typeof ValueDataType];
   ruleName?: string;
@@ -27,6 +30,7 @@ interface IRuleDecision {
   transactionOperation?: string;
   validUntil?: Date | string;
   value?: string | string[] | number | IValue | undefined;
+  i18nValue?: string | string[] | number | IValue;
 }
 
 export type { IRuleDecision };

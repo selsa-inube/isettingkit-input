@@ -7,6 +7,7 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     placeholder,
+    required,
     onChange,
     messageValidate,
     statusValidate,
@@ -15,12 +16,22 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
     listOfPossibleValues,
   }: IFieldStrategyNew) => {
     return (
-      <Stack alignItems="center" gap="16px" width="100%">
+      <Stack
+        alignItems={statusValidate === "invalid" ? "baseline" : "center"}
+        gap={condition === undefined ? "unset" : "16px"}
+        width="100%"
+      >
         <Text
           type={condition ? "body" : "title"}
           weight={condition ? "normal" : "bold"}
           size="medium"
-          appearance={condition ? "dark" : "primary"}
+          appearance={
+            statusValidate === "invalid"
+              ? "danger"
+              : condition
+                ? "dark"
+                : "primary"
+          }
         >
           {label}
         </Text>
@@ -34,7 +45,9 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione"
+            placeholder={placeholder}
+            invalid={statusValidate === "invalid"}
+            onBlur={onBlur}
           />
         ) : (
           <Textfield
@@ -44,6 +57,7 @@ const AlphabeticalStrategyNew: FieldStrategyNew = {
             placeholder={placeholder}
             type="text"
             fullwidth
+            required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}

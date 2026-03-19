@@ -10,6 +10,8 @@ const validationStrategies: Record<FieldType, (value: string) => boolean> = {
   number: (value) => /^[0-9]*$/.test(value),
   currency: (value) => /^[0-9]*$/.test(value),
   percentage: (value) => /^\d{1,2}(\.\d+)?%?$/.test(value),
+  date: (value) => !isNaN(Date.parse(value)),
+  monetary: (value) => /^\d{1,2}(\.\d+)?%?$/.test(value),
 };
 
 const messages: Record<FieldType, string> = {
@@ -17,6 +19,8 @@ const messages: Record<FieldType, string> = {
   number: "Please enter a valid number.",
   currency: "Please enter a valid number.",
   percentage: "Please enter a valid percentage.",
+  date: "Please enter a valid date.",
+  monetary: "Please enter a valid number.",
 };
 
 const DynamicFieldController = (props: IDynamicField) => {

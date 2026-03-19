@@ -14,6 +14,7 @@ const renderDecisionMultipleChoices = ({
     Array.isArray(formik.values.value) && formik.values.value.length > 0
       ? formik.values.value.join(",")
       : "";
+  const placeholder = condition.placeholder ?? "Seleccione una opción";
   return (
     <Stack alignItems="center" gap="16px" width="100%">
       <Text
@@ -26,7 +27,7 @@ const renderDecisionMultipleChoices = ({
       </Text>
       <Checkpicker
         name={condition.conditionName}
-        placeholder={`Seleccione`}
+        placeholder={placeholder}
         onChange={(_name, value) => {
           const updatedArray = value.split(",").filter(Boolean);
           formik.setFieldValue("value", updatedArray);

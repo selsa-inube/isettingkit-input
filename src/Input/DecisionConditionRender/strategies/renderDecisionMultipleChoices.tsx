@@ -35,7 +35,7 @@ const renderDecisionMultipleChoices = ({
           formik.setFieldValue("value", updatedArray);
         }}
         message={formik.errors.value}
-        placeholderSelect={`Select ${condition.ruleName}`}
+        placeholderSelect={condition.placeholder!}
         onBlur={() => formik.setFieldTouched("value", true, true)}
       />
     </StyledDecisionAlignmentMultipleChoicesContainer>

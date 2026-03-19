@@ -21,6 +21,8 @@ interface IInputRange {
   statusFrom?: IInputStatus;
   statusTo?: IInputStatus;
   onBlur?: () => void;
+  placeholderFrom?: string;
+  placeholderTo?: string;
 }
 
 declare type ITextfieldInputType = (typeof inputTypes)[number];

@@ -10,6 +10,7 @@ interface IFormikTypeNew {
   errors: Record<string, any>;
   touched: Record<string, any>;
   handleBlur: () => void;
+  submitCount: number;
 }
 
 export type { IFormikTypeNew };

@@ -39,6 +39,8 @@ const renderDecisionRange = ({
       }
       onBlur={formik.handleBlur}
       typeInput={condition.decisionDataType!.toLowerCase() as IInputType}
+      placeholderFrom={condition.placeholderFrom}
+      placeholderTo={condition.placeholderTo}
     />
   </StyledDecisionAlignmentContainer>
 );

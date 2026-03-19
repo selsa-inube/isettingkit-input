@@ -12,6 +12,7 @@ const PercentageStrategy: FieldStrategy = {
     messageValidate,
     statusValidate,
     onBlur,
+    placeholder,
   }: IFieldStrategy) => (
     <Numberfield
       id={name}
@@ -25,6 +26,7 @@ const PercentageStrategy: FieldStrategy = {
       message={messageValidate}
       status={statusValidate as "invalid" | "pending" | undefined}
       onBlur={onBlur}
+      placeholder={placeholder}
     />
   ),
 };

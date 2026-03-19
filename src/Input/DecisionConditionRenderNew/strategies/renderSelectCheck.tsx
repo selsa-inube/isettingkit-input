@@ -61,7 +61,7 @@ const renderSelectCheck = ({
         options={condition.listOfPossibleValues?.list || []}
         value={selectValue}
         onChange={handleChange}
-        placeholder={`Select ${condition.conditionName}`}
+        placeholder={condition.placeholder}
         message={message}
         invalid={isInvalid}
         fullwidth

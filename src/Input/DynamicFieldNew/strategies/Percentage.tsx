@@ -2,12 +2,13 @@ import { FieldStrategyNew, IFieldStrategyNew } from "../types";
 import {
   Text,
   Stack,
-  Numberfield,
+  Textfield,
   Icon,
   Select,
   IOption,
 } from "@inubekit/inubekit";
 import { MdOutlinePercent } from "react-icons/md";
+import { parsePercentageString } from "../../utils";
 
 const PercentageStrategyNew: FieldStrategyNew = {
   render: ({
@@ -16,21 +17,59 @@ const PercentageStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     onChange,
+    required,
     messageValidate,
     statusValidate,
     onBlur,
     listOfPossibleValues,
+    placeholder,
   }: IFieldStrategyNew) => {
+    const normalizedValue =
+      value === undefined || value === null ? "" : String(value);
+
+    const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const raw = e.target.value;
+
+      if (raw === "") {
+        onChange(name, "");
+        return;
+      }
+
+      const validPattern = /^-?\d*(?:[.,]\d*)?$/;
+      if (!validPattern.test(raw)) {
+        return;
+      }
+
+      const parsed = parsePercentageString(raw);
+
+      if (Number.isNaN(parsed)) {
+        onChange(name, raw);
+      } else {
+        onChange(name, parsed);
+      }
+    };
+
     return (
-      <Stack alignItems="center" gap="16px" width="100%">
+      <Stack
+        alignItems={statusValidate === "invalid" ? "baseline" : "center"}
+        gap={condition === undefined ? "unset" : "16px"}
+        width="100%"
+      >
         <Text
           type={condition ? "body" : "title"}
           weight={condition ? "normal" : "bold"}
           size="medium"
-          appearance={condition ? "dark" : "primary"}
+          appearance={
+            statusValidate === "invalid"
+              ? "danger"
+              : condition
+                ? "dark"
+                : "primary"
+          }
         >
           {label}
         </Text>
+
         {listOfPossibleValues ? (
           <Select
             id={`${name}-select`}
@@ -40,20 +79,25 @@ const PercentageStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione"
+            placeholder={placeholder}
+            invalid={statusValidate === "invalid"}
+            onBlur={onBlur}
           />
         ) : (
-          <Numberfield
+          <Textfield
             id={name}
-            value={value}
-            onChange={(e) => onChange(name, parseFloat(e.target.value) || 0)}
+            value={normalizedValue}
+            onChange={handleTextChange}
             fullwidth
+            required={required}
             iconAfter={
               <Icon appearance="dark" icon={<MdOutlinePercent />} size="18px" />
             }
+            type="text"
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
+            placeholder={placeholder}
           />
         )}
       </Stack>

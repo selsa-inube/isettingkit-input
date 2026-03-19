@@ -8,18 +8,30 @@ const NumberStrategyNew: FieldStrategyNew = {
     label,
     value = "",
     onChange,
+    required,
     messageValidate,
     statusValidate,
     onBlur,
     listOfPossibleValues,
+    placeholder,
   }: IFieldStrategyNew) => {
     return (
-      <Stack alignItems="center" gap="16px" width="100%">
+      <Stack
+        alignItems={statusValidate === "invalid" ? "baseline" : "center"}
+        gap={condition === undefined ? "unset" : "16px"}
+        width="100%"
+      >
         <Text
           type={condition ? "body" : "title"}
           weight={condition ? "normal" : "bold"}
           size="medium"
-          appearance={condition ? "dark" : "primary"}
+          appearance={
+            statusValidate === "invalid"
+              ? "danger"
+              : condition
+                ? "dark"
+                : "primary"
+          }
         >
           {label}
         </Text>
@@ -32,7 +44,9 @@ const NumberStrategyNew: FieldStrategyNew = {
             message={messageValidate}
             fullwidth
             name={`${name}-select`}
-            placeholder="Seleccione"
+            placeholder={placeholder}
+            invalid={statusValidate === "invalid"}
+            onBlur={onBlur}
           />
         ) : (
           <Numberfield
@@ -40,9 +54,11 @@ const NumberStrategyNew: FieldStrategyNew = {
             value={value}
             onChange={(e) => onChange(name, parseFloat(e.target.value) || 0)}
             fullwidth
+            required={required}
             message={messageValidate}
             status={statusValidate as "invalid" | "pending" | undefined}
             onBlur={onBlur}
+            placeholder={placeholder}
           />
         )}
       </Stack>

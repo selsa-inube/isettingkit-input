@@ -39,7 +39,6 @@ const renderDynamicField = ({
 
   const rawError = groupErrors[condName];
   const rawTouched = groupTouched[condName];
-
   const messageValidate =
     typeof rawError === "string"
       ? rawError
@@ -76,6 +75,7 @@ const renderDynamicField = ({
       type={condition.conditionDataType!.toLowerCase()}
       name={basePath}
       label={condition.labelName!}
+      placeholder={condition.placeholder!}
       value={value}
       onChange={handleChange}
       messageValidate={messageValidate}
