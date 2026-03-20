@@ -1,3 +1,15 @@
+# v1.1.26 (Fri Mar 20 2026)
+
+#### 🐛 Bug Fix
+
+- feat: upgrate types [#15](https://github.com/selsa-inube/isettingkit-input/pull/15) ([@heber59](https://github.com/heber59))
+
+#### Authors: 1
+
+- Heber  Alvarez  ([@heber59](https://github.com/heber59))
+
+---
+
 # v1.1.24 (Fri Mar 20 2026)
 
 #### 🐛 Bug Fix
